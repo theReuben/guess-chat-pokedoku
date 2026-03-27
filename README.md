@@ -23,7 +23,10 @@ Grids use a variety of Pokémon traits as row/column categories:
 1. Clone the repo
 2. `npm install`
 3. Copy `.env.example` to `.env` and fill in your Discord OAuth credentials
-4. `npm run dev`
+4. `npm run fetch-pokemon` — fetches the full Pokémon dataset from PokéAPI (~1000 Pokémon)
+5. `npm run dev`
+
+> The app works without step 4 using a curated fallback set (~150 Pokémon), but for the full experience run the fetch script. It takes a few minutes due to PokéAPI rate limits.
 
 ### Discord OAuth Setup
 

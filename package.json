@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "fetch-pokemon": "tsx scripts/fetch-pokemon.ts"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "@types/react": "^19.2.14",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.2",
+    "tsx": "^4.21.0",
     "typescript": "^6.0.2"
   }
 }
