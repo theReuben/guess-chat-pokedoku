@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const links = [
   { href: "/create", label: "Create" },
@@ -11,6 +12,14 @@ const links = [
 
 export default function Nav() {
   const pathname = usePathname();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/admin/check")
+      .then(r => r.json())
+      .then(data => setIsAdmin(data.isAdmin === true))
+      .catch(() => {});
+  }, []);
 
   return (
     <nav style={{
@@ -34,6 +43,15 @@ export default function Nav() {
             {link.label}
           </a>
         ))}
+        {isAdmin && (
+          <a
+            href="/admin"
+            className={`btn ${pathname === "/admin" ? "btn-primary" : "btn-secondary"}`}
+            style={{ padding: "6px 14px", fontSize: "0.85rem", borderColor: "var(--accent)" }}
+          >
+            Admin
+          </a>
+        )}
       </div>
     </nav>
   );
