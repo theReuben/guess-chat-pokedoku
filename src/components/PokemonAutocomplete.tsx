@@ -1,17 +1,18 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { getAllPokemonNames } from "@/data/pokemon";
+import { useState, useRef, useEffect, useMemo } from "react";
+import { getAllPokemonNames, getPokemonSpriteUrl } from "@/data/pokemon";
 
 interface Props {
   value: string;
   onChange: (name: string) => void;
   placeholder?: string;
+  /** Pre-filtered list of Pokémon names to suggest from */
+  filteredNames?: string[];
 }
 
-const allNames = getAllPokemonNames();
-
-export default function PokemonAutocomplete({ value, onChange, placeholder }: Props) {
+export default function PokemonAutocomplete({ value, onChange, placeholder, filteredNames }: Props) {
+  const names = useMemo(() => filteredNames || getAllPokemonNames(), [filteredNames]);
   const [input, setInput] = useState(value);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
@@ -33,7 +34,7 @@ export default function PokemonAutocomplete({ value, onChange, placeholder }: Pr
   function handleInput(val: string) {
     setInput(val);
     if (val.length > 0) {
-      const filtered = allNames.filter(n =>
+      const filtered = names.filter(n =>
         n.toLowerCase().includes(val.toLowerCase())
       ).slice(0, 8);
       setSuggestions(filtered);
@@ -67,16 +68,27 @@ export default function PokemonAutocomplete({ value, onChange, placeholder }: Pr
     }
   }
 
+  const spriteUrl = value ? getPokemonSpriteUrl(value) : null;
+
   return (
-    <div ref={ref} style={{ position: "relative" }}>
+    <div ref={ref} style={{ position: "relative", width: "100%" }}>
+      {spriteUrl && (
+        <div style={{ textAlign: "center", marginBottom: "2px" }}>
+          <img
+            src={spriteUrl}
+            alt={value}
+            style={{ width: "48px", height: "48px", imageRendering: "pixelated" }}
+          />
+        </div>
+      )}
       <input
         type="text"
         value={input}
         onChange={e => handleInput(e.target.value)}
         onFocus={() => input.length > 0 && suggestions.length > 0 && setOpen(true)}
         onKeyDown={handleKeyDown}
-        placeholder={placeholder || "Type a Pokémon name..."}
-        style={{ fontSize: "0.85rem", padding: "8px 10px" }}
+        placeholder={placeholder || "Type a Pokémon..."}
+        style={{ fontSize: "0.8rem", padding: "6px 8px" }}
       />
       {open && (
         <div className="autocomplete-dropdown">
@@ -85,7 +97,13 @@ export default function PokemonAutocomplete({ value, onChange, placeholder }: Pr
               key={name}
               className={`autocomplete-item ${i === highlighted ? "highlighted" : ""}`}
               onClick={() => select(name)}
+              style={{ display: "flex", alignItems: "center" }}
             >
+              <img
+                src={getPokemonSpriteUrl(name) || ""}
+                alt=""
+                style={{ width: "24px", height: "24px", marginRight: "8px", imageRendering: "pixelated" }}
+              />
               {name}
             </div>
           ))}

@@ -23,10 +23,17 @@ Grids use a variety of Pokémon traits as row/column categories:
 1. Clone the repo
 2. `npm install` (requires Node 20+, see `.nvmrc`)
 3. Copy `.env.example` to `.env` and fill in your credentials (see below)
-4. `npm run fetch-pokemon` — fetches the full Pokémon dataset from PokéAPI (~1000 Pokémon)
-5. `npm run dev`
+4. `npm run dev`
 
-> The app works without step 4 using a curated fallback set (~150 Pokémon), but for the full experience run the fetch script.
+### Pokémon Data
+
+The full Pokémon dataset (~1000 Pokémon) is committed in `src/data/pokemon-data.json`. To update it with the latest from PokéAPI:
+
+```bash
+npm run fetch-pokemon
+```
+
+This only writes the file if data has changed. Commit the result if it updates. If the JSON file is missing, the app falls back to a curated set (~150 Pokémon).
 
 ### Discord OAuth Setup
 

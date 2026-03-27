@@ -13,7 +13,7 @@
  * and paradox are hardcoded since PokéAPI doesn't categorize them.
  */
 
-import { writeFileSync } from "fs";
+import { writeFileSync, readFileSync, existsSync } from "fs";
 import { join } from "path";
 
 const API_BASE = "https://pokeapi.co/api/v2";
@@ -378,8 +378,20 @@ async function main() {
     console.log(`  Gen ${gen}: ${count}`);
   }
 
-  writeFileSync(OUTPUT_PATH, JSON.stringify(pokemon, null, 2));
+  const newData = JSON.stringify(pokemon, null, 2);
+
+  // Compare with existing file to avoid unnecessary changes
+  if (existsSync(OUTPUT_PATH)) {
+    const existing = readFileSync(OUTPUT_PATH, "utf-8");
+    if (existing === newData) {
+      console.log(`\nNo changes — ${OUTPUT_PATH} is already up to date.`);
+      return;
+    }
+  }
+
+  writeFileSync(OUTPUT_PATH, newData);
   console.log(`\nSaved to ${OUTPUT_PATH}`);
+  console.log("Commit this file to the repo so it's available at build time.");
 }
 
 main().catch((err) => {
