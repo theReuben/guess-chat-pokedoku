@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-card: #0f3460;
+  --accent: #e94560;
+  --accent-hover: #c73e54;
+  --text-primary: #eaeaea;
+  --text-secondary: #a0a0b0;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --border: #2a2a4a;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Pokédoku Grid */
+.pokedoku-grid {
+  display: grid;
+  grid-template-columns: auto repeat(3, 1fr);
+  grid-template-rows: auto repeat(3, 1fr);
+  gap: 2px;
+  max-width: 600px;
+}
+
+.grid-header {
+  background-color: var(--bg-card);
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-cell {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.grid-cell:hover {
+  border-color: var(--accent);
+  background-color: #1a2a4e;
+}
+
+.grid-cell.correct {
+  border-color: var(--success);
+  background-color: #0a2a1a;
+}
+
+.grid-cell.incorrect {
+  border-color: var(--accent);
+  background-color: #2a1a1a;
+}
+
+.grid-cell.filled {
+  background-color: #1a2a3e;
+}
+
+.grid-corner {
+  background: transparent;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+}
+
+/* Cards */
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+/* Inputs */
+input[type="text"], select {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+input[type="text"]:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Category picker */
+.category-chip {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid var(--border);
+  background-color: var(--bg-secondary);
+}
+
+.category-chip:hover {
+  border-color: var(--accent);
+}
+
+.category-chip.selected {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.category-chip.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Status badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-open {
+  background-color: #166534;
+  color: #4ade80;
+}
+
+.badge-playing {
+  background-color: #854d0e;
+  color: #fbbf24;
+}
+
+.badge-revealed {
+  background-color: #581c87;
+  color: #c084fc;
+}
+
+/* Autocomplete dropdown */
+.autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.autocomplete-item {
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.autocomplete-item:hover,
+.autocomplete-item.highlighted {
+  background-color: var(--bg-card);
+}
