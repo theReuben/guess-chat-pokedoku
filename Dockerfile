@@ -22,6 +22,10 @@ RUN if [ ! -f src/data/pokemon-data.json ]; then \
 
 RUN npm run build
 
+# Ensure optional dirs/files exist so COPY doesn't fail
+RUN mkdir -p /app/public && \
+    touch /app/src/data/pokemon-data.json
+
 # Production image
 FROM base AS runner
 ENV NODE_ENV=production
@@ -32,10 +36,8 @@ WORKDIR /app
 # Copy built app
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public 2>/dev/null || true
-
-# Copy Pokémon data if it was generated
-COPY --from=builder /app/src/data/pokemon-data.json ./src/data/pokemon-data.json 2>/dev/null || true
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/src/data/pokemon-data.json ./src/data/pokemon-data.json
 
 # Create data directory for SQLite (will be mounted as volume)
 RUN mkdir -p /data
