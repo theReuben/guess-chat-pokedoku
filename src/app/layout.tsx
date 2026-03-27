@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Pokédoku - Discord Edition",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <main style={{ maxWidth: "900px", margin: "0 auto", padding: "24px" }}>
           {children}
         </main>
+        <Analytics />
       </body>
     </html>
   );
