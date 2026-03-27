@@ -17,46 +17,58 @@ function getDb(): Database.Database {
 
 function initializeDb(db: Database.Database) {
   db.exec(`
-    -- Rounds group multiple grids together for a session
-    CREATE TABLE IF NOT EXISTS rounds (
-      id TEXT PRIMARY KEY,
-      name TEXT NOT NULL,
-      created_by TEXT NOT NULL,
-      status TEXT NOT NULL DEFAULT 'submissions_open',
-      -- status: submissions_open | playing | revealed
+    -- Users with custom display names
+    CREATE TABLE IF NOT EXISTS users (
+      id TEXT PRIMARY KEY,           -- Discord user ID
+      discord_username TEXT NOT NULL,
+      display_name TEXT NOT NULL,     -- Editable in-game name
+      avatar_url TEXT,
       created_at TEXT NOT NULL DEFAULT (datetime('now')),
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
 
-    -- Grids submitted by players
+    -- Grids created by users
     CREATE TABLE IF NOT EXISTS grids (
       id TEXT PRIMARY KEY,
-      round_id TEXT NOT NULL REFERENCES rounds(id),
-      created_by TEXT NOT NULL,
-      created_by_name TEXT NOT NULL,
-      -- 3 row category IDs and 3 column category IDs
-      row_categories TEXT NOT NULL, -- JSON array of 3 category IDs
-      col_categories TEXT NOT NULL, -- JSON array of 3 category IDs
-      -- The creator's intended answers (9 Pokémon names as JSON array)
-      answers TEXT NOT NULL, -- JSON array of 9 pokemon names (row-major)
-      created_at TEXT NOT NULL DEFAULT (datetime('now'))
+      created_by TEXT NOT NULL REFERENCES users(id),
+      row_categories TEXT NOT NULL,   -- JSON array of 3 category IDs
+      col_categories TEXT NOT NULL,   -- JSON array of 3 category IDs
+      example_answers TEXT NOT NULL,  -- JSON array of 9 pokemon names (creator's solution)
+      is_submission INTEGER NOT NULL DEFAULT 0,  -- 1 if this is the user's chosen submission
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
 
-    -- Solutions: a player's attempt at solving a grid
-    CREATE TABLE IF NOT EXISTS solutions (
+    -- Play history for All mode (tracks what a user has already played)
+    CREATE TABLE IF NOT EXISTS play_history (
       id TEXT PRIMARY KEY,
-      grid_id TEXT NOT NULL REFERENCES grids(id),
-      player_id TEXT NOT NULL,
-      player_name TEXT NOT NULL,
-      -- The player's answers (9 Pokémon names as JSON array, null for unanswered)
-      answers TEXT NOT NULL, -- JSON array of 9 pokemon names or nulls
-      -- How many cells were correctly filled (valid pokemon matching both categories)
+      grid_id TEXT NOT NULL REFERENCES grids(id) ON DELETE CASCADE,
+      player_id TEXT NOT NULL REFERENCES users(id),
+      answers TEXT NOT NULL,          -- JSON array of 9 pokemon names
       correct_count INTEGER NOT NULL DEFAULT 0,
-      -- Who does the player think created this grid?
-      guessed_author_id TEXT,
-      guessed_author_name TEXT,
-      completed_at TEXT NOT NULL DEFAULT (datetime('now')),
+      played_at TEXT NOT NULL DEFAULT (datetime('now')),
       UNIQUE(grid_id, player_id)
+    );
+
+    -- Guess Chat sessions
+    CREATE TABLE IF NOT EXISTS guess_sessions (
+      id TEXT PRIMARY KEY,
+      player_id TEXT NOT NULL REFERENCES users(id),
+      status TEXT NOT NULL DEFAULT 'in_progress',  -- in_progress | submitted
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      submitted_at TEXT
+    );
+
+    -- Individual guesses within a Guess Chat session
+    CREATE TABLE IF NOT EXISTS guess_entries (
+      id TEXT PRIMARY KEY,
+      session_id TEXT NOT NULL REFERENCES guess_sessions(id) ON DELETE CASCADE,
+      grid_id TEXT NOT NULL REFERENCES grids(id),
+      answers TEXT NOT NULL,          -- JSON array of 9 pokemon names
+      correct_count INTEGER NOT NULL DEFAULT 0,
+      guessed_author_id TEXT,         -- Who the player thinks created it
+      order_index INTEGER NOT NULL,   -- Order the player solved them
+      UNIQUE(session_id, grid_id)
     );
   `);
 }

@@ -1,12 +1,12 @@
 /**
- * Seeds the database with demo data to showcase the full game flow.
+ * Seeds the database with demo data for the new app structure.
  * Run with: npx tsx scripts/seed-demo.ts
  */
 
 import Database from "better-sqlite3";
 import path from "path";
 import { randomBytes } from "crypto";
-import { CATEGORIES, pokemonMatchesCategory, findPokemon } from "../src/data/pokemon";
+import { pokemonMatchesCategory, findPokemon } from "../src/data/pokemon";
 
 const DB_PATH = process.env.DATABASE_PATH || path.join(process.cwd(), "pokedoku.db");
 const db = new Database(DB_PATH);
@@ -15,216 +15,144 @@ db.pragma("foreign_keys = ON");
 
 // Initialize tables
 db.exec(`
-  CREATE TABLE IF NOT EXISTS rounds (
+  CREATE TABLE IF NOT EXISTS users (
     id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    created_by TEXT NOT NULL,
-    status TEXT NOT NULL DEFAULT 'submissions_open',
+    discord_username TEXT NOT NULL,
+    display_name TEXT NOT NULL,
+    avatar_url TEXT,
     created_at TEXT NOT NULL DEFAULT (datetime('now')),
     updated_at TEXT NOT NULL DEFAULT (datetime('now'))
   );
   CREATE TABLE IF NOT EXISTS grids (
     id TEXT PRIMARY KEY,
-    round_id TEXT NOT NULL REFERENCES rounds(id),
-    created_by TEXT NOT NULL,
-    created_by_name TEXT NOT NULL,
+    created_by TEXT NOT NULL REFERENCES users(id),
     row_categories TEXT NOT NULL,
     col_categories TEXT NOT NULL,
-    answers TEXT NOT NULL,
-    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    example_answers TEXT NOT NULL,
+    is_submission INTEGER NOT NULL DEFAULT 0,
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    updated_at TEXT NOT NULL DEFAULT (datetime('now'))
   );
-  CREATE TABLE IF NOT EXISTS solutions (
+  CREATE TABLE IF NOT EXISTS play_history (
     id TEXT PRIMARY KEY,
+    grid_id TEXT NOT NULL REFERENCES grids(id) ON DELETE CASCADE,
+    player_id TEXT NOT NULL REFERENCES users(id),
+    answers TEXT NOT NULL,
+    correct_count INTEGER NOT NULL DEFAULT 0,
+    played_at TEXT NOT NULL DEFAULT (datetime('now')),
+    UNIQUE(grid_id, player_id)
+  );
+  CREATE TABLE IF NOT EXISTS guess_sessions (
+    id TEXT PRIMARY KEY,
+    player_id TEXT NOT NULL REFERENCES users(id),
+    status TEXT NOT NULL DEFAULT 'in_progress',
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    submitted_at TEXT
+  );
+  CREATE TABLE IF NOT EXISTS guess_entries (
+    id TEXT PRIMARY KEY,
+    session_id TEXT NOT NULL REFERENCES guess_sessions(id) ON DELETE CASCADE,
     grid_id TEXT NOT NULL REFERENCES grids(id),
-    player_id TEXT NOT NULL,
-    player_name TEXT NOT NULL,
     answers TEXT NOT NULL,
     correct_count INTEGER NOT NULL DEFAULT 0,
     guessed_author_id TEXT,
-    guessed_author_name TEXT,
-    completed_at TEXT NOT NULL DEFAULT (datetime('now')),
-    UNIQUE(grid_id, player_id)
+    order_index INTEGER NOT NULL,
+    UNIQUE(session_id, grid_id)
   );
 `);
 
-function id() {
-  return randomBytes(8).toString("hex");
-}
+function id() { return randomBytes(8).toString("hex"); }
 
-// --- Fake players ---
-const players = [
-  { id: "player-ash", name: "Ash" },
-  { id: "player-misty", name: "Misty" },
-  { id: "player-brock", name: "Brock" },
-];
-
-// --- Create a round ---
-const roundId = id();
-db.prepare("INSERT INTO rounds (id, name, created_by, status) VALUES (?, ?, ?, ?)")
-  .run(roundId, "Friday Night Pokédoku", players[0].id, "revealed");
-console.log(`Created round: ${roundId}`);
-
-// --- Grid 1: Ash's grid ---
-const grid1Id = id();
-const grid1Rows = ["type-fire", "type-water", "type-dragon"];
-const grid1Cols = ["gen-1", "gen-3", "status-legendary"];
-const grid1Answers = [
-  "Charmander",  // Fire + Gen 1
-  "Torchic",     // Fire + Gen 3
-  "Moltres",     // Fire + Legendary
-  "Squirtle",    // Water + Gen 1
-  "Mudkip",      // Water + Gen 3
-  "Palkia",      // Water + Legendary (Gen 4, but matches Water+Legendary)
-  "Dragonite",   // Dragon + Gen 1
-  "Salamence",   // Dragon + Gen 3
-  "Rayquaza",    // Dragon + Legendary
-];
-
-// Validate
-for (let r = 0; r < 3; r++) {
-  for (let c = 0; c < 3; c++) {
-    const p = findPokemon(grid1Answers[r * 3 + c]);
-    if (!p) {
-      console.error(`Not found: ${grid1Answers[r * 3 + c]}`);
-      process.exit(1);
-    }
-    const matchRow = pokemonMatchesCategory(p, grid1Rows[r]);
-    const matchCol = pokemonMatchesCategory(p, grid1Cols[c]);
-    if (!matchRow || !matchCol) {
-      console.error(`${p.name} doesn't match: row=${grid1Rows[r]}(${matchRow}) col=${grid1Cols[c]}(${matchCol})`);
-      process.exit(1);
+function validate(answers: string[], rows: string[], cols: string[]) {
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 3; c++) {
+      const p = findPokemon(answers[r * 3 + c]);
+      if (!p) { console.error(`Not found: ${answers[r * 3 + c]}`); process.exit(1); }
+      if (!pokemonMatchesCategory(p, rows[r]) || !pokemonMatchesCategory(p, cols[c])) {
+        console.error(`${p.name} doesn't match row=${rows[r]} col=${cols[c]}`);
+        process.exit(1);
+      }
     }
   }
 }
 
-db.prepare("INSERT INTO grids (id, round_id, created_by, created_by_name, row_categories, col_categories, answers) VALUES (?, ?, ?, ?, ?, ?, ?)")
-  .run(grid1Id, roundId, players[0].id, players[0].name, JSON.stringify(grid1Rows), JSON.stringify(grid1Cols), JSON.stringify(grid1Answers));
-console.log(`Created Ash's grid: ${grid1Id}`);
-
-// --- Grid 2: Misty's grid ---
-const grid2Id = id();
-const grid2Rows = ["type-psychic", "type-ghost", "type-steel"];
-const grid2Cols = ["gen-1", "gen-4", "evo-trade"];
-const grid2Answers = [
-  "Alakazam",    // Psychic + Gen 1
-  "Espeon",      // Psychic + Gen 2... wait, need Gen 4
-  "Alakazam",    // let me recalculate
+// --- Users ---
+const users = [
+  { id: "user-ash", discord_username: "ash_ketchum", display_name: "Ash" },
+  { id: "user-misty", discord_username: "misty_waterflower", display_name: "Misty" },
+  { id: "user-brock", discord_username: "brock_pewter", display_name: "Brock" },
+  { id: "user-gary", discord_username: "gary_oak", display_name: "Gary" },
 ];
 
-// Let me pick valid answers more carefully
-const grid2AnswersFinal = [
-  "Mew",         // Psychic + Gen 1
-  "Gallade",     // Psychic + Gen 4
-  "Alakazam",    // Psychic + Trade
-  "Gengar",      // Ghost + Gen 1
-  "Rotom",       // Ghost + Gen 4
-  "Gengar",      // Ghost + Trade — wait, can't repeat
-];
-
-// Actually let me just use a simpler grid
-const grid2RowsFinal = ["type-ice", "type-dark", "type-fairy"];
-const grid2ColsFinal = ["gen-1", "gen-2", "gen-4"];
-const grid2AnswersFinal2 = [
-  "Lapras",      // Ice + Gen 1
-  "Sneasel",     // Ice + Gen 2
-  "Weavile",     // Ice + Gen 4
-  "Sneasel",     // ... hmm duplicates
-];
-
-// Simpler approach: use well-known combos
-const g2Rows = ["type-fire", "type-grass", "type-psychic"];
-const g2Cols = ["gen-1", "gen-2", "gen-7"];
-const g2Answers = [
-  "Charmander",   // Fire + Gen 1
-  "Cyndaquil",    // Fire + Gen 2
-  "Litten",       // Fire + Gen 7
-  "Bulbasaur",    // Grass + Gen 1
-  "Chikorita",    // Grass + Gen 2
-  "Rowlet",       // Grass + Gen 7... Rowlet is Grass/Flying Gen 7
-  "Mew",          // Psychic + Gen 1
-  "Espeon",       // Psychic + Gen 2
-  "Solgaleo",     // Psychic + Gen 7
-];
-
-// Validate
-for (let r = 0; r < 3; r++) {
-  for (let c = 0; c < 3; c++) {
-    const p = findPokemon(g2Answers[r * 3 + c]);
-    if (!p) {
-      console.error(`Not found: ${g2Answers[r * 3 + c]}`);
-      process.exit(1);
-    }
-    const matchRow = pokemonMatchesCategory(p, g2Rows[r]);
-    const matchCol = pokemonMatchesCategory(p, g2Cols[c]);
-    if (!matchRow || !matchCol) {
-      console.error(`${p.name} doesn't match: row=${g2Rows[r]}(${matchRow}) col=${g2Cols[c]}(${matchCol})`);
-      process.exit(1);
-    }
-  }
+for (const u of users) {
+  db.prepare("INSERT OR IGNORE INTO users (id, discord_username, display_name) VALUES (?, ?, ?)")
+    .run(u.id, u.discord_username, u.display_name);
 }
+console.log(`Created ${users.length} users`);
 
-db.prepare("INSERT INTO grids (id, round_id, created_by, created_by_name, row_categories, col_categories, answers) VALUES (?, ?, ?, ?, ?, ?, ?)")
-  .run(grid2Id, roundId, players[1].id, players[1].name, JSON.stringify(g2Rows), JSON.stringify(g2Cols), JSON.stringify(g2Answers));
-console.log(`Created Misty's grid: ${grid2Id}`);
+// --- Ash's grids ---
+// Grid 1: Submission
+const ashGrid1 = {
+  id: id(),
+  rows: ["type-fire", "type-water", "type-dragon"],
+  cols: ["gen-1", "gen-3", "status-legendary"],
+  answers: ["Charmander", "Torchic", "Moltres", "Squirtle", "Mudkip", "Palkia", "Dragonite", "Salamence", "Rayquaza"],
+};
+validate(ashGrid1.answers, ashGrid1.rows, ashGrid1.cols);
+db.prepare("INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 1)")
+  .run(ashGrid1.id, "user-ash", JSON.stringify(ashGrid1.rows), JSON.stringify(ashGrid1.cols), JSON.stringify(ashGrid1.answers));
 
-// --- Brock solves Ash's grid ---
-const bSolvesAsh = [
-  "Charizard",   // Fire + Gen 1 ✓ (different answer but valid)
-  "Torchic",     // Fire + Gen 3 ✓
-  "Ho-Oh",       // Fire + Legendary ✓
-  "Squirtle",    // Water + Gen 1 ✓
-  "Feebas",      // Water + Gen 3 ✓
-  "Palkia",      // Water + Legendary ✓
-  "Dragonite",   // Dragon + Gen 1 ✓
-  "Bagon",       // Dragon + Gen 3 ✓
-  "Rayquaza",    // Dragon + Legendary ✓
-];
+// Grid 2: Non-submission (for All mode)
+const ashGrid2 = {
+  id: id(),
+  rows: ["type-electric", "type-ice", "type-ground"],
+  cols: ["gen-1", "gen-2", "gen-4"],
+  answers: ["Pikachu", "Pichu", "Rotom", "Lapras", "Sneasel", "Weavile", "Geodude", "Larvitar", "Garchomp"],
+};
+validate(ashGrid2.answers, ashGrid2.rows, ashGrid2.cols);
+db.prepare("INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 0)")
+  .run(ashGrid2.id, "user-ash", JSON.stringify(ashGrid2.rows), JSON.stringify(ashGrid2.cols), JSON.stringify(ashGrid2.answers));
+console.log("Created Ash's grids (1 submission, 1 regular)");
 
-let correctCount = 0;
-for (let r = 0; r < 3; r++) {
-  for (let c = 0; c < 3; c++) {
-    const p = findPokemon(bSolvesAsh[r * 3 + c]);
-    if (p && pokemonMatchesCategory(p, grid1Rows[r]) && pokemonMatchesCategory(p, grid1Cols[c])) {
-      correctCount++;
-    }
-  }
-}
+// --- Misty's grid (submission) ---
+const mistyGrid = {
+  id: id(),
+  rows: ["type-fire", "type-grass", "type-psychic"],
+  cols: ["gen-1", "gen-2", "gen-7"],
+  answers: ["Charmander", "Cyndaquil", "Litten", "Bulbasaur", "Chikorita", "Rowlet", "Mew", "Espeon", "Solgaleo"],
+};
+validate(mistyGrid.answers, mistyGrid.rows, mistyGrid.cols);
+db.prepare("INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 1)")
+  .run(mistyGrid.id, "user-misty", JSON.stringify(mistyGrid.rows), JSON.stringify(mistyGrid.cols), JSON.stringify(mistyGrid.answers));
+console.log("Created Misty's submission grid");
 
-db.prepare("INSERT INTO solutions (id, grid_id, player_id, player_name, answers, correct_count, guessed_author_id, guessed_author_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
-  .run(id(), grid1Id, players[2].id, players[2].name, JSON.stringify(bSolvesAsh), correctCount, players[1].id, players[1].name);
-console.log(`Brock solved Ash's grid: ${correctCount}/9 (guessed Misty — wrong!)`);
+// --- Brock's grid (submission) ---
+const brockGrid = {
+  id: id(),
+  rows: ["type-rock", "type-ground", "type-steel"],
+  cols: ["gen-2", "gen-3", "gen-4"],
+  answers: ["Larvitar", "Aron", "Cranidos", "Steelix", "Flygon", "Garchomp", "Scizor", "Metagross", "Lucario"],
+};
+validate(brockGrid.answers, brockGrid.rows, brockGrid.cols);
+db.prepare("INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 1)")
+  .run(brockGrid.id, "user-brock", JSON.stringify(brockGrid.rows), JSON.stringify(brockGrid.cols), JSON.stringify(brockGrid.answers));
+console.log("Created Brock's submission grid");
 
-// --- Brock solves Misty's grid ---
-const bSolvesMisty = [
-  "Charmander",  // Fire + Gen 1 ✓
-  "Cyndaquil",   // Fire + Gen 2 ✓
-  "Litten",      // Fire + Gen 7 ✓
-  "Bulbasaur",   // Grass + Gen 1 ✓
-  "Chikorita",   // Grass + Gen 2 ✓
-  "Rowlet",      // Grass + Gen 7 ✓
-  "Alakazam",    // Psychic + Gen 1 ✓
-  "Espeon",      // Psychic + Gen 2 ✓
-  "Lunala",      // Psychic + Gen 7 ✓
-];
-
-let correctCount2 = 0;
-for (let r = 0; r < 3; r++) {
-  for (let c = 0; c < 3; c++) {
-    const p = findPokemon(bSolvesMisty[r * 3 + c]);
-    if (p && pokemonMatchesCategory(p, g2Rows[r]) && pokemonMatchesCategory(p, g2Cols[c])) {
-      correctCount2++;
-    }
-  }
-}
-
-db.prepare("INSERT INTO solutions (id, grid_id, player_id, player_name, answers, correct_count, guessed_author_id, guessed_author_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
-  .run(id(), grid2Id, players[2].id, players[2].name, JSON.stringify(bSolvesMisty), correctCount2, players[1].id, players[1].name);
-console.log(`Brock solved Misty's grid: ${correctCount2}/9 (guessed Misty — correct!)`);
+// --- Gary's grid (non-submission, for All mode) ---
+const garyGrid = {
+  id: id(),
+  rows: ["type-water", "type-fire", "type-grass"],
+  cols: ["gen-3", "gen-4", "gen-6"],
+  answers: ["Mudkip", "Piplup", "Froakie", "Torchic", "Chimchar", "Fennekin", "Treecko", "Turtwig", "Chespin"],
+};
+validate(garyGrid.answers, garyGrid.rows, garyGrid.cols);
+db.prepare("INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 0)")
+  .run(garyGrid.id, "user-gary", JSON.stringify(garyGrid.rows), JSON.stringify(garyGrid.cols), JSON.stringify(garyGrid.answers));
+console.log("Created Gary's regular grid");
 
 console.log(`\n✓ Demo data seeded!`);
-console.log(`\nOpen http://localhost:3000 to see the round.`);
-console.log(`Round page: http://localhost:3000/rounds/${roundId}`);
-console.log(`Ash's grid results: http://localhost:3000/results/${grid1Id}`);
-console.log(`Misty's grid results: http://localhost:3000/results/${grid2Id}`);
+console.log(`\nOpen http://localhost:3000 to see the app.`);
+console.log(`\nTo test as a user, sign in via Discord OAuth.`);
+console.log(`For local testing without OAuth, the demo users are: Ash, Misty, Brock, Gary`);
 
 db.close();
