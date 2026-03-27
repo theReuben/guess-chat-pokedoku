@@ -10,12 +10,12 @@ export async function GET() {
   }
 
   const db = getDb();
-  const grids = db.prepare(`
-    SELECT g.*, u.display_name as creator_name, u.discord_username
+  const result = await db.execute(
+    `SELECT g.*, u.display_name as creator_name, u.discord_username
     FROM grids g
     JOIN users u ON u.id = g.created_by
-    ORDER BY u.display_name, g.created_at DESC
-  `).all();
+    ORDER BY u.display_name, g.created_at DESC`
+  );
 
-  return NextResponse.json(grids);
+  return NextResponse.json(result.rows);
 }

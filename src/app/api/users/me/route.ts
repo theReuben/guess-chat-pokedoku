@@ -10,12 +10,15 @@ export async function GET() {
   }
 
   const db = getDb();
-  const user = db.prepare("SELECT * FROM users WHERE id = ?").get(session.user.id);
-  if (!user) {
+  const result = await db.execute({
+    sql: "SELECT * FROM users WHERE id = ?",
+    args: [session.user.id],
+  });
+  if (result.rows.length === 0) {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
-  return NextResponse.json(user);
+  return NextResponse.json(result.rows[0]);
 }
 
 // PATCH /api/users/me - update display name
@@ -34,9 +37,14 @@ export async function PATCH(req: NextRequest) {
   }
 
   const db = getDb();
-  db.prepare("UPDATE users SET display_name = ?, updated_at = datetime('now') WHERE id = ?")
-    .run(displayName.trim(), session.user.id);
+  await db.execute({
+    sql: "UPDATE users SET display_name = ?, updated_at = datetime('now') WHERE id = ?",
+    args: [displayName.trim(), session.user.id],
+  });
 
-  const user = db.prepare("SELECT * FROM users WHERE id = ?").get(session.user.id);
-  return NextResponse.json(user);
+  const result = await db.execute({
+    sql: "SELECT * FROM users WHERE id = ?",
+    args: [session.user.id],
+  });
+  return NextResponse.json(result.rows[0]);
 }

@@ -16,10 +16,14 @@ export async function POST(
   }
 
   const db = getDb();
-  const grid = db.prepare("SELECT * FROM grids WHERE id = ?").get(gridId) as Record<string, unknown> | undefined;
-  if (!grid) {
+  const gridResult = await db.execute({
+    sql: "SELECT * FROM grids WHERE id = ?",
+    args: [gridId],
+  });
+  if (gridResult.rows.length === 0) {
     return NextResponse.json({ error: "Grid not found" }, { status: 404 });
   }
+  const grid = gridResult.rows[0];
 
   const { answers } = await req.json();
   if (!Array.isArray(answers) || answers.length !== 9) {
@@ -45,18 +49,21 @@ export async function POST(
   }
 
   // Upsert play history
-  const existing = db.prepare(
-    "SELECT id FROM play_history WHERE grid_id = ? AND player_id = ?"
-  ).get(gridId, session.user.id) as { id: string } | undefined;
+  const existing = await db.execute({
+    sql: "SELECT id FROM play_history WHERE grid_id = ? AND player_id = ?",
+    args: [gridId, session.user.id],
+  });
 
-  if (existing) {
-    db.prepare(
-      "UPDATE play_history SET answers = ?, correct_count = ?, played_at = datetime('now') WHERE id = ?"
-    ).run(JSON.stringify(answers), correctCount, existing.id);
+  if (existing.rows.length > 0) {
+    await db.execute({
+      sql: "UPDATE play_history SET answers = ?, correct_count = ?, played_at = datetime('now') WHERE id = ?",
+      args: [JSON.stringify(answers), correctCount, existing.rows[0].id as string],
+    });
   } else {
-    db.prepare(
-      "INSERT INTO play_history (id, grid_id, player_id, answers, correct_count) VALUES (?, ?, ?, ?, ?)"
-    ).run(generateId(), gridId, session.user.id, JSON.stringify(answers), correctCount);
+    await db.execute({
+      sql: "INSERT INTO play_history (id, grid_id, player_id, answers, correct_count) VALUES (?, ?, ?, ?, ?)",
+      args: [generateId(), gridId, session.user.id, JSON.stringify(answers), correctCount],
+    });
   }
 
   return NextResponse.json({ correctCount });

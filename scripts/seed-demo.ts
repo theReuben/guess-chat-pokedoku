@@ -3,18 +3,17 @@
  * Run with: npx tsx scripts/seed-demo.ts
  */
 
-import Database from "better-sqlite3";
-import path from "path";
+import { createClient } from "@libsql/client";
 import { randomBytes } from "crypto";
 import { pokemonMatchesCategory, findPokemon } from "../src/data/pokemon";
 
-const DB_PATH = process.env.DATABASE_PATH || path.join(process.cwd(), "pokedoku.db");
-const db = new Database(DB_PATH);
-db.pragma("journal_mode = WAL");
-db.pragma("foreign_keys = ON");
+const db = createClient({
+  url: process.env.TURSO_DATABASE_URL || "file:local.db",
+  authToken: process.env.TURSO_AUTH_TOKEN,
+});
 
 // Initialize tables
-db.exec(`
+await db.executeMultiple(`
   CREATE TABLE IF NOT EXISTS users (
     id TEXT PRIMARY KEY,
     discord_username TEXT NOT NULL,
@@ -85,8 +84,10 @@ const users = [
 ];
 
 for (const u of users) {
-  db.prepare("INSERT OR IGNORE INTO users (id, discord_username, display_name) VALUES (?, ?, ?)")
-    .run(u.id, u.discord_username, u.display_name);
+  await db.execute({
+    sql: "INSERT OR IGNORE INTO users (id, discord_username, display_name) VALUES (?, ?, ?)",
+    args: [u.id, u.discord_username, u.display_name],
+  });
 }
 console.log(`Created ${users.length} users`);
 
@@ -99,8 +100,10 @@ const ashGrid1 = {
   answers: ["Charmander", "Torchic", "Moltres", "Squirtle", "Mudkip", "Palkia", "Dragonite", "Salamence", "Rayquaza"],
 };
 validate(ashGrid1.answers, ashGrid1.rows, ashGrid1.cols);
-db.prepare("INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 1)")
-  .run(ashGrid1.id, "user-ash", JSON.stringify(ashGrid1.rows), JSON.stringify(ashGrid1.cols), JSON.stringify(ashGrid1.answers));
+await db.execute({
+  sql: "INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 1)",
+  args: [ashGrid1.id, "user-ash", JSON.stringify(ashGrid1.rows), JSON.stringify(ashGrid1.cols), JSON.stringify(ashGrid1.answers)],
+});
 
 // Grid 2: Non-submission (for All mode)
 const ashGrid2 = {
@@ -110,8 +113,10 @@ const ashGrid2 = {
   answers: ["Pikachu", "Pichu", "Rotom", "Lapras", "Sneasel", "Weavile", "Geodude", "Larvitar", "Garchomp"],
 };
 validate(ashGrid2.answers, ashGrid2.rows, ashGrid2.cols);
-db.prepare("INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 0)")
-  .run(ashGrid2.id, "user-ash", JSON.stringify(ashGrid2.rows), JSON.stringify(ashGrid2.cols), JSON.stringify(ashGrid2.answers));
+await db.execute({
+  sql: "INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 0)",
+  args: [ashGrid2.id, "user-ash", JSON.stringify(ashGrid2.rows), JSON.stringify(ashGrid2.cols), JSON.stringify(ashGrid2.answers)],
+});
 console.log("Created Ash's grids (1 submission, 1 regular)");
 
 // --- Misty's grid (submission) ---
@@ -122,8 +127,10 @@ const mistyGrid = {
   answers: ["Charmander", "Cyndaquil", "Litten", "Bulbasaur", "Chikorita", "Rowlet", "Mew", "Espeon", "Solgaleo"],
 };
 validate(mistyGrid.answers, mistyGrid.rows, mistyGrid.cols);
-db.prepare("INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 1)")
-  .run(mistyGrid.id, "user-misty", JSON.stringify(mistyGrid.rows), JSON.stringify(mistyGrid.cols), JSON.stringify(mistyGrid.answers));
+await db.execute({
+  sql: "INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 1)",
+  args: [mistyGrid.id, "user-misty", JSON.stringify(mistyGrid.rows), JSON.stringify(mistyGrid.cols), JSON.stringify(mistyGrid.answers)],
+});
 console.log("Created Misty's submission grid");
 
 // --- Brock's grid (submission) ---
@@ -134,8 +141,10 @@ const brockGrid = {
   answers: ["Larvitar", "Aron", "Cranidos", "Steelix", "Flygon", "Garchomp", "Scizor", "Metagross", "Lucario"],
 };
 validate(brockGrid.answers, brockGrid.rows, brockGrid.cols);
-db.prepare("INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 1)")
-  .run(brockGrid.id, "user-brock", JSON.stringify(brockGrid.rows), JSON.stringify(brockGrid.cols), JSON.stringify(brockGrid.answers));
+await db.execute({
+  sql: "INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 1)",
+  args: [brockGrid.id, "user-brock", JSON.stringify(brockGrid.rows), JSON.stringify(brockGrid.cols), JSON.stringify(brockGrid.answers)],
+});
 console.log("Created Brock's submission grid");
 
 // --- Gary's grid (non-submission, for All mode) ---
@@ -146,13 +155,13 @@ const garyGrid = {
   answers: ["Mudkip", "Piplup", "Froakie", "Torchic", "Chimchar", "Fennekin", "Treecko", "Turtwig", "Chespin"],
 };
 validate(garyGrid.answers, garyGrid.rows, garyGrid.cols);
-db.prepare("INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 0)")
-  .run(garyGrid.id, "user-gary", JSON.stringify(garyGrid.rows), JSON.stringify(garyGrid.cols), JSON.stringify(garyGrid.answers));
+await db.execute({
+  sql: "INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 0)",
+  args: [garyGrid.id, "user-gary", JSON.stringify(garyGrid.rows), JSON.stringify(garyGrid.cols), JSON.stringify(garyGrid.answers)],
+});
 console.log("Created Gary's regular grid");
 
 console.log(`\n✓ Demo data seeded!`);
 console.log(`\nOpen http://localhost:3000 to see the app.`);
 console.log(`\nTo test as a user, sign in via Discord OAuth.`);
 console.log(`For local testing without OAuth, the demo users are: Ash, Misty, Brock, Gary`);
-
-db.close();

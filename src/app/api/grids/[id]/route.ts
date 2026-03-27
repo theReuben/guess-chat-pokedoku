@@ -15,12 +15,15 @@ export async function GET(
   }
 
   const db = getDb();
-  const grid = db.prepare("SELECT * FROM grids WHERE id = ?").get(id);
-  if (!grid) {
+  const result = await db.execute({
+    sql: "SELECT * FROM grids WHERE id = ?",
+    args: [id],
+  });
+  if (result.rows.length === 0) {
     return NextResponse.json({ error: "Grid not found" }, { status: 404 });
   }
 
-  return NextResponse.json(grid);
+  return NextResponse.json(result.rows[0]);
 }
 
 // PATCH /api/grids/:id - update grid (edit categories/answers, toggle submission)
@@ -35,10 +38,14 @@ export async function PATCH(
   }
 
   const db = getDb();
-  const grid = db.prepare("SELECT * FROM grids WHERE id = ?").get(id) as Record<string, unknown> | undefined;
-  if (!grid) {
+  const gridResult = await db.execute({
+    sql: "SELECT * FROM grids WHERE id = ?",
+    args: [id],
+  });
+  if (gridResult.rows.length === 0) {
     return NextResponse.json({ error: "Grid not found" }, { status: 404 });
   }
+  const grid = gridResult.rows[0];
   if (grid.created_by !== session.user.id) {
     return NextResponse.json({ error: "Not your grid" }, { status: 403 });
   }
@@ -49,11 +56,15 @@ export async function PATCH(
   if (typeof body.isSubmission === "boolean") {
     if (body.isSubmission) {
       // Unmark any existing submission first
-      db.prepare("UPDATE grids SET is_submission = 0, updated_at = datetime('now') WHERE created_by = ?")
-        .run(session.user.id);
+      await db.execute({
+        sql: "UPDATE grids SET is_submission = 0, updated_at = datetime('now') WHERE created_by = ?",
+        args: [session.user.id],
+      });
     }
-    db.prepare("UPDATE grids SET is_submission = ?, updated_at = datetime('now') WHERE id = ?")
-      .run(body.isSubmission ? 1 : 0, id);
+    await db.execute({
+      sql: "UPDATE grids SET is_submission = ?, updated_at = datetime('now') WHERE id = ?",
+      args: [body.isSubmission ? 1 : 0, id],
+    });
   }
 
   // Update categories and answers
@@ -90,14 +101,17 @@ export async function PATCH(
       }
     }
 
-    db.prepare(`
-      UPDATE grids SET row_categories = ?, col_categories = ?, example_answers = ?, updated_at = datetime('now')
-      WHERE id = ?
-    `).run(JSON.stringify(rowCategories), JSON.stringify(colCategories), JSON.stringify(exampleAnswers), id);
+    await db.execute({
+      sql: "UPDATE grids SET row_categories = ?, col_categories = ?, example_answers = ?, updated_at = datetime('now') WHERE id = ?",
+      args: [JSON.stringify(rowCategories), JSON.stringify(colCategories), JSON.stringify(exampleAnswers), id],
+    });
   }
 
-  const updated = db.prepare("SELECT * FROM grids WHERE id = ?").get(id);
-  return NextResponse.json(updated);
+  const updated = await db.execute({
+    sql: "SELECT * FROM grids WHERE id = ?",
+    args: [id],
+  });
+  return NextResponse.json(updated.rows[0]);
 }
 
 // DELETE /api/grids/:id
@@ -112,14 +126,17 @@ export async function DELETE(
   }
 
   const db = getDb();
-  const grid = db.prepare("SELECT * FROM grids WHERE id = ?").get(id) as Record<string, unknown> | undefined;
-  if (!grid) {
+  const gridResult = await db.execute({
+    sql: "SELECT * FROM grids WHERE id = ?",
+    args: [id],
+  });
+  if (gridResult.rows.length === 0) {
     return NextResponse.json({ error: "Grid not found" }, { status: 404 });
   }
-  if (grid.created_by !== session.user.id) {
+  if (gridResult.rows[0].created_by !== session.user.id) {
     return NextResponse.json({ error: "Not your grid" }, { status: 403 });
   }
 
-  db.prepare("DELETE FROM grids WHERE id = ?").run(id);
+  await db.execute({ sql: "DELETE FROM grids WHERE id = ?", args: [id] });
   return NextResponse.json({ ok: true });
 }

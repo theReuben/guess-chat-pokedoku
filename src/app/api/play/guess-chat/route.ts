@@ -14,53 +14,62 @@ export async function GET() {
   const db = getDb();
 
   // Find existing in-progress session
-  let guessSession = db.prepare(
-    "SELECT * FROM guess_sessions WHERE player_id = ? AND status = 'in_progress' ORDER BY created_at DESC LIMIT 1"
-  ).get(session.user.id) as Record<string, unknown> | undefined;
+  let guessSessionResult = await db.execute({
+    sql: "SELECT * FROM guess_sessions WHERE player_id = ? AND status = 'in_progress' ORDER BY created_at DESC LIMIT 1",
+    args: [session.user.id],
+  });
 
   // Get all submission grids (not the player's own)
-  const submissionGrids = db.prepare(`
-    SELECT g.id, g.row_categories, g.col_categories, g.created_by
+  const submissionGridsResult = await db.execute({
+    sql: `SELECT g.id, g.row_categories, g.col_categories, g.created_by
     FROM grids g
     WHERE g.is_submission = 1 AND g.created_by != ?
-    ORDER BY RANDOM()
-  `).all(session.user.id) as { id: string; row_categories: string; col_categories: string; created_by: string }[];
+    ORDER BY RANDOM()`,
+    args: [session.user.id],
+  });
 
-  if (submissionGrids.length === 0) {
+  if (submissionGridsResult.rows.length === 0) {
     return NextResponse.json({ session: null, message: "No submissions available to play" });
   }
 
   // Create session if none exists
+  let guessSession = guessSessionResult.rows[0];
   if (!guessSession) {
     const sessionId = generateId();
-    db.prepare(
-      "INSERT INTO guess_sessions (id, player_id) VALUES (?, ?)"
-    ).run(sessionId, session.user.id);
-    guessSession = db.prepare("SELECT * FROM guess_sessions WHERE id = ?").get(sessionId) as Record<string, unknown>;
+    await db.execute({
+      sql: "INSERT INTO guess_sessions (id, player_id) VALUES (?, ?)",
+      args: [sessionId, session.user.id],
+    });
+    const newSession = await db.execute({
+      sql: "SELECT * FROM guess_sessions WHERE id = ?",
+      args: [sessionId],
+    });
+    guessSession = newSession.rows[0];
   }
 
   // Get existing entries for this session
-  const entries = db.prepare(
-    "SELECT * FROM guess_entries WHERE session_id = ? ORDER BY order_index"
-  ).all(guessSession.id as string) as { grid_id: string; answers: string; guessed_author_id: string; order_index: number }[];
+  const entriesResult = await db.execute({
+    sql: "SELECT * FROM guess_entries WHERE session_id = ? ORDER BY order_index",
+    args: [guessSession.id as string],
+  });
 
-  const completedGridIds = new Set(entries.map(e => e.grid_id));
+  const completedGridIds = new Set(entriesResult.rows.map(e => e.grid_id as string));
 
   // Find next unplayed grid
-  const nextGrid = submissionGrids.find(g => !completedGridIds.has(g.id));
+  const nextGrid = submissionGridsResult.rows.find(g => !completedGridIds.has(g.id as string));
 
   // Get all users for the guess dropdown
-  const users = db.prepare(
+  const usersResult = await db.execute(
     "SELECT id, display_name, avatar_url FROM users ORDER BY display_name"
-  ).all();
+  );
 
   return NextResponse.json({
     session: guessSession,
-    entries,
+    entries: entriesResult.rows,
     nextGrid: nextGrid ? { id: nextGrid.id, row_categories: nextGrid.row_categories, col_categories: nextGrid.col_categories } : null,
-    totalGrids: submissionGrids.length,
+    totalGrids: submissionGridsResult.rows.length,
     completedCount: completedGridIds.size,
-    users,
+    users: usersResult.rows,
   });
 }
 
@@ -73,20 +82,26 @@ export async function POST(req: NextRequest) {
 
   const db = getDb();
 
-  const guessSession = db.prepare(
-    "SELECT * FROM guess_sessions WHERE player_id = ? AND status = 'in_progress' ORDER BY created_at DESC LIMIT 1"
-  ).get(session.user.id) as Record<string, unknown> | undefined;
+  const guessSessionResult = await db.execute({
+    sql: "SELECT * FROM guess_sessions WHERE player_id = ? AND status = 'in_progress' ORDER BY created_at DESC LIMIT 1",
+    args: [session.user.id],
+  });
 
-  if (!guessSession) {
+  if (guessSessionResult.rows.length === 0) {
     return NextResponse.json({ error: "No active session" }, { status: 400 });
   }
+  const guessSession = guessSessionResult.rows[0];
 
   const { gridId, answers, guessedAuthorId } = await req.json();
 
-  const grid = db.prepare("SELECT * FROM grids WHERE id = ?").get(gridId) as Record<string, unknown> | undefined;
-  if (!grid) {
+  const gridResult = await db.execute({
+    sql: "SELECT * FROM grids WHERE id = ?",
+    args: [gridId],
+  });
+  if (gridResult.rows.length === 0) {
     return NextResponse.json({ error: "Grid not found" }, { status: 404 });
   }
+  const grid = gridResult.rows[0];
 
   if (!Array.isArray(answers) || answers.length !== 9) {
     return NextResponse.json({ error: "Need exactly 9 answers" }, { status: 400 });
@@ -109,23 +124,28 @@ export async function POST(req: NextRequest) {
   }
 
   // Get current entry count for order_index
-  const entryCount = db.prepare(
-    "SELECT COUNT(*) as count FROM guess_entries WHERE session_id = ?"
-  ).get(guessSession.id as string) as { count: number };
+  const entryCountResult = await db.execute({
+    sql: "SELECT COUNT(*) as count FROM guess_entries WHERE session_id = ?",
+    args: [guessSession.id as string],
+  });
+  const entryCount = entryCountResult.rows[0].count as number;
 
   // Check if already exists (update case)
-  const existing = db.prepare(
-    "SELECT id FROM guess_entries WHERE session_id = ? AND grid_id = ?"
-  ).get(guessSession.id as string, gridId) as { id: string } | undefined;
+  const existingResult = await db.execute({
+    sql: "SELECT id FROM guess_entries WHERE session_id = ? AND grid_id = ?",
+    args: [guessSession.id as string, gridId],
+  });
 
-  if (existing) {
-    db.prepare(
-      "UPDATE guess_entries SET answers = ?, correct_count = ?, guessed_author_id = ? WHERE id = ?"
-    ).run(JSON.stringify(answers), correctCount, guessedAuthorId || null, existing.id);
+  if (existingResult.rows.length > 0) {
+    await db.execute({
+      sql: "UPDATE guess_entries SET answers = ?, correct_count = ?, guessed_author_id = ? WHERE id = ?",
+      args: [JSON.stringify(answers), correctCount, guessedAuthorId || null, existingResult.rows[0].id as string],
+    });
   } else {
-    db.prepare(
-      "INSERT INTO guess_entries (id, session_id, grid_id, answers, correct_count, guessed_author_id, order_index) VALUES (?, ?, ?, ?, ?, ?, ?)"
-    ).run(generateId(), guessSession.id, gridId, JSON.stringify(answers), correctCount, guessedAuthorId || null, entryCount.count);
+    await db.execute({
+      sql: "INSERT INTO guess_entries (id, session_id, grid_id, answers, correct_count, guessed_author_id, order_index) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      args: [generateId(), guessSession.id as string, gridId, JSON.stringify(answers), correctCount, guessedAuthorId || null, entryCount],
+    });
   }
 
   return NextResponse.json({ correctCount });

@@ -36,61 +36,54 @@ Grids use a variety of Pokémon traits as row/column categories:
 4. Under **Redirects**, add: `http://localhost:3000/api/auth/callback/discord`
 5. Generate an auth secret: `npx auth secret`
 
+### Turso Database Setup
+
+1. Sign up at [turso.tech](https://turso.tech) and install the CLI: `curl -sSfL https://get.tur.so/install.sh | bash`
+2. Create a database: `turso db create pokedoku`
+3. Get the URL: `turso db show pokedoku --url`
+4. Create a token: `turso db tokens create pokedoku`
+5. Add both to your `.env` as `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN`
+
+> For local development without Turso, leave `TURSO_DATABASE_URL` unset and it will use a local SQLite file (`local.db`).
+
 ### Admin Access
 
 Add your Discord user ID to `ADMIN_USER_IDS` in `.env` to access the admin panel at `/admin`. Find your ID by enabling Developer Mode in Discord settings, then right-clicking your name and copying your User ID.
 
-## Deploy to Fly.io
+## Deploy to Vercel
 
 ### First-time setup
 
-```bash
-# 1. Install the Fly CLI
-curl -L https://fly.io/install.sh | sh
-
-# 2. Sign up or log in
-fly auth signup   # or: fly auth login
-
-# 3. Launch the app (from project root)
-fly launch --no-deploy
-# This creates the app on Fly.io. Edit fly.toml if you want to change the app name or region.
-
-# 4. Create a persistent volume for the SQLite database
-fly volumes create pokedoku_data --region iad --size 1
-
-# 5. Set your secrets (these are your .env values, stored securely on Fly)
-fly secrets set \
-  DISCORD_CLIENT_ID=your_client_id \
-  DISCORD_CLIENT_SECRET=your_client_secret \
-  AUTH_SECRET=$(openssl rand -base64 32) \
-  NEXTAUTH_URL=https://your-app-name.fly.dev \
-  ADMIN_USER_IDS=your_discord_user_id
-
-# 6. Deploy
-fly deploy
-```
+1. Push your repo to GitHub
+2. Go to [vercel.com](https://vercel.com) and import the repository
+3. Add environment variables in the Vercel dashboard:
+   - `DISCORD_CLIENT_ID`
+   - `DISCORD_CLIENT_SECRET`
+   - `AUTH_SECRET` (generate with `npx auth secret`)
+   - `TURSO_DATABASE_URL`
+   - `TURSO_AUTH_TOKEN`
+   - `ADMIN_USER_IDS`
+4. Deploy
 
 ### After deploying
 
-- Update your Discord OAuth redirect URL to: `https://your-app-name.fly.dev/api/auth/callback/discord`
-- The app auto-stops when idle and auto-starts on requests (free tier friendly)
+- Update your Discord OAuth redirect URL to: `https://your-app.vercel.app/api/auth/callback/discord`
+- Update `NEXTAUTH_URL` in Vercel env vars to your production URL
 
 ### CI/CD with GitHub Actions
 
 Pushes to `main` auto-deploy via the included GitHub Actions workflow. To set it up:
 
-```bash
-# Generate a deploy token
-fly tokens create deploy -x 999999h
-```
-
-Then add `FLY_API_TOKEN` as a secret in your repo: **Settings > Secrets > Actions**.
+1. Get a Vercel token from [vercel.com/account/tokens](https://vercel.com/account/tokens)
+2. Add `VERCEL_TOKEN` as a secret in your repo: **Settings > Secrets > Actions**
+3. Link your project: `vercel link` (this creates `.vercel/project.json`)
+4. Add `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` from `.vercel/project.json` as repo secrets
 
 ## Tech Stack
 
 - **Next.js** with App Router
 - **TypeScript**
 - **Tailwind CSS**
-- **SQLite** (via better-sqlite3, persisted on Fly.io volume)
+- **Turso** (hosted SQLite via @libsql/client)
 - **NextAuth.js** with Discord provider
-- **Fly.io** for hosting
+- **Vercel** for hosting
