@@ -12,8 +12,8 @@ export async function GET() {
   const db = getDb();
 
   // Get a random grid the user hasn't played yet, excluding their own and submissions
-  const grid = db.prepare(`
-    SELECT g.id, g.row_categories, g.col_categories, g.created_by,
+  const result = await db.execute({
+    sql: `SELECT g.id, g.row_categories, g.col_categories, g.created_by,
            u.display_name as creator_name, u.avatar_url as creator_avatar
     FROM grids g
     JOIN users u ON u.id = g.created_by
@@ -23,12 +23,13 @@ export async function GET() {
         SELECT grid_id FROM play_history WHERE player_id = ?
       )
     ORDER BY RANDOM()
-    LIMIT 1
-  `).get(session.user.id, session.user.id);
+    LIMIT 1`,
+    args: [session.user.id, session.user.id],
+  });
 
-  if (!grid) {
+  if (result.rows.length === 0) {
     return NextResponse.json({ grid: null, message: "No more grids to play!" });
   }
 
-  return NextResponse.json({ grid });
+  return NextResponse.json({ grid: result.rows[0] });
 }

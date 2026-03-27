@@ -14,13 +14,15 @@ export async function PATCH(
   }
 
   const db = getDb();
-  const guessSession = db.prepare(
-    "SELECT * FROM guess_sessions WHERE id = ? AND player_id = ?"
-  ).get(sessionId, session.user.id) as Record<string, unknown> | undefined;
+  const guessSessionResult = await db.execute({
+    sql: "SELECT * FROM guess_sessions WHERE id = ? AND player_id = ?",
+    args: [sessionId, session.user.id],
+  });
 
-  if (!guessSession) {
+  if (guessSessionResult.rows.length === 0) {
     return NextResponse.json({ error: "Session not found" }, { status: 404 });
   }
+  const guessSession = guessSessionResult.rows[0];
 
   const body = await req.json();
 
@@ -30,9 +32,10 @@ export async function PATCH(
       return NextResponse.json({ error: "Already submitted" }, { status: 400 });
     }
 
-    db.prepare(
-      "UPDATE guess_sessions SET status = 'submitted', submitted_at = datetime('now') WHERE id = ?"
-    ).run(sessionId);
+    await db.execute({
+      sql: "UPDATE guess_sessions SET status = 'submitted', submitted_at = datetime('now') WHERE id = ?",
+      args: [sessionId],
+    });
 
     return NextResponse.json({ ok: true });
   }
@@ -43,9 +46,10 @@ export async function PATCH(
       return NextResponse.json({ error: "Session already submitted" }, { status: 400 });
     }
 
-    db.prepare(
-      "UPDATE guess_entries SET guessed_author_id = ? WHERE session_id = ? AND grid_id = ?"
-    ).run(body.guessedAuthorId || null, sessionId, body.gridId);
+    await db.execute({
+      sql: "UPDATE guess_entries SET guessed_author_id = ? WHERE session_id = ? AND grid_id = ?",
+      args: [body.guessedAuthorId || null, sessionId, body.gridId],
+    });
 
     return NextResponse.json({ ok: true });
   }
@@ -65,17 +69,18 @@ export async function GET(
   }
 
   const db = getDb();
-  const guessSession = db.prepare(
-    "SELECT * FROM guess_sessions WHERE id = ? AND player_id = ?"
-  ).get(sessionId, session.user.id) as Record<string, unknown> | undefined;
+  const guessSessionResult = await db.execute({
+    sql: "SELECT * FROM guess_sessions WHERE id = ? AND player_id = ?",
+    args: [sessionId, session.user.id],
+  });
 
-  if (!guessSession) {
+  if (guessSessionResult.rows.length === 0) {
     return NextResponse.json({ error: "Session not found" }, { status: 404 });
   }
 
   // Get entries with grid + author info
-  const entries = db.prepare(`
-    SELECT ge.*, g.row_categories, g.col_categories, g.example_answers, g.created_by,
+  const entriesResult = await db.execute({
+    sql: `SELECT ge.*, g.row_categories, g.col_categories, g.example_answers, g.created_by,
            u.display_name as actual_author_name, u.avatar_url as actual_author_avatar,
            gu.display_name as guessed_author_name
     FROM guess_entries ge
@@ -83,11 +88,12 @@ export async function GET(
     JOIN users u ON u.id = g.created_by
     LEFT JOIN users gu ON gu.id = ge.guessed_author_id
     WHERE ge.session_id = ?
-    ORDER BY ge.order_index
-  `).all(sessionId);
+    ORDER BY ge.order_index`,
+    args: [sessionId],
+  });
 
   return NextResponse.json({
-    session: guessSession,
-    entries,
+    session: guessSessionResult.rows[0],
+    entries: entriesResult.rows,
   });
 }

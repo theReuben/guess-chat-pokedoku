@@ -18,7 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "@auth/core": "^0.41.0",
-    "better-sqlite3": "^12.8.0",
+    "@libsql/client": "^0.17.2",
     "next": "^16.2.1",
     "next-auth": "^5.0.0-beta.30",
     "react": "^19.2.4",
@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.2",
-    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",
     "postcss": "^8.5.8",

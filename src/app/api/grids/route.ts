@@ -12,11 +12,12 @@ export async function GET() {
   }
 
   const db = getDb();
-  const grids = db.prepare(
-    "SELECT * FROM grids WHERE created_by = ? ORDER BY created_at DESC"
-  ).all(session.user.id);
+  const result = await db.execute({
+    sql: "SELECT * FROM grids WHERE created_by = ? ORDER BY created_at DESC",
+    args: [session.user.id],
+  });
 
-  return NextResponse.json(grids);
+  return NextResponse.json(result.rows);
 }
 
 // POST /api/grids - create a new grid
@@ -76,17 +77,14 @@ export async function POST(req: NextRequest) {
 
   const id = generateId();
   const db = getDb();
-  db.prepare(`
-    INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers)
-    VALUES (?, ?, ?, ?, ?)
-  `).run(
-    id,
-    session.user.id,
-    JSON.stringify(rowCategories),
-    JSON.stringify(colCategories),
-    JSON.stringify(exampleAnswers)
-  );
+  await db.execute({
+    sql: "INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers) VALUES (?, ?, ?, ?, ?)",
+    args: [id, session.user.id, JSON.stringify(rowCategories), JSON.stringify(colCategories), JSON.stringify(exampleAnswers)],
+  });
 
-  const grid = db.prepare("SELECT * FROM grids WHERE id = ?").get(id);
-  return NextResponse.json(grid, { status: 201 });
+  const result = await db.execute({
+    sql: "SELECT * FROM grids WHERE id = ?",
+    args: [id],
+  });
+  return NextResponse.json(result.rows[0], { status: 201 });
 }

@@ -10,9 +10,9 @@ export async function GET() {
   }
 
   const db = getDb();
-  const users = db.prepare(
+  const result = await db.execute(
     "SELECT id, display_name, avatar_url FROM users ORDER BY display_name"
-  ).all();
+  );
 
-  return NextResponse.json(users);
+  return NextResponse.json(result.rows);
 }
