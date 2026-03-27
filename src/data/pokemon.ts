@@ -155,3 +155,26 @@ export function hasValidAnswer(rowCategoryId: string, colCategoryId: string): bo
 export function getAllPokemonNames(): string[] {
   return POKEMON.map(p => p.name).sort();
 }
+
+// Get Pokémon names filtered by both row and column category (for Create/Edit grid cells)
+export function getFilteredPokemonNames(rowCategoryId?: string, colCategoryId?: string, exclude?: Set<string>): string[] {
+  let filtered = POKEMON;
+  if (rowCategoryId) {
+    filtered = filtered.filter(p => pokemonMatchesCategory(p, rowCategoryId));
+  }
+  if (colCategoryId) {
+    filtered = filtered.filter(p => pokemonMatchesCategory(p, colCategoryId));
+  }
+  let names = filtered.map(p => p.name).sort();
+  if (exclude && exclude.size > 0) {
+    names = names.filter(n => !exclude.has(n));
+  }
+  return names;
+}
+
+// Get sprite URL for a Pokémon (uses PokéAPI sprites)
+export function getPokemonSpriteUrl(name: string): string | null {
+  const pokemon = findPokemon(name);
+  if (!pokemon) return null;
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.dexNumber}.png`;
+}

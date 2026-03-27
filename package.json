@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "tsx scripts/fetch-pokemon.ts || echo 'Pokemon fetch failed, using fallback data'",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
