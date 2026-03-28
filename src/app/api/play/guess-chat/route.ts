@@ -29,7 +29,16 @@ export async function GET() {
   });
 
   if (submissionGridsResult.rows.length === 0) {
-    return NextResponse.json({ session: null, message: "No submissions available to play" });
+    // Check if the player themselves has a submission — helps surface a clearer message
+    const ownSubmissionResult = await db.execute({
+      sql: "SELECT id FROM grids WHERE created_by = ? AND is_submission = 1 LIMIT 1",
+      args: [session.user.id],
+    });
+    return NextResponse.json({
+      session: null,
+      message: "No submissions available to play",
+      hasOwnSubmission: ownSubmissionResult.rows.length > 0,
+    });
   }
 
   // Create session if none exists
@@ -53,14 +62,7 @@ export async function GET() {
     args: [guessSession.id as string],
   });
 
-  // Only count entries for grids that are still current submissions
-  // (guards against stale entries when a grid is un-marked then re-marked as submission)
-  const submissionGridIdSet = new Set(submissionGridsResult.rows.map(g => g.id as string));
-  const completedGridIds = new Set(
-    entriesResult.rows
-      .map(e => e.grid_id as string)
-      .filter(id => submissionGridIdSet.has(id))
-  );
+  const completedGridIds = new Set(entriesResult.rows.map(e => e.grid_id as string));
 
   // Find next unplayed grid
   const nextGrid = submissionGridsResult.rows.find(g => !completedGridIds.has(g.id as string));
