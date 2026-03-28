@@ -27,8 +27,15 @@ export default function PlayAllPage() {
     setAnswers(Array(9).fill(""));
     setError("");
     fetch("/api/play/all")
-      .then(r => r.json())
+      .then(r => {
+        if (r.status === 401) {
+          window.location.href = "/api/auth/signin";
+          return null;
+        }
+        return r.json();
+      })
       .then(data => {
+        if (!data) return;
         if (data.grid) {
           setGrid(data.grid);
           setNoMore(false);

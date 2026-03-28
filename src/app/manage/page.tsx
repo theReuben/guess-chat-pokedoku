@@ -20,8 +20,15 @@ export default function ManagePage() {
 
   function fetchGrids() {
     fetch("/api/grids")
-      .then(r => r.json())
+      .then(r => {
+        if (r.status === 401) {
+          window.location.href = "/api/auth/signin";
+          return null;
+        }
+        return r.json();
+      })
       .then(data => {
+        if (!data) return;
         if (Array.isArray(data)) setGrids(data);
         else setError(data.error || "Failed to load");
       })

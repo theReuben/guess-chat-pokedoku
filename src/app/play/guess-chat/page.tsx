@@ -55,8 +55,15 @@ export default function GuessChatPage() {
   const fetchSession = useCallback(() => {
     setLoading(true);
     fetch("/api/play/guess-chat")
-      .then(r => r.json())
+      .then(r => {
+        if (r.status === 401) {
+          window.location.href = "/api/auth/signin";
+          return null;
+        }
+        return r.json();
+      })
       .then(data => {
+        if (!data) return;
         if (data.session) {
           setSession(data.session);
           setEntries(data.entries || []);

@@ -19,8 +19,15 @@ export default function SettingsPage() {
 
   useEffect(() => {
     fetch("/api/users/me")
-      .then(r => r.json())
+      .then(r => {
+        if (r.status === 401) {
+          setUser(null);
+          return null;
+        }
+        return r.json();
+      })
       .then(data => {
+        if (!data) return;
         if (data.error) setError(data.error);
         else {
           setUser(data);
