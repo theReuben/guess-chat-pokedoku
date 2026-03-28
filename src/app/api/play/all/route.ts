@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import getDb from "@/lib/db";
 
-// GET /api/play/all - get a random unplayed grid (not own)
+// GET /api/play/all - get a random unplayed grid (non-submissions, not own)
 export async function GET() {
   const session = await auth();
   if (!session?.user?.id) {
@@ -11,13 +11,14 @@ export async function GET() {
 
   const db = getDb();
 
-  // Get a random grid the user hasn't played yet, excluding their own
+  // Get a random grid the user hasn't played yet, excluding their own and submissions
   const result = await db.execute({
     sql: `SELECT g.id, g.row_categories, g.col_categories, g.created_by,
            u.display_name as creator_name, u.avatar_url as creator_avatar
     FROM grids g
     JOIN users u ON u.id = g.created_by
     WHERE g.created_by != ?
+      AND g.is_submission = 0
       AND g.id NOT IN (
         SELECT grid_id FROM play_history WHERE player_id = ?
       )
