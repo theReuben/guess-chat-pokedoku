@@ -53,7 +53,14 @@ export async function GET() {
     args: [guessSession.id as string],
   });
 
-  const completedGridIds = new Set(entriesResult.rows.map(e => e.grid_id as string));
+  // Only count entries for grids that are still current submissions
+  // (guards against stale entries when a grid is un-marked then re-marked as submission)
+  const submissionGridIdSet = new Set(submissionGridsResult.rows.map(g => g.id as string));
+  const completedGridIds = new Set(
+    entriesResult.rows
+      .map(e => e.grid_id as string)
+      .filter(id => submissionGridIdSet.has(id))
+  );
 
   // Find next unplayed grid
   const nextGrid = submissionGridsResult.rows.find(g => !completedGridIds.has(g.id as string));

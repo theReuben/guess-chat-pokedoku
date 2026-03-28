@@ -77,15 +77,8 @@ export async function POST(req: NextRequest) {
 
   const id = generateId();
   const db = getDb();
-
-  // Unmark any existing submission so the new grid becomes the user's submission
   await db.execute({
-    sql: "UPDATE grids SET is_submission = 0, updated_at = datetime('now') WHERE created_by = ? AND is_submission = 1",
-    args: [session.user.id],
-  });
-
-  await db.execute({
-    sql: "INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers, is_submission) VALUES (?, ?, ?, ?, ?, 1)",
+    sql: "INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers) VALUES (?, ?, ?, ?, ?)",
     args: [id, session.user.id, JSON.stringify(rowCategories), JSON.stringify(colCategories), JSON.stringify(exampleAnswers)],
   });
 
