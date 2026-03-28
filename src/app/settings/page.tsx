@@ -63,7 +63,7 @@ export default function SettingsPage() {
         <p style={{ color: "var(--text-secondary)", marginBottom: "24px" }}>
           Sign in with Discord to manage your profile.
         </p>
-        <a href="/api/auth/signin" className="btn btn-primary">Sign in with Discord</a>
+        <a href="/api/auth/signin" className="btn btn-primary" style={{ padding: "14px 32px", fontSize: "1.05rem" }}>Sign in with Discord</a>
       </div>
     );
   }
@@ -99,7 +99,7 @@ export default function SettingsPage() {
             value={displayName}
             onChange={e => setDisplayName(e.target.value)}
             maxLength={32}
-            style={{ maxWidth: "400px" }}
+            style={{ maxWidth: "100%" }}
           />
         </div>
 

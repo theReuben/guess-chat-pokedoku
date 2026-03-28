@@ -89,7 +89,7 @@ export default function PlayAllPage() {
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px", flexWrap: "wrap", gap: "12px" }}>
         <div>
           <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>Play - All Grids</h1>
           <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", marginTop: "4px" }}>

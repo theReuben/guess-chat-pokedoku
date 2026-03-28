@@ -95,24 +95,24 @@ export default function AdminPage() {
       </p>
 
       {/* Stats */}
-      <div style={{ display: "flex", gap: "16px", marginBottom: "24px", flexWrap: "wrap" }}>
-        <div className="card" style={{ flex: 1, minWidth: "150px", textAlign: "center" }}>
-          <div style={{ fontSize: "2rem", fontWeight: 800 }}>{grids.length}</div>
-          <div style={{ color: "var(--text-secondary)", fontSize: "0.85rem" }}>Total Grids</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: "12px", marginBottom: "24px" }}>
+        <div className="card" style={{ textAlign: "center" }}>
+          <div style={{ fontSize: "1.8rem", fontWeight: 800 }}>{grids.length}</div>
+          <div style={{ color: "var(--text-secondary)", fontSize: "0.8rem" }}>Total Grids</div>
         </div>
-        <div className="card" style={{ flex: 1, minWidth: "150px", textAlign: "center" }}>
-          <div style={{ fontSize: "2rem", fontWeight: 800 }}>{creators.length}</div>
-          <div style={{ color: "var(--text-secondary)", fontSize: "0.85rem" }}>Creators</div>
+        <div className="card" style={{ textAlign: "center" }}>
+          <div style={{ fontSize: "1.8rem", fontWeight: 800 }}>{creators.length}</div>
+          <div style={{ color: "var(--text-secondary)", fontSize: "0.8rem" }}>Creators</div>
         </div>
-        <div className="card" style={{ flex: 1, minWidth: "150px", textAlign: "center" }}>
-          <div style={{ fontSize: "2rem", fontWeight: 800, color: "var(--accent)" }}>{submissionCount}</div>
-          <div style={{ color: "var(--text-secondary)", fontSize: "0.85rem" }}>Submissions</div>
+        <div className="card" style={{ textAlign: "center" }}>
+          <div style={{ fontSize: "1.8rem", fontWeight: 800, color: "var(--accent)" }}>{submissionCount}</div>
+          <div style={{ color: "var(--text-secondary)", fontSize: "0.8rem" }}>Submissions</div>
         </div>
-        <div className="card" style={{ flex: 1, minWidth: "150px", textAlign: "center" }}>
-          <div style={{ fontSize: "2rem", fontWeight: 800, color: creators.length > 0 && usersWithSubmission < creators.length ? "var(--warning)" : "var(--success)" }}>
+        <div className="card" style={{ textAlign: "center" }}>
+          <div style={{ fontSize: "1.8rem", fontWeight: 800, color: creators.length > 0 && usersWithSubmission < creators.length ? "var(--warning)" : "var(--success)" }}>
             {usersWithSubmission}/{creators.length}
           </div>
-          <div style={{ color: "var(--text-secondary)", fontSize: "0.85rem" }}>Users w/ Submission</div>
+          <div style={{ color: "var(--text-secondary)", fontSize: "0.8rem" }}>Users w/ Sub</div>
         </div>
       </div>
 
@@ -149,34 +149,32 @@ export default function AdminPage() {
               borderColor: isSubmission ? "var(--accent)" : undefined,
               borderWidth: isSubmission ? "2px" : undefined,
             }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "12px" }}>
-                <div>
-                  <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "4px" }}>
-                    <strong>{grid.creator_name}</strong>
-                    <span style={{ color: "var(--text-secondary)", fontSize: "0.8rem" }}>@{grid.discord_username}</span>
-                    {isSubmission && <span className="badge badge-playing">Submission</span>}
-                  </div>
-                  <div style={{ fontSize: "0.8rem", color: "var(--text-secondary)" }}>
-                    ID: {grid.id} — Created: {new Date(grid.created_at + "Z").toLocaleDateString()}
-                  </div>
+              <div style={{ marginBottom: "12px" }}>
+                <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "4px", flexWrap: "wrap" }}>
+                  <strong>{grid.creator_name}</strong>
+                  <span style={{ color: "var(--text-secondary)", fontSize: "0.8rem" }}>@{grid.discord_username}</span>
+                  {isSubmission && <span className="badge badge-playing">Submission</span>}
                 </div>
+                <div style={{ fontSize: "0.8rem", color: "var(--text-secondary)" }}>
+                  ID: {grid.id} — Created: {new Date(grid.created_at + "Z").toLocaleDateString()}
+                </div>
+              </div>
 
-                <div style={{ display: "flex", gap: "8px", flexShrink: 0 }}>
-                  <button
-                    className={`btn ${isSubmission ? "btn-primary" : "btn-secondary"}`}
-                    style={{ fontSize: "0.8rem", padding: "6px 12px" }}
-                    onClick={() => toggleSubmission(grid)}
-                  >
-                    {isSubmission ? "Unmark Submission" : "Set as Submission"}
-                  </button>
-                  <button
-                    className="btn btn-secondary"
-                    style={{ fontSize: "0.8rem", padding: "6px 12px", color: "var(--accent)" }}
-                    onClick={() => deleteGrid(grid.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
+              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "12px" }}>
+                <button
+                  className={`btn ${isSubmission ? "btn-primary" : "btn-secondary"}`}
+                  style={{ fontSize: "0.8rem", padding: "8px 14px" }}
+                  onClick={() => toggleSubmission(grid)}
+                >
+                  {isSubmission ? "Unmark Submission" : "Set as Submission"}
+                </button>
+                <button
+                  className="btn btn-secondary"
+                  style={{ fontSize: "0.8rem", padding: "8px 14px", color: "var(--accent)" }}
+                  onClick={() => deleteGrid(grid.id)}
+                >
+                  Delete
+                </button>
               </div>
 
               {/* Mini grid preview */}

@@ -1,16 +1,16 @@
 export default function Home() {
   return (
-    <div style={{ textAlign: "center", paddingTop: "60px" }}>
-      <h1 style={{ fontSize: "3rem", fontWeight: 800, marginBottom: "16px" }}>
+    <div style={{ textAlign: "center", paddingTop: "40px" }}>
+      <h1 style={{ fontSize: "clamp(2rem, 8vw, 3rem)", fontWeight: 800, marginBottom: "16px" }}>
         Pokédoku
       </h1>
-      <p style={{ color: "var(--text-secondary)", fontSize: "1.2rem", maxWidth: "500px", margin: "0 auto 48px" }}>
+      <p style={{ color: "var(--text-secondary)", fontSize: "clamp(1rem, 3vw, 1.2rem)", maxWidth: "500px", margin: "0 auto 40px" }}>
         Create Pokédoku grids for your friends to solve — then guess who made each one!
       </p>
 
-      <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "12px", maxWidth: "720px", margin: "0 auto" }}>
         <a href="/create" className="card" style={{
-          textDecoration: "none", color: "inherit", width: "220px", textAlign: "center",
+          textDecoration: "none", color: "inherit", textAlign: "center",
           transition: "border-color 0.2s", cursor: "pointer",
         }}>
           <div style={{ fontSize: "2rem", marginBottom: "8px" }}>+</div>
@@ -21,7 +21,7 @@ export default function Home() {
         </a>
 
         <a href="/manage" className="card" style={{
-          textDecoration: "none", color: "inherit", width: "220px", textAlign: "center",
+          textDecoration: "none", color: "inherit", textAlign: "center",
           transition: "border-color 0.2s", cursor: "pointer",
         }}>
           <div style={{ fontSize: "2rem", marginBottom: "8px" }}>&#9776;</div>
@@ -32,7 +32,7 @@ export default function Home() {
         </a>
 
         <a href="/play" className="card" style={{
-          textDecoration: "none", color: "inherit", width: "220px", textAlign: "center",
+          textDecoration: "none", color: "inherit", textAlign: "center",
           transition: "border-color 0.2s", cursor: "pointer",
         }}>
           <div style={{ fontSize: "2rem", marginBottom: "8px" }}>&#9654;</div>
@@ -43,8 +43,12 @@ export default function Home() {
         </a>
       </div>
 
-      <div style={{ marginTop: "48px" }}>
-        <a href="/api/auth/signin" className="btn btn-primary">
+      <div style={{ marginTop: "40px" }}>
+        <a
+          href="/api/auth/signin"
+          className="btn btn-primary"
+          style={{ padding: "14px 32px", fontSize: "1.05rem", borderRadius: "10px" }}
+        >
           Sign in with Discord
         </a>
       </div>
