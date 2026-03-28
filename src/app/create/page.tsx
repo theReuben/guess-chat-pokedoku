@@ -1,9 +1,21 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { CATEGORIES, hasValidAnswer, getFilteredPokemonNames } from "@/data/pokemon";
+import {
+  CATEGORIES,
+  hasValidAnswer,
+  getFilteredPokemonNames,
+  getLabelForCategoryId,
+  getAllMoveNames,
+  getAllAbilityNames,
+} from "@/data/pokemon";
 import PokemonAutocomplete from "@/components/PokemonAutocomplete";
+
+// Format a PokéAPI slug like "hydro-pump" → "Hydro Pump"
+function formatSlug(slug: string): string {
+  return slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+}
 
 export default function CreatePage() {
   const router = useRouter();
@@ -14,6 +26,16 @@ export default function CreatePage() {
   const [pickingSlot, setPickingSlot] = useState<{ axis: "row" | "col"; index: number } | null>(null);
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [moveSearch, setMoveSearch] = useState("");
+  const [abilitySearch, setAbilitySearch] = useState("");
+
+  // Reset search inputs when opening a new picker slot
+  useEffect(() => {
+    if (pickingSlot) {
+      setMoveSearch("");
+      setAbilitySearch("");
+    }
+  }, [pickingSlot?.axis, pickingSlot?.index]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const selectedIds = new Set([
     ...rowCategories.filter(Boolean) as string[],
@@ -22,10 +44,15 @@ export default function CreatePage() {
 
   // All answers currently used, for excluding from other cells
   const usedAnswers = useMemo(() => new Set(answers.filter(Boolean)), [answers]);
+  void usedAnswers;
+
+  // Lazily compute move/ability lists (only populated once data is loaded)
+  const allMoveNames = useMemo(() => getAllMoveNames(), []);
+  const allAbilityNames = useMemo(() => getAllAbilityNames(), []);
 
   function getCategoryLabel(id: string | null): string {
     if (!id) return "";
-    return CATEGORIES.find(c => c.id === id)?.label || id;
+    return getLabelForCategoryId(id);
   }
 
   function selectCategory(id: string) {
@@ -35,7 +62,6 @@ export default function CreatePage() {
       const next = [...rowCategories];
       next[index] = id;
       setRowCategories(next);
-      // Clear answers in this row since category changed
       const nextAnswers = [...answers];
       for (let c = 0; c < 3; c++) nextAnswers[index * 3 + c] = "";
       setAnswers(nextAnswers);
@@ -43,7 +69,6 @@ export default function CreatePage() {
       const next = [...colCategories];
       next[index] = id;
       setColCategories(next);
-      // Clear answers in this column since category changed
       const nextAnswers = [...answers];
       for (let r = 0; r < 3; r++) nextAnswers[r * 3 + index] = "";
       setAnswers(nextAnswers);
@@ -70,12 +95,10 @@ export default function CreatePage() {
     }
   }
 
-  // Get filtered Pokémon names for a specific cell
   function getFilteredNamesForCell(row: number, col: number): string[] | undefined {
     const rowCat = rowCategories[row];
     const colCat = colCategories[col];
     if (!rowCat && !colCat) return undefined;
-    // Exclude Pokémon already used in other cells
     const otherAnswers = new Set(
       answers.filter((a, i) => a && i !== row * 3 + col)
     );
@@ -123,16 +146,37 @@ export default function CreatePage() {
     }
   }
 
-  const categoryGroups = CATEGORIES.reduce((acc, cat) => {
+  // Static category groups (everything except move/ability which are searchable)
+  const staticCategoryGroups = CATEGORIES.reduce((acc, cat) => {
     if (!acc[cat.type]) acc[cat.type] = [];
     acc[cat.type].push(cat);
     return acc;
   }, {} as Record<string, typeof CATEGORIES>);
 
   const groupLabels: Record<string, string> = {
-    type: "Types", generation: "Generations", egg_group: "Egg Groups",
-    evolution: "Evolution", status: "Status",
+    type: "Types",
+    generation: "Generations",
+    egg_group: "Egg Groups",
+    evolution: "Evolution",
+    status: "Status",
+    weakness: "Weak to",
+    resistance: "Resists",
+    weight: "Weight",
+    height: "Height",
   };
+
+  // Determine if the current slot's category is a move or ability
+  const currentCatId = pickingSlot
+    ? (pickingSlot.axis === "row" ? rowCategories[pickingSlot.index] : colCategories[pickingSlot.index])
+    : null;
+
+  // Filtered results for the search inputs (require at least 2 chars)
+  const filteredMoves = moveSearch.length >= 2
+    ? allMoveNames.filter(m => m.includes(moveSearch.toLowerCase())).slice(0, 30)
+    : [];
+  const filteredAbilities = abilitySearch.length >= 2
+    ? allAbilityNames.filter(a => a.includes(abilitySearch.toLowerCase())).slice(0, 30)
+    : [];
 
   return (
     <div>
@@ -231,11 +275,13 @@ export default function CreatePage() {
           background: "rgba(0,0,0,0.7)", zIndex: 100,
           display: "flex", alignItems: "center", justifyContent: "center",
         }} onClick={() => setPickingSlot(null)}>
-          <div className="card" style={{ maxWidth: "500px", width: "90%", maxHeight: "80vh", overflowY: "auto" }} onClick={e => e.stopPropagation()}>
+          <div className="card" style={{ maxWidth: "540px", width: "90%", maxHeight: "85vh", overflowY: "auto" }} onClick={e => e.stopPropagation()}>
             <h3 style={{ fontWeight: 700, marginBottom: "16px" }}>
               Pick {pickingSlot.axis === "row" ? "Row" : "Column"} {pickingSlot.index + 1} Category
             </h3>
-            {Object.entries(categoryGroups).map(([type, cats]) => (
+
+            {/* Static groups (chips) */}
+            {Object.entries(staticCategoryGroups).map(([type, cats]) => (
               <div key={type} style={{ marginBottom: "16px" }}>
                 <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>
                   {groupLabels[type] || type}
@@ -243,9 +289,7 @@ export default function CreatePage() {
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                   {cats.map(cat => {
                     const isUsed = selectedIds.has(cat.id);
-                    const isCurrent = pickingSlot.axis === "row"
-                      ? rowCategories[pickingSlot.index] === cat.id
-                      : colCategories[pickingSlot.index] === cat.id;
+                    const isCurrent = currentCatId === cat.id;
                     return (
                       <span
                         key={cat.id}
@@ -259,6 +303,115 @@ export default function CreatePage() {
                 </div>
               </div>
             ))}
+
+            {/* Can Learn Move — searchable */}
+            <div style={{ marginBottom: "16px" }}>
+              <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>
+                Can Learn Move
+              </h4>
+              {allMoveNames.length === 0 ? (
+                <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", fontStyle: "italic" }}>
+                  Run <code>npm run fetch-pokemon</code> to enable move filtering.
+                </p>
+              ) : (
+                <>
+                  <input
+                    type="text"
+                    placeholder="Search moves… (e.g. surf, flamethrower)"
+                    value={moveSearch}
+                    onChange={e => setMoveSearch(e.target.value)}
+                    style={{
+                      width: "100%", padding: "8px 10px", borderRadius: "6px",
+                      border: "1px solid var(--border)", background: "var(--bg-secondary)",
+                      color: "var(--text-primary)", fontSize: "0.9rem", marginBottom: "8px",
+                      boxSizing: "border-box",
+                    }}
+                    autoFocus={false}
+                  />
+                  {moveSearch.length < 2 && (
+                    <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", margin: 0 }}>
+                      Type at least 2 characters to search.
+                    </p>
+                  )}
+                  {moveSearch.length >= 2 && filteredMoves.length === 0 && (
+                    <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", margin: 0 }}>
+                      No moves found.
+                    </p>
+                  )}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "4px" }}>
+                    {filteredMoves.map(move => {
+                      const catId = `move-${move}`;
+                      const isUsed = selectedIds.has(catId);
+                      const isCurrent = currentCatId === catId;
+                      return (
+                        <span
+                          key={catId}
+                          className={`category-chip ${isCurrent ? "selected" : ""} ${isUsed && !isCurrent ? "disabled" : ""}`}
+                          onClick={() => !isUsed || isCurrent ? selectCategory(catId) : undefined}
+                        >
+                          {formatSlug(move)}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Has Ability — searchable */}
+            <div style={{ marginBottom: "16px" }}>
+              <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>
+                Has Ability
+              </h4>
+              {allAbilityNames.length === 0 ? (
+                <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", fontStyle: "italic" }}>
+                  Run <code>npm run fetch-pokemon</code> to enable ability filtering.
+                </p>
+              ) : (
+                <>
+                  <input
+                    type="text"
+                    placeholder="Search abilities… (e.g. levitate, intimidate)"
+                    value={abilitySearch}
+                    onChange={e => setAbilitySearch(e.target.value)}
+                    style={{
+                      width: "100%", padding: "8px 10px", borderRadius: "6px",
+                      border: "1px solid var(--border)", background: "var(--bg-secondary)",
+                      color: "var(--text-primary)", fontSize: "0.9rem", marginBottom: "8px",
+                      boxSizing: "border-box",
+                    }}
+                    autoFocus={false}
+                  />
+                  {abilitySearch.length < 2 && (
+                    <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", margin: 0 }}>
+                      Type at least 2 characters to search.
+                    </p>
+                  )}
+                  {abilitySearch.length >= 2 && filteredAbilities.length === 0 && (
+                    <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", margin: 0 }}>
+                      No abilities found.
+                    </p>
+                  )}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "4px" }}>
+                    {filteredAbilities.map(ability => {
+                      const catId = `ability-${ability}`;
+                      const isUsed = selectedIds.has(catId);
+                      const isCurrent = currentCatId === catId;
+                      return (
+                        <span
+                          key={catId}
+                          className={`category-chip ${isCurrent ? "selected" : ""} ${isUsed && !isCurrent ? "disabled" : ""}`}
+                          onClick={() => !isUsed || isCurrent ? selectCategory(catId) : undefined}
+                        >
+                          {formatSlug(ability)}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
+            </div>
+
             <button className="btn btn-secondary" style={{ marginTop: "8px" }} onClick={() => setPickingSlot(null)}>
               Cancel
             </button>

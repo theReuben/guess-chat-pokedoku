@@ -189,6 +189,10 @@ interface PokemonEntry {
   eggGroups: string[];
   evolutionMethod: string[];
   status: string[];
+  moves: string[];
+  abilities: string[];
+  weight: number;
+  height: number;
 }
 
 async function main() {
@@ -304,6 +308,10 @@ async function main() {
 
       const pokemonData = pokemonResults[j] as {
         types: { type: { name: string } }[];
+        moves: { move: { name: string } }[];
+        abilities: { ability: { name: string } }[];
+        weight: number;
+        height: number;
       } | null;
 
       if (!species || !pokemonData) continue;
@@ -319,6 +327,8 @@ async function main() {
 
       const types = pokemonData.types.map((t) => t.type.name);
       const eggGroups = species.egg_groups.map((e) => e.name.replace(/ /g, ""));
+      const moves = pokemonData.moves.map((m) => m.move.name);
+      const abilities = pokemonData.abilities.map((a) => a.ability.name);
 
       // Evolution methods
       const methods = evoMethods.get(dexNumber);
@@ -353,6 +363,10 @@ async function main() {
         eggGroups,
         evolutionMethod,
         status,
+        moves,
+        abilities,
+        weight: pokemonData.weight,
+        height: pokemonData.height,
       });
     }
 

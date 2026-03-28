@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import getDb from "@/lib/db";
 import { generateId } from "@/lib/utils";
-import { findPokemon, pokemonMatchesCategory, CATEGORIES } from "@/data/pokemon";
+import { findPokemon, pokemonMatchesCategory, isValidCategoryId } from "@/data/pokemon";
 
 // GET /api/grids - list current user's grids
 export async function GET() {
@@ -35,9 +35,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Need exactly 3 row and 3 column categories" }, { status: 400 });
   }
 
-  const allCategoryIds = CATEGORIES.map(c => c.id);
   const allSelected = [...rowCategories, ...colCategories];
-  if (allSelected.some((id: string) => !allCategoryIds.includes(id))) {
+  if (allSelected.some((id: string) => !isValidCategoryId(id))) {
     return NextResponse.json({ error: "Invalid category ID" }, { status: 400 });
   }
   if (new Set(allSelected).size !== 6) {

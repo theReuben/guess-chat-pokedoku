@@ -87,7 +87,103 @@ export const CATEGORIES: Category[] = [
   { id: "status-baby", label: "Baby Pokémon", type: "status" },
   { id: "status-ultra-beast", label: "Ultra Beast", type: "status" },
   { id: "status-paradox", label: "Paradox Pokémon", type: "status" },
+
+  // Weakness (takes super-effective damage from this type)
+  { id: "weak-fire", label: "Weak to Fire", type: "weakness" },
+  { id: "weak-water", label: "Weak to Water", type: "weakness" },
+  { id: "weak-electric", label: "Weak to Electric", type: "weakness" },
+  { id: "weak-grass", label: "Weak to Grass", type: "weakness" },
+  { id: "weak-ice", label: "Weak to Ice", type: "weakness" },
+  { id: "weak-fighting", label: "Weak to Fighting", type: "weakness" },
+  { id: "weak-poison", label: "Weak to Poison", type: "weakness" },
+  { id: "weak-ground", label: "Weak to Ground", type: "weakness" },
+  { id: "weak-flying", label: "Weak to Flying", type: "weakness" },
+  { id: "weak-psychic", label: "Weak to Psychic", type: "weakness" },
+  { id: "weak-bug", label: "Weak to Bug", type: "weakness" },
+  { id: "weak-rock", label: "Weak to Rock", type: "weakness" },
+  { id: "weak-ghost", label: "Weak to Ghost", type: "weakness" },
+  { id: "weak-dragon", label: "Weak to Dragon", type: "weakness" },
+  { id: "weak-dark", label: "Weak to Dark", type: "weakness" },
+  { id: "weak-steel", label: "Weak to Steel", type: "weakness" },
+  { id: "weak-fairy", label: "Weak to Fairy", type: "weakness" },
+  { id: "weak-normal", label: "Weak to Normal", type: "weakness" },
+
+  // Resistance (takes not-very-effective or no damage from this type)
+  { id: "resists-fire", label: "Resists Fire", type: "resistance" },
+  { id: "resists-water", label: "Resists Water", type: "resistance" },
+  { id: "resists-electric", label: "Resists Electric", type: "resistance" },
+  { id: "resists-grass", label: "Resists Grass", type: "resistance" },
+  { id: "resists-ice", label: "Resists Ice", type: "resistance" },
+  { id: "resists-fighting", label: "Resists Fighting", type: "resistance" },
+  { id: "resists-poison", label: "Resists Poison", type: "resistance" },
+  { id: "resists-ground", label: "Resists Ground", type: "resistance" },
+  { id: "resists-flying", label: "Resists Flying", type: "resistance" },
+  { id: "resists-psychic", label: "Resists Psychic", type: "resistance" },
+  { id: "resists-bug", label: "Resists Bug", type: "resistance" },
+  { id: "resists-rock", label: "Resists Rock", type: "resistance" },
+  { id: "resists-ghost", label: "Resists Ghost", type: "resistance" },
+  { id: "resists-dragon", label: "Resists Dragon", type: "resistance" },
+  { id: "resists-dark", label: "Resists Dark", type: "resistance" },
+  { id: "resists-steel", label: "Resists Steel", type: "resistance" },
+  { id: "resists-fairy", label: "Resists Fairy", type: "resistance" },
+  { id: "resists-normal", label: "Resists Normal", type: "resistance" },
+
+  // Weight — heavier than threshold
+  { id: "weight-gt-100", label: "Heavier than 10 kg", type: "weight" },
+  { id: "weight-gt-500", label: "Heavier than 50 kg", type: "weight" },
+  { id: "weight-gt-1000", label: "Heavier than 100 kg", type: "weight" },
+  { id: "weight-gt-2000", label: "Heavier than 200 kg", type: "weight" },
+  // Weight — lighter than threshold
+  { id: "weight-lt-10", label: "Lighter than 1 kg", type: "weight" },
+  { id: "weight-lt-50", label: "Lighter than 5 kg", type: "weight" },
+  { id: "weight-lt-100", label: "Lighter than 10 kg", type: "weight" },
+
+  // Height — taller than threshold
+  { id: "height-gt-10", label: "Taller than 1 m", type: "height" },
+  { id: "height-gt-20", label: "Taller than 2 m", type: "height" },
+  { id: "height-gt-30", label: "Taller than 3 m", type: "height" },
+  // Height — shorter than threshold
+  { id: "height-lt-5", label: "Shorter than 0.5 m", type: "height" },
+  { id: "height-lt-10", label: "Shorter than 1 m", type: "height" },
 ];
+
+// --- New categories: weakness, resistance, weight, height ---
+
+const POKEMON_TYPES = [
+  "normal", "fire", "water", "electric", "grass", "ice",
+  "fighting", "poison", "ground", "flying", "psychic", "bug",
+  "rock", "ghost", "dragon", "dark", "steel", "fairy",
+];
+
+// Type effectiveness chart: TYPE_EFFECTIVENESS[attackType][defendType] = multiplier
+// Missing entries default to 1x (neutral)
+const TYPE_EFFECTIVENESS: Record<string, Record<string, number>> = {
+  normal:   { rock: 0.5, ghost: 0, steel: 0.5 },
+  fire:     { fire: 0.5, water: 0.5, grass: 2, ice: 2, bug: 2, rock: 0.5, dragon: 0.5, steel: 2 },
+  water:    { fire: 2, water: 0.5, grass: 0.5, ground: 2, rock: 2, dragon: 0.5 },
+  electric: { water: 2, electric: 0.5, grass: 0.5, ground: 0, flying: 2, dragon: 0.5 },
+  grass:    { fire: 0.5, water: 2, grass: 0.5, poison: 0.5, ground: 2, flying: 0.5, bug: 0.5, rock: 2, dragon: 0.5, steel: 0.5 },
+  ice:      { water: 0.5, grass: 2, ice: 0.5, ground: 2, flying: 2, dragon: 2, steel: 0.5 },
+  fighting: { normal: 2, ice: 2, poison: 0.5, flying: 0.5, psychic: 0.5, bug: 0.5, rock: 2, ghost: 0, dark: 2, steel: 2, fairy: 0.5 },
+  poison:   { grass: 2, poison: 0.5, ground: 0.5, rock: 0.5, ghost: 0.5, steel: 0, fairy: 2 },
+  ground:   { fire: 2, electric: 2, grass: 0.5, poison: 2, flying: 0, bug: 0.5, rock: 2, steel: 2 },
+  flying:   { electric: 0.5, grass: 2, fighting: 2, bug: 2, rock: 0.5, steel: 0.5 },
+  psychic:  { fighting: 2, poison: 2, psychic: 0.5, dark: 0, steel: 0.5 },
+  bug:      { fire: 0.5, grass: 2, fighting: 0.5, poison: 0.5, flying: 0.5, psychic: 2, ghost: 0.5, dark: 2, steel: 0.5, fairy: 0.5 },
+  rock:     { fire: 2, ice: 2, fighting: 0.5, ground: 0.5, flying: 2, bug: 2, steel: 0.5 },
+  ghost:    { normal: 0, psychic: 2, ghost: 2, dark: 0.5 },
+  dragon:   { dragon: 2, steel: 0.5, fairy: 0 },
+  dark:     { fighting: 0.5, psychic: 2, ghost: 2, dark: 0.5, fairy: 0.5 },
+  steel:    { fire: 0.5, water: 0.5, electric: 0.5, ice: 2, rock: 2, steel: 0.5, fairy: 2 },
+  fairy:    { fire: 0.5, fighting: 2, poison: 0.5, dragon: 2, dark: 2, steel: 0.5 },
+};
+
+function calcTypeEffectiveness(attackType: string, defTypes: string[]): number {
+  const chart = TYPE_EFFECTIVENESS[attackType] || {};
+  let mult = 1;
+  for (const dt of defTypes) mult *= chart[dt] ?? 1;
+  return mult;
+}
 
 // Map from egg group category ID suffix to the egg group names used in PokéAPI data
 const EGG_GROUP_MAP: Record<string, string[]> = {
@@ -111,6 +207,7 @@ const EGG_GROUP_MAP: Record<string, string[]> = {
 // Check if a Pokémon matches a given category
 export function pokemonMatchesCategory(pokemon: Pokemon, categoryId: string): boolean {
   const dashIdx = categoryId.indexOf("-");
+  if (dashIdx === -1) return false;
   const group = categoryId.substring(0, dashIdx);
   const value = categoryId.substring(dashIdx + 1);
 
@@ -129,10 +226,84 @@ export function pokemonMatchesCategory(pokemon: Pokemon, categoryId: string): bo
       return pokemon.evolutionMethod.includes(value);
     case "status":
       return pokemon.status.includes(value);
+    case "weak":
+      return calcTypeEffectiveness(value, pokemon.types) > 1;
+    case "resists":
+      return calcTypeEffectiveness(value, pokemon.types) < 1;
+    case "weight": {
+      if (pokemon.weight === undefined) return false;
+      // value is like "gt-100" or "lt-50"
+      const sepIdx = value.indexOf("-");
+      const dir = value.substring(0, sepIdx);
+      const threshold = parseInt(value.substring(sepIdx + 1));
+      if (dir === "gt") return pokemon.weight > threshold;
+      if (dir === "lt") return pokemon.weight < threshold;
+      return false;
+    }
+    case "height": {
+      if (pokemon.height === undefined) return false;
+      const sepIdx = value.indexOf("-");
+      const dir = value.substring(0, sepIdx);
+      const threshold = parseInt(value.substring(sepIdx + 1));
+      if (dir === "gt") return pokemon.height > threshold;
+      if (dir === "lt") return pokemon.height < threshold;
+      return false;
+    }
+    case "move":
+      return (pokemon.moves || []).includes(value);
+    case "ability":
+      return (pokemon.abilities || []).includes(value);
     default:
       return false;
   }
 }
+
+// Get label for any category ID, including dynamic move/ability categories
+export function getLabelForCategoryId(id: string): string {
+  const found = CATEGORIES.find(c => c.id === id);
+  if (found) return found.label;
+  const dashIdx = id.indexOf("-");
+  if (dashIdx === -1) return id;
+  const group = id.substring(0, dashIdx);
+  const value = id.substring(dashIdx + 1);
+  const formatted = value.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+  if (group === "move") return `Can learn ${formatted}`;
+  if (group === "ability") return `Has ability ${formatted}`;
+  return id;
+}
+
+// Check if a category ID is valid (static or dynamic move/ability)
+export function isValidCategoryId(id: string): boolean {
+  if (CATEGORIES.some(c => c.id === id)) return true;
+  const dashIdx = id.indexOf("-");
+  if (dashIdx === -1) return false;
+  const group = id.substring(0, dashIdx);
+  const value = id.substring(dashIdx + 1);
+  if (group === "move") return getAllMoveNames().includes(value);
+  if (group === "ability") return getAllAbilityNames().includes(value);
+  return false;
+}
+
+// Get all unique move slugs across the Pokémon dataset
+export function getAllMoveNames(): string[] {
+  const moves = new Set<string>();
+  for (const p of POKEMON) {
+    for (const m of (p.moves || [])) moves.add(m);
+  }
+  return Array.from(moves).sort();
+}
+
+// Get all unique ability slugs across the Pokémon dataset
+export function getAllAbilityNames(): string[] {
+  const abilities = new Set<string>();
+  for (const p of POKEMON) {
+    for (const a of (p.abilities || [])) abilities.add(a);
+  }
+  return Array.from(abilities).sort();
+}
+
+// Expose type list for UI
+export { POKEMON_TYPES };
 
 // Find a Pokémon by name (case-insensitive)
 export function findPokemon(name: string): Pokemon | undefined {
