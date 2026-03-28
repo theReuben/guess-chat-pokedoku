@@ -21,6 +21,12 @@ export async function GET(request: NextRequest) {
       headers: {
         cookie: request.headers.get("cookie") || "",
         host: request.headers.get("host") || "",
+        // x-forwarded-host carries the real public hostname on Vercel/proxies;
+        // NextAuth v5 needs it to build the correct OAuth callback URL.
+        "x-forwarded-host":
+          request.headers.get("x-forwarded-host") ||
+          request.headers.get("host") ||
+          "",
         // Use a non-mobile UA so this internal call isn't intercepted again
         "user-agent": "internal",
         "x-forwarded-proto": request.headers.get("x-forwarded-proto") || "https",
