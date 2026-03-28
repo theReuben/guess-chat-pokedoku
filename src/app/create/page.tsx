@@ -139,6 +139,8 @@ export default function CreatePage() {
     });
     if (res.ok) {
       router.push("/manage");
+    } else if (res.status === 401) {
+      window.location.href = "/api/auth/signin";
     } else {
       const data = await res.json();
       setError(data.error || "Failed to submit");
