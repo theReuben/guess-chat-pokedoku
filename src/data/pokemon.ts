@@ -128,23 +128,7 @@ export const CATEGORIES: Category[] = [
   { id: "resists-fairy", label: "Resists Fairy", type: "resistance" },
   { id: "resists-normal", label: "Resists Normal", type: "resistance" },
 
-  // Weight — heavier than threshold
-  { id: "weight-gt-100", label: "Heavier than 10 kg", type: "weight" },
-  { id: "weight-gt-500", label: "Heavier than 50 kg", type: "weight" },
-  { id: "weight-gt-1000", label: "Heavier than 100 kg", type: "weight" },
-  { id: "weight-gt-2000", label: "Heavier than 200 kg", type: "weight" },
-  // Weight — lighter than threshold
-  { id: "weight-lt-10", label: "Lighter than 1 kg", type: "weight" },
-  { id: "weight-lt-50", label: "Lighter than 5 kg", type: "weight" },
-  { id: "weight-lt-100", label: "Lighter than 10 kg", type: "weight" },
-
-  // Height — taller than threshold
-  { id: "height-gt-10", label: "Taller than 1 m", type: "height" },
-  { id: "height-gt-20", label: "Taller than 2 m", type: "height" },
-  { id: "height-gt-30", label: "Taller than 3 m", type: "height" },
-  // Height — shorter than threshold
-  { id: "height-lt-5", label: "Shorter than 0.5 m", type: "height" },
-  { id: "height-lt-10", label: "Shorter than 1 m", type: "height" },
+  // Weight and Height categories are dynamic (pokemon-relative) — see getLabelForCategoryId / pokemonMatchesCategory
 ];
 
 // --- New categories: weakness, resistance, weight, height ---
@@ -232,21 +216,28 @@ export function pokemonMatchesCategory(pokemon: Pokemon, categoryId: string): bo
       return calcTypeEffectiveness(value, pokemon.types) < 1;
     case "weight": {
       if (pokemon.weight === undefined) return false;
-      // value is like "gt-100" or "lt-50"
+      // value is like "gt-snorlax" or "lt-rattata"
       const sepIdx = value.indexOf("-");
+      if (sepIdx === -1) return false;
       const dir = value.substring(0, sepIdx);
-      const threshold = parseInt(value.substring(sepIdx + 1));
-      if (dir === "gt") return pokemon.weight > threshold;
-      if (dir === "lt") return pokemon.weight < threshold;
+      const refName = value.substring(sepIdx + 1);
+      const ref = POKEMON.find(p => p.name.toLowerCase() === refName.toLowerCase());
+      if (!ref || ref.weight === undefined) return false;
+      if (dir === "gt") return pokemon.weight > ref.weight;
+      if (dir === "lt") return pokemon.weight < ref.weight;
       return false;
     }
     case "height": {
       if (pokemon.height === undefined) return false;
+      // value is like "gt-wailord" or "lt-joltik"
       const sepIdx = value.indexOf("-");
+      if (sepIdx === -1) return false;
       const dir = value.substring(0, sepIdx);
-      const threshold = parseInt(value.substring(sepIdx + 1));
-      if (dir === "gt") return pokemon.height > threshold;
-      if (dir === "lt") return pokemon.height < threshold;
+      const refName = value.substring(sepIdx + 1);
+      const ref = POKEMON.find(p => p.name.toLowerCase() === refName.toLowerCase());
+      if (!ref || ref.height === undefined) return false;
+      if (dir === "gt") return pokemon.height > ref.height;
+      if (dir === "lt") return pokemon.height < ref.height;
       return false;
     }
     case "move":
@@ -266,6 +257,21 @@ export function getLabelForCategoryId(id: string): string {
   if (dashIdx === -1) return id;
   const group = id.substring(0, dashIdx);
   const value = id.substring(dashIdx + 1);
+  if (group === "weight" || group === "height") {
+    const sepIdx = value.indexOf("-");
+    if (sepIdx !== -1) {
+      const dir = value.substring(0, sepIdx);
+      const refName = value.substring(sepIdx + 1);
+      const displayName = refName.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+      if (group === "weight") {
+        if (dir === "gt") return `Heavier than ${displayName}`;
+        if (dir === "lt") return `Lighter than ${displayName}`;
+      } else {
+        if (dir === "gt") return `Taller than ${displayName}`;
+        if (dir === "lt") return `Shorter than ${displayName}`;
+      }
+    }
+  }
   const formatted = value.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
   if (group === "move") return `Can learn ${formatted}`;
   if (group === "ability") return `Has ability ${formatted}`;
@@ -281,6 +287,14 @@ export function isValidCategoryId(id: string): boolean {
   const value = id.substring(dashIdx + 1);
   if (group === "move") return getAllMoveNames().includes(value);
   if (group === "ability") return getAllAbilityNames().includes(value);
+  if (group === "weight" || group === "height") {
+    const sepIdx = value.indexOf("-");
+    if (sepIdx === -1) return false;
+    const dir = value.substring(0, sepIdx);
+    if (dir !== "gt" && dir !== "lt") return false;
+    const refName = value.substring(sepIdx + 1);
+    return POKEMON.some(p => p.name.toLowerCase() === refName.toLowerCase());
+  }
   return false;
 }
 

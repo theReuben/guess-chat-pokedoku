@@ -9,6 +9,7 @@ import {
   getLabelForCategoryId,
   getAllMoveNames,
   getAllAbilityNames,
+  getAllPokemonNames,
 } from "@/data/pokemon";
 import PokemonAutocomplete from "@/components/PokemonAutocomplete";
 
@@ -28,12 +29,16 @@ export default function CreatePage() {
   const [submitting, setSubmitting] = useState(false);
   const [moveSearch, setMoveSearch] = useState("");
   const [abilitySearch, setAbilitySearch] = useState("");
+  const [weightPokemonSearch, setWeightPokemonSearch] = useState("");
+  const [heightPokemonSearch, setHeightPokemonSearch] = useState("");
 
   // Reset search inputs when opening a new picker slot
   useEffect(() => {
     if (pickingSlot) {
       setMoveSearch("");
       setAbilitySearch("");
+      setWeightPokemonSearch("");
+      setHeightPokemonSearch("");
     }
   }, [pickingSlot?.axis, pickingSlot?.index]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -46,9 +51,17 @@ export default function CreatePage() {
   const usedAnswers = useMemo(() => new Set(answers.filter(Boolean)), [answers]);
   void usedAnswers;
 
-  // Lazily compute move/ability lists (only populated once data is loaded)
+  // Lazily compute move/ability/pokemon lists (only populated once data is loaded)
   const allMoveNames = useMemo(() => getAllMoveNames(), []);
   const allAbilityNames = useMemo(() => getAllAbilityNames(), []);
+  const allPokemonNames = useMemo(() => getAllPokemonNames(), []);
+
+  const filteredWeightPokemon = weightPokemonSearch.length >= 2
+    ? allPokemonNames.filter(n => n.toLowerCase().includes(weightPokemonSearch.toLowerCase())).slice(0, 30)
+    : [];
+  const filteredHeightPokemon = heightPokemonSearch.length >= 2
+    ? allPokemonNames.filter(n => n.toLowerCase().includes(heightPokemonSearch.toLowerCase())).slice(0, 30)
+    : [];
 
   function getCategoryLabel(id: string | null): string {
     if (!id) return "";
@@ -161,8 +174,6 @@ export default function CreatePage() {
     status: "Status",
     weakness: "Weak to",
     resistance: "Resists",
-    weight: "Weight",
-    height: "Height",
   };
 
   // Determine if the current slot's category is a move or ability
@@ -410,6 +421,114 @@ export default function CreatePage() {
                   </div>
                 </>
               )}
+            </div>
+
+            {/* Heavier / Lighter than — searchable by pokemon */}
+            <div style={{ marginBottom: "16px" }}>
+              <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>
+                Heavier / Lighter than…
+              </h4>
+              <input
+                type="text"
+                placeholder="Search Pokémon… (e.g. snorlax, rattata)"
+                value={weightPokemonSearch}
+                onChange={e => setWeightPokemonSearch(e.target.value)}
+                style={{
+                  width: "100%", padding: "8px 10px", borderRadius: "6px",
+                  border: "1px solid var(--border)", background: "var(--bg-secondary)",
+                  color: "var(--text-primary)", fontSize: "0.9rem", marginBottom: "8px",
+                  boxSizing: "border-box",
+                }}
+                autoFocus={false}
+              />
+              {weightPokemonSearch.length < 2 && (
+                <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", margin: 0 }}>
+                  Type at least 2 characters to search.
+                </p>
+              )}
+              {weightPokemonSearch.length >= 2 && filteredWeightPokemon.length === 0 && (
+                <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", margin: 0 }}>
+                  No Pokémon found.
+                </p>
+              )}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "4px" }}>
+                {filteredWeightPokemon.map(pokemonName => {
+                  const slug = pokemonName.toLowerCase();
+                  const gtId = `weight-gt-${slug}`;
+                  const ltId = `weight-lt-${slug}`;
+                  return (
+                    <div key={pokemonName} style={{ display: "flex", gap: "4px" }}>
+                      {[gtId, ltId].map(catId => {
+                        const isUsed = selectedIds.has(catId);
+                        const isCurrent = currentCatId === catId;
+                        return (
+                          <span
+                            key={catId}
+                            className={`category-chip ${isCurrent ? "selected" : ""} ${isUsed && !isCurrent ? "disabled" : ""}`}
+                            onClick={() => !isUsed || isCurrent ? selectCategory(catId) : undefined}
+                          >
+                            {getLabelForCategoryId(catId)}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Taller / Shorter than — searchable by pokemon */}
+            <div style={{ marginBottom: "16px" }}>
+              <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>
+                Taller / Shorter than…
+              </h4>
+              <input
+                type="text"
+                placeholder="Search Pokémon… (e.g. wailord, joltik)"
+                value={heightPokemonSearch}
+                onChange={e => setHeightPokemonSearch(e.target.value)}
+                style={{
+                  width: "100%", padding: "8px 10px", borderRadius: "6px",
+                  border: "1px solid var(--border)", background: "var(--bg-secondary)",
+                  color: "var(--text-primary)", fontSize: "0.9rem", marginBottom: "8px",
+                  boxSizing: "border-box",
+                }}
+                autoFocus={false}
+              />
+              {heightPokemonSearch.length < 2 && (
+                <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", margin: 0 }}>
+                  Type at least 2 characters to search.
+                </p>
+              )}
+              {heightPokemonSearch.length >= 2 && filteredHeightPokemon.length === 0 && (
+                <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", margin: 0 }}>
+                  No Pokémon found.
+                </p>
+              )}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "4px" }}>
+                {filteredHeightPokemon.map(pokemonName => {
+                  const slug = pokemonName.toLowerCase();
+                  const gtId = `height-gt-${slug}`;
+                  const ltId = `height-lt-${slug}`;
+                  return (
+                    <div key={pokemonName} style={{ display: "flex", gap: "4px" }}>
+                      {[gtId, ltId].map(catId => {
+                        const isUsed = selectedIds.has(catId);
+                        const isCurrent = currentCatId === catId;
+                        return (
+                          <span
+                            key={catId}
+                            className={`category-chip ${isCurrent ? "selected" : ""} ${isUsed && !isCurrent ? "disabled" : ""}`}
+                            onClick={() => !isUsed || isCurrent ? selectCategory(catId) : undefined}
+                          >
+                            {getLabelForCategoryId(catId)}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             <button className="btn btn-secondary" style={{ marginTop: "8px" }} onClick={() => setPickingSlot(null)}>
