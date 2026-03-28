@@ -40,6 +40,7 @@ export default function GuessChatPage() {
   const [totalGrids, setTotalGrids] = useState(0);
   const [completedCount, setCompletedCount] = useState(0);
   const [users, setUsers] = useState<User[]>([]);
+  const [hasOwnSubmission, setHasOwnSubmission] = useState(false);
 
   const [answers, setAnswers] = useState<string[]>(Array(9).fill(""));
   const [guessedAuthorId, setGuessedAuthorId] = useState("");
@@ -63,6 +64,7 @@ export default function GuessChatPage() {
           setTotalGrids(data.totalGrids);
           setCompletedCount(data.completedCount);
           setUsers(data.users || []);
+          setHasOwnSubmission(false);
 
           // If session was already submitted, redirect to results
           if (data.session.status === "submitted") {
@@ -71,6 +73,7 @@ export default function GuessChatPage() {
           }
         } else {
           setSession(null);
+          setHasOwnSubmission(!!data.hasOwnSubmission);
         }
       })
       .catch(() => setError("Failed to load"))
@@ -147,9 +150,13 @@ export default function GuessChatPage() {
   if (!session) {
     return (
       <div style={{ textAlign: "center", paddingTop: "48px" }}>
-        <h2 style={{ fontWeight: 700, marginBottom: "12px" }}>No Submissions Yet</h2>
+        <h2 style={{ fontWeight: 700, marginBottom: "12px" }}>
+          {hasOwnSubmission ? "Your grid is submitted!" : "No Submissions Yet"}
+        </h2>
         <p style={{ color: "var(--text-secondary)", marginBottom: "24px" }}>
-          Waiting for other players to mark their grids as submissions.
+          {hasOwnSubmission
+            ? "You can't play your own submission — waiting for other players to submit their grids."
+            : "Waiting for players to mark their grids as submissions."}
         </p>
         <a href="/play" className="btn btn-secondary">Back</a>
       </div>

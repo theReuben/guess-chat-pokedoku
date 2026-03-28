@@ -29,7 +29,16 @@ export async function GET() {
   });
 
   if (submissionGridsResult.rows.length === 0) {
-    return NextResponse.json({ session: null, message: "No submissions available to play" });
+    // Check if the player themselves has a submission — helps surface a clearer message
+    const ownSubmissionResult = await db.execute({
+      sql: "SELECT id FROM grids WHERE created_by = ? AND is_submission = 1 LIMIT 1",
+      args: [session.user.id],
+    });
+    return NextResponse.json({
+      session: null,
+      message: "No submissions available to play",
+      hasOwnSubmission: ownSubmissionResult.rows.length > 0,
+    });
   }
 
   // Create session if none exists
