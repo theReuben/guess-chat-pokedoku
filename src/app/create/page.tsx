@@ -153,7 +153,7 @@ export default function CreatePage() {
     if (res.ok) {
       router.push("/manage");
     } else if (res.status === 401) {
-      window.location.href = "/api/auth/signin";
+      window.location.href = "/api/auth/discord-mobile";
     } else {
       const data = await res.json();
       setError(data.error || "Failed to submit");

@@ -22,7 +22,7 @@ export default function ManagePage() {
     fetch("/api/grids")
       .then(r => {
         if (r.status === 401) {
-          window.location.href = "/api/auth/signin";
+          window.location.href = "/api/auth/discord-mobile";
           return null;
         }
         return r.json();
