@@ -45,7 +45,7 @@ export default function Home() {
 
       <div style={{ marginTop: "40px" }}>
         <a
-          href="/api/auth/signin"
+          href="/api/auth/discord-mobile"
           className="btn btn-primary"
           style={{ padding: "14px 32px", fontSize: "1.05rem", borderRadius: "10px" }}
         >
