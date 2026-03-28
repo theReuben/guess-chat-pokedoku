@@ -48,7 +48,6 @@ export default function ManagePage() {
       body: JSON.stringify({ isSubmission: !current }),
     });
     if (res.ok) {
-      // If marking as submission, unmark all others client-side too
       setGrids(prev => prev.map(g => ({
         ...g,
         is_submission: g.id === id ? (!current ? 1 : 0) : (!current ? 0 : g.is_submission),
@@ -60,7 +59,7 @@ export default function ManagePage() {
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px", flexWrap: "wrap", gap: "12px" }}>
         <div>
           <h1 style={{ fontSize: "1.8rem", fontWeight: 700 }}>My Grids</h1>
           <p style={{ color: "var(--text-secondary)", marginTop: "4px" }}>
@@ -77,7 +76,7 @@ export default function ManagePage() {
       )}
 
       {grids.length === 0 ? (
-        <div className="card" style={{ textAlign: "center", padding: "48px" }}>
+        <div className="card" style={{ textAlign: "center", padding: "48px 24px" }}>
           <p style={{ color: "var(--text-secondary)", marginBottom: "16px" }}>You haven&apos;t created any grids yet.</p>
           <a href="/create" className="btn btn-primary">Create Your First Grid</a>
         </div>
@@ -93,35 +92,33 @@ export default function ManagePage() {
                 borderColor: isSubmission ? "var(--accent)" : undefined,
                 borderWidth: isSubmission ? "2px" : undefined,
               }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                  <div>
-                    <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "8px" }}>
-                      {isSubmission && <span className="badge badge-playing">Submission</span>}
-                    </div>
-                    <div style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "4px" }}>
-                      <strong>Rows:</strong> {rows.map(getCategoryLabel).join(" / ")}
-                    </div>
-                    <div style={{ fontSize: "0.85rem", color: "var(--text-secondary)" }}>
-                      <strong>Cols:</strong> {cols.map(getCategoryLabel).join(" / ")}
-                    </div>
+                <div style={{ marginBottom: "12px" }}>
+                  <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "8px", flexWrap: "wrap" }}>
+                    {isSubmission && <span className="badge badge-playing">Submission</span>}
                   </div>
+                  <div style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginBottom: "4px" }}>
+                    <strong>Rows:</strong> {rows.map(getCategoryLabel).join(" / ")}
+                  </div>
+                  <div style={{ fontSize: "0.85rem", color: "var(--text-secondary)" }}>
+                    <strong>Cols:</strong> {cols.map(getCategoryLabel).join(" / ")}
+                  </div>
+                </div>
 
-                  <div style={{ display: "flex", gap: "8px", flexShrink: 0 }}>
-                    <button
-                      className={`btn ${isSubmission ? "btn-primary" : "btn-secondary"}`}
-                      style={{ fontSize: "0.8rem", padding: "6px 12px" }}
-                      onClick={() => toggleSubmission(grid.id, isSubmission)}
-                    >
-                      {isSubmission ? "Unmark" : "Set as Submission"}
-                    </button>
-                    <button
-                      className="btn btn-secondary"
-                      style={{ fontSize: "0.8rem", padding: "6px 12px", color: "var(--accent)" }}
-                      onClick={() => deleteGrid(grid.id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
+                <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                  <button
+                    className={`btn ${isSubmission ? "btn-primary" : "btn-secondary"}`}
+                    style={{ fontSize: "0.8rem", padding: "8px 14px" }}
+                    onClick={() => toggleSubmission(grid.id, isSubmission)}
+                  >
+                    {isSubmission ? "Unmark" : "Set as Submission"}
+                  </button>
+                  <button
+                    className="btn btn-secondary"
+                    style={{ fontSize: "0.8rem", padding: "8px 14px", color: "var(--accent)" }}
+                    onClick={() => deleteGrid(grid.id)}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             );

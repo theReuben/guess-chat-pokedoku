@@ -165,7 +165,7 @@ export default function GuessChatPage() {
     // Actually we don't have row/col categories in entries. Let me show a simpler review.
     return (
       <div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px", flexWrap: "wrap", gap: "12px" }}>
           <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>Review Guesses</h1>
           <button className="btn btn-secondary" onClick={() => setReviewMode(false)}>
             Back
@@ -236,8 +236,8 @@ export default function GuessChatPage() {
           {entries.map((entry, i) => {
             const guessedUser = users.find(u => u.id === entry.guessed_author_id);
             return (
-              <div key={entry.id} className="card" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div>
+              <div key={entry.id} className="card">
+                <div style={{ marginBottom: "10px" }}>
                   <div style={{ fontWeight: 600 }}>Grid #{i + 1}</div>
                   <div style={{ color: "var(--text-secondary)", fontSize: "0.85rem" }}>
                     Score: {entry.correct_count}/9 — Guessed: <strong>{guessedUser?.display_name || "Not set"}</strong>
@@ -245,7 +245,7 @@ export default function GuessChatPage() {
                 </div>
                 <button
                   className="btn btn-secondary"
-                  style={{ fontSize: "0.8rem", padding: "6px 12px" }}
+                  style={{ fontSize: "0.8rem", padding: "8px 14px" }}
                   onClick={() => { setReviewMode(true); setReviewIndex(i); }}
                 >
                   Change Guess

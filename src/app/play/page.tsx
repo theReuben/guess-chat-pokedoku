@@ -6,9 +6,9 @@ export default function PlayPage() {
         Choose a game mode.
       </p>
 
-      <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: "12px" }}>
         <a href="/play/all" className="card" style={{
-          textDecoration: "none", color: "inherit", flex: "1", minWidth: "280px",
+          textDecoration: "none", color: "inherit",
           cursor: "pointer", transition: "border-color 0.2s",
         }}>
           <h2 style={{ fontWeight: 700, marginBottom: "8px" }}>All Grids</h2>
@@ -19,7 +19,7 @@ export default function PlayPage() {
         </a>
 
         <a href="/play/guess-chat" className="card" style={{
-          textDecoration: "none", color: "inherit", flex: "1", minWidth: "280px",
+          textDecoration: "none", color: "inherit",
           cursor: "pointer", transition: "border-color 0.2s",
           borderColor: "var(--accent)",
         }}>

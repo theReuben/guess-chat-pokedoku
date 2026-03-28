@@ -69,15 +69,15 @@ function ResultsInner() {
           Guess Chat Results
         </h1>
 
-        <div style={{ display: "flex", gap: "32px", justifyContent: "center", marginBottom: "32px" }}>
+        <div style={{ display: "flex", gap: "24px", justifyContent: "center", marginBottom: "32px", flexWrap: "wrap" }}>
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "2.5rem", fontWeight: 800, color: "var(--success)" }}>
+            <div style={{ fontSize: "clamp(1.8rem, 6vw, 2.5rem)", fontWeight: 800, color: "var(--success)" }}>
               {totalCorrectCells}/{totalCells}
             </div>
             <div style={{ color: "var(--text-secondary)", fontSize: "0.85rem" }}>Cells Correct</div>
           </div>
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "2.5rem", fontWeight: 800, color: "var(--warning)" }}>
+            <div style={{ fontSize: "clamp(1.8rem, 6vw, 2.5rem)", fontWeight: 800, color: "var(--warning)" }}>
               {correctGuesses}/{entries.length}
             </div>
             <div style={{ color: "var(--text-secondary)", fontSize: "0.85rem" }}>Author Guesses Correct</div>
@@ -95,21 +95,21 @@ function ResultsInner() {
                 style={{ cursor: "pointer" }}
                 onClick={() => setRevealIndex(i)}
               >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <div>
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
                     <div style={{ fontWeight: 600 }}>Grid #{i + 1}</div>
-                    <div style={{ color: "var(--text-secondary)", fontSize: "0.85rem", marginTop: "4px" }}>
-                      Score: <strong>{entry.correct_count}/9</strong>
-                      {" — "}Created by: <strong style={{ color: "var(--accent)" }}>{entry.actual_author_name}</strong>
-                      {" — "}You guessed: <strong>{entry.guessed_author_name || "—"}</strong>
-                      {entry.guessed_author_id && (
-                        guessCorrect
-                          ? <span style={{ color: "var(--success)", marginLeft: "6px" }}>Correct!</span>
-                          : <span style={{ color: "var(--accent)", marginLeft: "6px" }}>Wrong</span>
-                      )}
-                    </div>
+                    <span style={{ color: "var(--text-secondary)", fontSize: "0.85rem" }}>View &rsaquo;</span>
                   </div>
-                  <span style={{ color: "var(--text-secondary)" }}>View</span>
+                  <div style={{ color: "var(--text-secondary)", fontSize: "0.85rem" }}>
+                    Score: <strong>{entry.correct_count}/9</strong>
+                    {" | "}By: <strong style={{ color: "var(--accent)" }}>{entry.actual_author_name}</strong>
+                    {" | "}Guess: <strong>{entry.guessed_author_name || "—"}</strong>
+                    {entry.guessed_author_id && (
+                      guessCorrect
+                        ? <span style={{ color: "var(--success)", marginLeft: "6px" }}>Correct!</span>
+                        : <span style={{ color: "var(--accent)", marginLeft: "6px" }}>Wrong</span>
+                    )}
+                  </div>
                 </div>
               </div>
             );

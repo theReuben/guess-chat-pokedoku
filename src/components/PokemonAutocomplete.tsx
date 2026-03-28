@@ -77,7 +77,7 @@ export default function PokemonAutocomplete({ value, onChange, placeholder, filt
           <img
             src={spriteUrl}
             alt={value}
-            style={{ width: "48px", height: "48px", imageRendering: "pixelated" }}
+            style={{ width: "40px", height: "40px", imageRendering: "pixelated" }}
           />
         </div>
       )}
@@ -88,7 +88,11 @@ export default function PokemonAutocomplete({ value, onChange, placeholder, filt
         onFocus={() => input.length > 0 && suggestions.length > 0 && setOpen(true)}
         onKeyDown={handleKeyDown}
         placeholder={placeholder || "Type a Pokémon..."}
-        style={{ fontSize: "0.8rem", padding: "6px 8px" }}
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck={false}
+        style={{ fontSize: "0.8rem", padding: "6px 6px" }}
       />
       {open && (
         <div className="autocomplete-dropdown">
@@ -96,7 +100,7 @@ export default function PokemonAutocomplete({ value, onChange, placeholder, filt
             <div
               key={name}
               className={`autocomplete-item ${i === highlighted ? "highlighted" : ""}`}
-              onClick={() => select(name)}
+              onMouseDown={(e) => { e.preventDefault(); select(name); }}
               style={{ display: "flex", alignItems: "center" }}
             >
               <img
