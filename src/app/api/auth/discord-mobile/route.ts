@@ -5,12 +5,13 @@ export async function GET(request: NextRequest) {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent);
 
   if (!isMobile) {
-    return NextResponse.redirect(new URL("/api/auth/signin/discord", request.url));
+    return NextResponse.redirect(new URL("/api/auth/signin", request.url));
   }
 
   // Make an internal request to NextAuth's Discord signin endpoint so it
   // generates a state token and sets the state cookie, then capture the
   // resulting Discord OAuth URL so we can swap the scheme to discord://.
+  // Auth.js v5 requires POST to initiate OAuth (GET is no longer supported).
   const signinUrl = new URL("/api/auth/signin/discord", request.url);
 
   let discordOAuthUrl: string | null = null;
@@ -18,7 +19,9 @@ export async function GET(request: NextRequest) {
 
   try {
     const response = await fetch(signinUrl.toString(), {
+      method: "POST",
       headers: {
+        "content-type": "application/x-www-form-urlencoded",
         cookie: request.headers.get("cookie") || "",
         host: request.headers.get("host") || "",
         // x-forwarded-host carries the real public hostname on Vercel/proxies;
@@ -44,11 +47,11 @@ export async function GET(request: NextRequest) {
       if (raw) stateCookies = [raw];
     }
   } catch {
-    return NextResponse.redirect(new URL("/api/auth/signin/discord", request.url));
+    return NextResponse.redirect(new URL("/api/auth/signin", request.url));
   }
 
   if (!discordOAuthUrl || !discordOAuthUrl.includes("discord.com/oauth2/authorize")) {
-    return NextResponse.redirect(new URL("/api/auth/signin/discord", request.url));
+    return NextResponse.redirect(new URL("/api/auth/signin", request.url));
   }
 
   // Replace the https scheme with the Discord app deep-link scheme
