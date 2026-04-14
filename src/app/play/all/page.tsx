@@ -21,6 +21,7 @@ interface SolveResult {
 export default function PlayAllPage() {
   const [grid, setGrid] = useState<GridData | null>(null);
   const [noMore, setNoMore] = useState(false);
+  const [replayMode, setReplayMode] = useState(false);
   const [answers, setAnswers] = useState<string[]>(Array(9).fill(""));
   const [result, setResult] = useState<SolveResult | null>(null);
   const [intendedSelections, setIntendedSelections] = useState<string[]>(Array(9).fill(""));
@@ -28,12 +29,13 @@ export default function PlayAllPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  function fetchNextGrid() {
+  function fetchNextGrid(replay = false) {
     setLoading(true);
     setResult(null);
     setAnswers(Array(9).fill(""));
     setError("");
-    fetch("/api/play/all")
+    const url = replay ? "/api/play/all?replay=true" : "/api/play/all";
+    fetch(url)
       .then(r => {
         if (r.status === 401) {
           window.location.href = "/api/auth/discord-mobile";
@@ -46,6 +48,7 @@ export default function PlayAllPage() {
         if (data.grid) {
           setGrid(data.grid);
           setNoMore(false);
+          setReplayMode(replay);
         } else {
           setGrid(null);
           setNoMore(true);
@@ -97,7 +100,15 @@ export default function PlayAllPage() {
         <p style={{ color: "var(--text-secondary)", marginBottom: "24px" }}>
           You&apos;ve played all available grids. Check back later for new ones!
         </p>
-        <a href="/play" className="btn btn-secondary">Back to Play</a>
+        <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+          <button
+            className="btn btn-primary"
+            onClick={() => fetchNextGrid(true)}
+          >
+            Play Old Grids
+          </button>
+          <a href="/play" className="btn btn-secondary">Back to Play</a>
+        </div>
       </div>
     );
   }
@@ -114,10 +125,15 @@ export default function PlayAllPage() {
           <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>Play - All Grids</h1>
           <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", marginTop: "4px" }}>
             Created by <strong style={{ color: "var(--text-primary)" }}>{grid.creator_name}</strong>
+            {replayMode && (
+              <span style={{ marginLeft: "8px", fontSize: "0.8rem", color: "var(--text-secondary)", fontStyle: "italic" }}>
+                (replaying old grid)
+              </span>
+            )}
           </p>
         </div>
         {result && (
-          <button className="btn btn-primary" onClick={fetchNextGrid}>
+          <button className="btn btn-primary" onClick={() => fetchNextGrid(replayMode)}>
             Next Grid
           </button>
         )}
