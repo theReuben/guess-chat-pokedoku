@@ -68,6 +68,14 @@ export default function PlayAllPage() {
 
   async function submitSolution() {
     if (!grid || answers.some(a => !a)) return;
+
+    const nonEmpty = answers.filter(a => a);
+    const unique = new Set(nonEmpty.map(a => a.toLowerCase()));
+    if (unique.size < nonEmpty.length) {
+      setError("You cannot use the same Pokémon more than once");
+      return;
+    }
+
     setSubmitting(true);
     setError("");
 

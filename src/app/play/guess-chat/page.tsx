@@ -98,6 +98,14 @@ export default function GuessChatPage() {
       setError("Fill all cells and pick who you think created this grid");
       return;
     }
+
+    const nonEmpty = answers.filter(a => a);
+    const unique = new Set(nonEmpty.map(a => a.toLowerCase()));
+    if (unique.size < nonEmpty.length) {
+      setError("You cannot use the same Pokémon more than once");
+      return;
+    }
+
     setSubmitting(true);
     setError("");
 
