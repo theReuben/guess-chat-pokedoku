@@ -23,6 +23,7 @@ export default function PlayAllPage() {
   const [noMore, setNoMore] = useState(false);
   const [answers, setAnswers] = useState<string[]>(Array(9).fill(""));
   const [result, setResult] = useState<SolveResult | null>(null);
+  const [intendedSelections, setIntendedSelections] = useState<string[]>(Array(9).fill(""));
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -60,6 +61,11 @@ export default function PlayAllPage() {
     return getLabelForCategoryId(id);
   }
 
+  function getPlayerCellClass(idx: number): string {
+    if (!result) return answers[idx] ? "filled" : "";
+    return result.isCorrect[idx] ? "correct" : "incorrect";
+  }
+
   async function submitSolution() {
     if (!grid || answers.some(a => !a)) return;
     setSubmitting(true);
@@ -72,8 +78,9 @@ export default function PlayAllPage() {
     });
 
     if (res.ok) {
-      const data = await res.json();
+      const data: SolveResult = await res.json();
       setResult(data);
+      setIntendedSelections([...data.exampleAnswers]);
     } else {
       const data = await res.json();
       setError(data.error || "Failed to submit");
@@ -147,11 +154,8 @@ export default function PlayAllPage() {
                 <div className="grid-header">{getCategoryLabel(rowId)}</div>
                 {colCategories.map((_colId, c) => {
                   const idx = r * 3 + c;
-                  const cellClass = result
-                    ? result.isCorrect[idx] ? "correct" : "incorrect"
-                    : answers[idx] ? "filled" : "";
                   return (
-                    <div key={`cell-${r}-${c}`} className={`grid-cell ${cellClass}`}>
+                    <div key={`cell-${r}-${c}`} className={`grid-cell ${getPlayerCellClass(idx)}`}>
                       {result ? (
                         <div style={{ textAlign: "center", padding: "4px" }}>
                           {answers[idx] && (
@@ -198,21 +202,27 @@ export default function PlayAllPage() {
                   {colCategories.map((colId, c) => {
                     const idx = r * 3 + c;
                     const exampleAnswer = result.exampleAnswers[idx];
+                    const selectedName = intendedSelections[idx] || exampleAnswer;
                     const validNames = getFilteredPokemonNames(rowId, colId);
                     return (
                       <div key={`intended-${r}-${c}`} className="grid-cell correct" style={{ flexDirection: "column", gap: "4px" }}>
-                        {exampleAnswer && (
+                        {selectedName && (
                           <>
                             <img
-                              src={getPokemonSpriteUrl(exampleAnswer) || ""}
-                              alt={exampleAnswer}
+                              src={getPokemonSpriteUrl(selectedName) || ""}
+                              alt={selectedName}
                               style={{ width: "40px", height: "40px", imageRendering: "pixelated" }}
                             />
-                            <span style={{ fontSize: "0.75rem", textAlign: "center" }}>{exampleAnswer}</span>
+                            <span style={{ fontSize: "0.75rem", textAlign: "center" }}>{selectedName}</span>
                           </>
                         )}
                         <select
-                          defaultValue={exampleAnswer}
+                          value={selectedName}
+                          onChange={e => {
+                            const next = [...intendedSelections];
+                            next[idx] = e.target.value;
+                            setIntendedSelections(next);
+                          }}
                           style={{ fontSize: "0.7rem", padding: "2px 4px", marginTop: "2px", width: "100%" }}
                           aria-label={`Valid answers for row ${r + 1}, column ${c + 1}`}
                         >
