@@ -53,23 +53,6 @@ export const CATEGORIES: Category[] = [
   { id: "gen-8", label: "Gen 8 (Galar)", type: "generation" },
   { id: "gen-9", label: "Gen 9 (Paldea)", type: "generation" },
 
-  // Egg Groups
-  { id: "egg-monster", label: "Monster Egg Group", type: "egg_group" },
-  { id: "egg-water1", label: "Water 1 Egg Group", type: "egg_group" },
-  { id: "egg-water2", label: "Water 2 Egg Group", type: "egg_group" },
-  { id: "egg-water3", label: "Water 3 Egg Group", type: "egg_group" },
-  { id: "egg-bug", label: "Bug Egg Group", type: "egg_group" },
-  { id: "egg-flying", label: "Flying Egg Group", type: "egg_group" },
-  { id: "egg-field", label: "Field Egg Group", type: "egg_group" },
-  { id: "egg-fairy", label: "Fairy Egg Group", type: "egg_group" },
-  { id: "egg-grass", label: "Grass Egg Group", type: "egg_group" },
-  { id: "egg-humanlike", label: "Human-Like Egg Group", type: "egg_group" },
-  { id: "egg-mineral", label: "Mineral Egg Group", type: "egg_group" },
-  { id: "egg-amorphous", label: "Amorphous Egg Group", type: "egg_group" },
-  { id: "egg-ditto", label: "Ditto Egg Group", type: "egg_group" },
-  { id: "egg-dragon", label: "Dragon Egg Group", type: "egg_group" },
-  { id: "egg-undiscovered", label: "Undiscovered Egg Group", type: "egg_group" },
-
   // Evolution
   { id: "evo-none", label: "Doesn't Evolve", type: "evolution" },
   { id: "evo-stone", label: "Evolves by Stone", type: "evolution" },
