@@ -33,6 +33,13 @@ export async function POST(
   const rowCategories = JSON.parse(grid.row_categories as string) as string[];
   const colCategories = JSON.parse(grid.col_categories as string) as string[];
 
+  // Check for duplicate Pokémon across cells
+  const nonEmptyAnswers = answers.filter((a: string) => a);
+  const uniqueAnswers = new Set(nonEmptyAnswers.map((a: string) => a.toLowerCase()));
+  if (uniqueAnswers.size < nonEmptyAnswers.length) {
+    return NextResponse.json({ error: "You cannot use the same Pokémon more than once" }, { status: 400 });
+  }
+
   const isCorrect: boolean[] = Array(9).fill(false);
   let correctCount = 0;
   for (let row = 0; row < 3; row++) {
