@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CATEGORIES } from "@/data/pokemon";
+import { getLabelForCategoryId } from "@/data/pokemon";
 import PokemonAutocomplete from "@/components/PokemonAutocomplete";
 
 interface GridData {
@@ -51,7 +51,7 @@ export default function PlayAllPage() {
   useEffect(() => { fetchNextGrid(); }, []);
 
   function getCategoryLabel(id: string): string {
-    return CATEGORIES.find(c => c.id === id)?.label || id;
+    return getLabelForCategoryId(id);
   }
 
   async function submitSolution() {

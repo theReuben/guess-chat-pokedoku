@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { CATEGORIES } from "@/data/pokemon";
+import { getLabelForCategoryId } from "@/data/pokemon";
 import PokemonAutocomplete from "@/components/PokemonAutocomplete";
 
 interface User {
@@ -90,7 +90,7 @@ export default function GuessChatPage() {
   useEffect(() => { fetchSession(); }, [fetchSession]);
 
   function getCategoryLabel(id: string): string {
-    return CATEGORIES.find(c => c.id === id)?.label || id;
+    return getLabelForCategoryId(id);
   }
 
   async function submitEntry() {

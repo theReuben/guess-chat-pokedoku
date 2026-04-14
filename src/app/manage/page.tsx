@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CATEGORIES } from "@/data/pokemon";
+import { getLabelForCategoryId } from "@/data/pokemon";
 
 interface Grid {
   id: string;
@@ -39,7 +39,7 @@ export default function ManagePage() {
   useEffect(() => { fetchGrids(); }, []);
 
   function getCategoryLabel(id: string): string {
-    return CATEGORIES.find(c => c.id === id)?.label || id;
+    return getLabelForCategoryId(id);
   }
 
   async function deleteGrid(id: string) {
