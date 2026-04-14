@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getLabelForCategoryId } from "@/data/pokemon";
+import { getLabelForCategoryId, getFilteredPokemonNames, getPokemonSpriteUrl } from "@/data/pokemon";
 import PokemonAutocomplete from "@/components/PokemonAutocomplete";
 
 interface GridData {
@@ -12,11 +12,17 @@ interface GridData {
   creator_avatar: string | null;
 }
 
+interface SolveResult {
+  correctCount: number;
+  exampleAnswers: string[];
+  isCorrect: boolean[];
+}
+
 export default function PlayAllPage() {
   const [grid, setGrid] = useState<GridData | null>(null);
   const [noMore, setNoMore] = useState(false);
   const [answers, setAnswers] = useState<string[]>(Array(9).fill(""));
-  const [result, setResult] = useState<{ correctCount: number } | null>(null);
+  const [result, setResult] = useState<SolveResult | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -125,31 +131,103 @@ export default function PlayAllPage() {
         </div>
       )}
 
-      <div className="pokedoku-grid">
-        <div className="grid-corner" />
-        {colCategories.map(id => (
-          <div key={id} className="grid-header">{getCategoryLabel(id)}</div>
-        ))}
-        {rowCategories.map((rowId, r) => (
-          <div key={`row-${r}`} style={{ display: "contents" }}>
-            <div className="grid-header">{getCategoryLabel(rowId)}</div>
-            {colCategories.map((_colId, c) => {
-              const idx = r * 3 + c;
-              return (
-                <div key={`cell-${r}-${c}`} className={`grid-cell ${answers[idx] ? "filled" : ""}`}>
-                  <PokemonAutocomplete
-                    value={answers[idx]}
-                    onChange={name => {
-                      const next = [...answers];
-                      next[idx] = name;
-                      setAnswers(next);
-                    }}
-                  />
-                </div>
-              );
-            })}
+      <div style={{ display: "flex", gap: "32px", flexWrap: "wrap", alignItems: "flex-start" }}>
+        {/* Player's submitted grid */}
+        <div>
+          {result && (
+            <h2 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>Your Answers</h2>
+          )}
+          <div className="pokedoku-grid">
+            <div className="grid-corner" />
+            {colCategories.map(id => (
+              <div key={id} className="grid-header">{getCategoryLabel(id)}</div>
+            ))}
+            {rowCategories.map((rowId, r) => (
+              <div key={`row-${r}`} style={{ display: "contents" }}>
+                <div className="grid-header">{getCategoryLabel(rowId)}</div>
+                {colCategories.map((_colId, c) => {
+                  const idx = r * 3 + c;
+                  const cellClass = result
+                    ? result.isCorrect[idx] ? "correct" : "incorrect"
+                    : answers[idx] ? "filled" : "";
+                  return (
+                    <div key={`cell-${r}-${c}`} className={`grid-cell ${cellClass}`}>
+                      {result ? (
+                        <div style={{ textAlign: "center", padding: "4px" }}>
+                          {answers[idx] && (
+                            <>
+                              <img
+                                src={getPokemonSpriteUrl(answers[idx]) || ""}
+                                alt={answers[idx]}
+                                style={{ width: "40px", height: "40px", imageRendering: "pixelated", display: "block", margin: "0 auto 2px" }}
+                              />
+                              <span style={{ fontSize: "0.75rem" }}>{answers[idx]}</span>
+                            </>
+                          )}
+                        </div>
+                      ) : (
+                        <PokemonAutocomplete
+                          value={answers[idx]}
+                          onChange={name => {
+                            const next = [...answers];
+                            next[idx] = name;
+                            setAnswers(next);
+                          }}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        {/* Intended answers grid (shown after submission) */}
+        {result && (
+          <div>
+            <h2 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>Intended Answers</h2>
+            <div className="pokedoku-grid">
+              <div className="grid-corner" />
+              {colCategories.map(id => (
+                <div key={id} className="grid-header">{getCategoryLabel(id)}</div>
+              ))}
+              {rowCategories.map((rowId, r) => (
+                <div key={`row-${r}`} style={{ display: "contents" }}>
+                  <div className="grid-header">{getCategoryLabel(rowId)}</div>
+                  {colCategories.map((colId, c) => {
+                    const idx = r * 3 + c;
+                    const exampleAnswer = result.exampleAnswers[idx];
+                    const validNames = getFilteredPokemonNames(rowId, colId);
+                    return (
+                      <div key={`intended-${r}-${c}`} className="grid-cell correct" style={{ flexDirection: "column", gap: "4px" }}>
+                        {exampleAnswer && (
+                          <>
+                            <img
+                              src={getPokemonSpriteUrl(exampleAnswer) || ""}
+                              alt={exampleAnswer}
+                              style={{ width: "40px", height: "40px", imageRendering: "pixelated" }}
+                            />
+                            <span style={{ fontSize: "0.75rem", textAlign: "center" }}>{exampleAnswer}</span>
+                          </>
+                        )}
+                        <select
+                          defaultValue={exampleAnswer}
+                          style={{ fontSize: "0.7rem", padding: "2px 4px", marginTop: "2px", width: "100%" }}
+                          aria-label={`Valid answers for row ${r + 1}, column ${c + 1}`}
+                        >
+                          {validNames.map(name => (
+                            <option key={name} value={name}>{name}</option>
+                          ))}
+                        </select>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {!result && (

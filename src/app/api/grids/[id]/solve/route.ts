@@ -33,6 +33,7 @@ export async function POST(
   const rowCategories = JSON.parse(grid.row_categories as string) as string[];
   const colCategories = JSON.parse(grid.col_categories as string) as string[];
 
+  const isCorrect: boolean[] = Array(9).fill(false);
   let correctCount = 0;
   for (let row = 0; row < 3; row++) {
     for (let col = 0; col < 3; col++) {
@@ -44,9 +45,12 @@ export async function POST(
           pokemonMatchesCategory(pokemon, rowCategories[row]) &&
           pokemonMatchesCategory(pokemon, colCategories[col])) {
         correctCount++;
+        isCorrect[idx] = true;
       }
     }
   }
+
+  const exampleAnswers = JSON.parse(grid.example_answers as string) as string[];
 
   // Upsert play history
   const existing = await db.execute({
@@ -66,5 +70,5 @@ export async function POST(
     });
   }
 
-  return NextResponse.json({ correctCount });
+  return NextResponse.json({ correctCount, exampleAnswers, isCorrect });
 }
