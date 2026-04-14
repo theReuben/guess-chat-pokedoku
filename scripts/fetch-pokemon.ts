@@ -252,10 +252,17 @@ async function main() {
   }
   console.log("\n  Evolution chains done.");
 
-  // Generation number from generation URL
-  function genNumber(genUrl: string): number {
-    const slug = genUrl.split("/").filter(Boolean).pop()!;
-    const map: Record<string, number> = {
+  // Generation number from generation URL or name slug.
+  // PokéAPI returns URLs like ".../generation/1/" (numeric IDs) for the
+  // species endpoint, but the generation name slug ("generation-i") was
+  // used in older API versions. Support both formats.
+  function genNumber(genUrlOrSlug: string): number {
+    const slug = genUrlOrSlug.split("/").filter(Boolean).pop()!;
+    // Numeric URL suffix (current PokéAPI format: .../generation/1/)
+    const num = parseInt(slug, 10);
+    if (!isNaN(num) && num > 0) return num;
+    // Roman-numeral name slug (e.g. "generation-i")
+    const romanMap: Record<string, number> = {
       "generation-i": 1,
       "generation-ii": 2,
       "generation-iii": 3,
@@ -266,12 +273,32 @@ async function main() {
       "generation-viii": 8,
       "generation-ix": 9,
     };
-    return map[slug] || 0;
+    return romanMap[slug] || 0;
   }
 
   // Process species in batches
   const pokemon: PokemonEntry[] = [];
   const BATCH_SIZE = 20;
+
+  // Regional form suffixes: map variety name suffix → generation introduced
+  const REGIONAL_SUFFIXES: Record<string, number> = {
+    "-alola": 7,
+    "-galar": 8,
+    "-hisui": 8,
+    "-paldea": 9,
+  };
+
+  type SpeciesTyped = {
+    id: number;
+    name: string;
+    generation: { url: string };
+    egg_groups: { name: string }[];
+    is_legendary: boolean;
+    is_mythical: boolean;
+    is_baby: boolean;
+    evolution_chain: { url: string } | null;
+    varieties: { is_default: boolean; pokemon: { name: string; url: string } }[];
+  };
 
   for (let i = 0; i < allSpeciesUrls.length; i += BATCH_SIZE) {
     const batch = allSpeciesUrls.slice(i, i + BATCH_SIZE);
@@ -280,33 +307,31 @@ async function main() {
       batch.map((s) => fetchJson(s.url).catch(() => null))
     );
 
-    // For each species, also fetch the pokemon endpoint for types
-    const pokemonFetches = speciesResults.map((species) => {
-      if (!species) return null;
-      const typed = species as {
-        varieties: { is_default: boolean; pokemon: { url: string } }[];
-      };
-      const defaultVariety = typed.varieties.find((v) => v.is_default);
-      if (!defaultVariety) return null;
-      return fetchJson(defaultVariety.pokemon.url).catch(() => null);
-    });
-
-    const pokemonResults = await Promise.all(pokemonFetches);
+    // For each species, fetch the default variety AND all regional-form varieties
+    const varietyFetches: Promise<unknown>[] = [];
+    const varietyMeta: { speciesIndex: number; varietyName: string; isDefault: boolean }[] = [];
 
     for (let j = 0; j < speciesResults.length; j++) {
-      const species = speciesResults[j] as {
-        id: number;
-        name: string;
-        generation: { url: string };
-        egg_groups: { name: string }[];
-        is_legendary: boolean;
-        is_mythical: boolean;
-        is_baby: boolean;
-        evolution_chain: { url: string } | null;
-        varieties: { is_default: boolean; pokemon: { url: string } }[];
-      } | null;
+      const species = speciesResults[j] as SpeciesTyped | null;
+      if (!species) continue;
 
-      const pokemonData = pokemonResults[j] as {
+      for (const v of species.varieties) {
+        const isRegional = Object.keys(REGIONAL_SUFFIXES).some(sfx =>
+          v.pokemon.name.endsWith(sfx)
+        );
+        if (v.is_default || isRegional) {
+          varietyFetches.push(fetchJson(v.pokemon.url).catch(() => null));
+          varietyMeta.push({ speciesIndex: j, varietyName: v.pokemon.name, isDefault: v.is_default });
+        }
+      }
+    }
+
+    const varietyResults = await Promise.all(varietyFetches);
+
+    for (let k = 0; k < varietyResults.length; k++) {
+      const meta = varietyMeta[k];
+      const species = speciesResults[meta.speciesIndex] as SpeciesTyped | null;
+      const pokemonData = varietyResults[k] as {
         types: { type: { name: string } }[];
         moves: { move: { name: string } }[];
         abilities: { ability: { name: string } }[];
@@ -317,10 +342,18 @@ async function main() {
       if (!species || !pokemonData) continue;
 
       const dexNumber = species.id;
-      const gen = genNumber(species.generation.url);
 
-      // Format the name nicely
-      const name = species.name
+      // Determine generation: species generation for default, regional suffix map for forms
+      let gen: number;
+      if (meta.isDefault) {
+        gen = genNumber(species.generation.url);
+      } else {
+        const sfx = Object.keys(REGIONAL_SUFFIXES).find(s => meta.varietyName.endsWith(s));
+        gen = sfx ? REGIONAL_SUFFIXES[sfx] : genNumber(species.generation.url);
+      }
+
+      // Format the name nicely (capitalize each hyphen-separated segment)
+      const name = meta.varietyName
         .split("-")
         .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
         .join("-");
@@ -330,7 +363,7 @@ async function main() {
       const moves = pokemonData.moves.map((m) => m.move.name);
       const abilities = pokemonData.abilities.map((a) => a.ability.name);
 
-      // Evolution methods
+      // Evolution methods (keyed by species/dex number)
       const methods = evoMethods.get(dexNumber);
       let evolutionMethod: string[] = [];
       if (methods && methods.size > 0) {
