@@ -2,7 +2,7 @@
 
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { CATEGORIES, findPokemon, pokemonMatchesCategory } from "@/data/pokemon";
+import { getLabelForCategoryId, findPokemon, pokemonMatchesCategory } from "@/data/pokemon";
 
 interface Entry {
   grid_id: string;
@@ -50,7 +50,7 @@ function ResultsInner() {
   }, [sessionId]);
 
   function getCategoryLabel(id: string): string {
-    return CATEGORIES.find(c => c.id === id)?.label || id;
+    return getLabelForCategoryId(id);
   }
 
   if (loading) return <p style={{ color: "var(--text-secondary)" }}>Loading...</p>;
