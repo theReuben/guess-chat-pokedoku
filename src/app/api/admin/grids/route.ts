@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
-  const db = getDb();
+  const db = await getDb();
   const result = await db.execute(
     `SELECT g.*, u.display_name as creator_name, u.discord_username
     FROM grids g

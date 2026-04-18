@@ -11,7 +11,7 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
+  const db = await getDb();
 
   // Find existing in-progress session
   let guessSessionResult = await db.execute({
@@ -89,7 +89,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
+  const db = await getDb();
 
   const guessSessionResult = await db.execute({
     sql: "SELECT * FROM guess_sessions WHERE player_id = ? AND status = 'in_progress' ORDER BY created_at DESC LIMIT 1",

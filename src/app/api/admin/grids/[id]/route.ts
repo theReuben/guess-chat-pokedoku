@@ -13,7 +13,7 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const db = getDb();
+  const db = await getDb();
 
   const gridResult = await db.execute({
     sql: "SELECT * FROM grids WHERE id = ?",
@@ -62,7 +62,7 @@ export async function DELETE(
   }
 
   const { id } = await params;
-  const db = getDb();
+  const db = await getDb();
   await db.execute({ sql: "DELETE FROM grids WHERE id = ?", args: [id] });
   return NextResponse.json({ ok: true });
 }
