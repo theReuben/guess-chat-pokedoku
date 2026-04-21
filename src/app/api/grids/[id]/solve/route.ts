@@ -15,7 +15,7 @@ export async function POST(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
+  const db = await getDb();
   const gridResult = await db.execute({
     sql: "SELECT * FROM grids WHERE id = ?",
     args: [gridId],

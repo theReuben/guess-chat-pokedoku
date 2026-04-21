@@ -22,7 +22,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.username = profile.username;
         token.avatar = profile.avatar;
 
-        const db = getDb();
+        const db = await getDb();
         const avatarUrl = profile.avatar
           ? `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`
           : null;

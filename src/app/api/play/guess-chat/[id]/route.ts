@@ -13,7 +13,7 @@ export async function PATCH(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
+  const db = await getDb();
   const guessSessionResult = await db.execute({
     sql: "SELECT * FROM guess_sessions WHERE id = ? AND player_id = ?",
     args: [sessionId, session.user.id],
@@ -68,7 +68,7 @@ export async function GET(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
+  const db = await getDb();
   const guessSessionResult = await db.execute({
     sql: "SELECT * FROM guess_sessions WHERE id = ? AND player_id = ?",
     args: [sessionId, session.user.id],

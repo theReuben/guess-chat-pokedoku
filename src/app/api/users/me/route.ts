@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
+  const db = await getDb();
   const result = await db.execute({
     sql: "SELECT * FROM users WHERE id = ?",
     args: [session.user.id],
@@ -36,7 +36,7 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: "Display name must be 32 characters or less" }, { status: 400 });
   }
 
-  const db = getDb();
+  const db = await getDb();
   await db.execute({
     sql: "UPDATE users SET display_name = ?, updated_at = datetime('now') WHERE id = ?",
     args: [displayName.trim(), session.user.id],
