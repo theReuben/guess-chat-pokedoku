@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const replay = searchParams.get("replay") === "true";
 
-  const db = getDb();
+  const db = await getDb();
 
   if (replay) {
     // Get a random grid the user HAS already played, excluding their own and submissions

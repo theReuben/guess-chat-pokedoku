@@ -14,7 +14,7 @@ export async function GET(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
+  const db = await getDb();
   const result = await db.execute({
     sql: "SELECT * FROM grids WHERE id = ?",
     args: [id],
@@ -37,7 +37,7 @@ export async function PATCH(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
+  const db = await getDb();
   const gridResult = await db.execute({
     sql: "SELECT * FROM grids WHERE id = ?",
     args: [id],
@@ -125,7 +125,7 @@ export async function DELETE(
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
+  const db = await getDb();
   const gridResult = await db.execute({
     sql: "SELECT * FROM grids WHERE id = ?",
     args: [id],

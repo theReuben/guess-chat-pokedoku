@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
+  const db = await getDb();
   const result = await db.execute(
     "SELECT id, display_name, avatar_url FROM users ORDER BY display_name"
   );

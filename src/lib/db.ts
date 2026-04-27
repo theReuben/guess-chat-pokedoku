@@ -1,17 +1,17 @@
 import { createClient, type Client } from "@libsql/client";
 
-let db: Client;
+let db: Client | null = null;
+let initPromise: Promise<Client> | null = null;
 
-export function getDb(): Client {
-  if (!db) {
+export function getDb(): Promise<Client> {
+  if (!initPromise) {
     db = createClient({
       url: process.env.TURSO_DATABASE_URL || "file:local.db",
       authToken: process.env.TURSO_AUTH_TOKEN,
     });
-    // Initialize tables on first use
-    initializeDb(db);
+    initPromise = initializeDb(db).then(() => db!);
   }
-  return db;
+  return initPromise;
 }
 
 async function initializeDb(db: Client) {
