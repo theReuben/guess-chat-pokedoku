@@ -11,7 +11,7 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const db = getDb();
+  const db = await getDb();
   const result = await db.execute({
     sql: "SELECT * FROM grids WHERE created_by = ? ORDER BY created_at DESC",
     args: [session.user.id],
@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
   }
 
   const id = generateId();
-  const db = getDb();
+  const db = await getDb();
   await db.execute({
     sql: "INSERT INTO grids (id, created_by, row_categories, col_categories, example_answers) VALUES (?, ?, ?, ?, ?)",
     args: [id, session.user.id, JSON.stringify(rowCategories), JSON.stringify(colCategories), JSON.stringify(exampleAnswers)],
