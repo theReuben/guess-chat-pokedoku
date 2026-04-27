@@ -17,60 +17,40 @@ export async function GET(request: NextRequest) {
   let discordOAuthUrl: string | null = null;
   let stateCookies: string[] = [];
 
-  const sharedHeaders = {
-    host: request.headers.get("host") || "",
-    "x-forwarded-host":
-      request.headers.get("x-forwarded-host") ||
-      request.headers.get("host") ||
-      "",
-    "user-agent": "internal",
-    "x-forwarded-proto": request.headers.get("x-forwarded-proto") || "https",
-  };
-
   try {
-    // Fetch a fresh CSRF token first; NextAuth v5 requires it in the POST body.
-    const csrfUrl = new URL("/api/auth/csrf", request.url);
-    const csrfResponse = await fetch(csrfUrl.toString(), {
-      headers: {
-        ...sharedHeaders,
-        cookie: request.headers.get("cookie") || "",
-      },
-    });
-    const { csrfToken } = await csrfResponse.json() as { csrfToken: string };
-    const csrfCookies: string[] = typeof (csrfResponse.headers as any).getSetCookie === "function"
-      ? (csrfResponse.headers as any).getSetCookie() as string[]
-      : csrfResponse.headers.get("set-cookie") ? [csrfResponse.headers.get("set-cookie") as string] : [];
-
-    // Merge the original request cookies with any new CSRF cookies.
-    const existingCookie = request.headers.get("cookie") || "";
-    const csrfCookieHeader = csrfCookies
-      .map(c => c.split(";")[0])
-      .join("; ");
-    const mergedCookie = [existingCookie, csrfCookieHeader].filter(Boolean).join("; ");
-
     const response = await fetch(signinUrl.toString(), {
       method: "POST",
       headers: {
         "content-type": "application/x-www-form-urlencoded",
-        cookie: mergedCookie,
-        ...sharedHeaders,
+        cookie: request.headers.get("cookie") || "",
+        host: request.headers.get("host") || "",
+        // x-forwarded-host carries the real public hostname on Vercel/proxies;
+        // NextAuth v5 needs it to build the correct OAuth callback URL.
+        "x-forwarded-host":
+          request.headers.get("x-forwarded-host") ||
+          request.headers.get("host") ||
+          "",
+        // Use a non-mobile UA so this internal call isn't intercepted again
+        "user-agent": "internal",
+        "x-forwarded-proto": request.headers.get("x-forwarded-proto") || "https",
       },
-      body: new URLSearchParams({ csrfToken }),
       redirect: "manual",
     });
 
     discordOAuthUrl = response.headers.get("location");
 
     // getSetCookie() is Node 18+ / undici; fall back to get() for older runtimes
-    const signinCookies: string[] = typeof (response.headers as any).getSetCookie === "function"
-      ? (response.headers as any).getSetCookie() as string[]
-      : response.headers.get("set-cookie") ? [response.headers.get("set-cookie") as string] : [];
-    stateCookies = [...csrfCookies, ...signinCookies];
+    if (typeof (response.headers as any).getSetCookie === "function") {
+      stateCookies = (response.headers as any).getSetCookie() as string[];
+    } else {
+      const raw = response.headers.get("set-cookie");
+      if (raw) stateCookies = [raw];
+    }
   } catch {
     return NextResponse.redirect(new URL("/api/auth/signin", request.url));
   }
 
-  if (!discordOAuthUrl || !discordOAuthUrl.includes("discord.com")) {
+  if (!discordOAuthUrl || !discordOAuthUrl.includes("discord.com/oauth2/authorize")) {
     return NextResponse.redirect(new URL("/api/auth/signin", request.url));
   }
 
