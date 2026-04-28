@@ -1,4 +1,9 @@
-export default function Home() {
+import { auth } from "@/lib/auth";
+
+export default async function Home() {
+  const session = await auth();
+  const isLoggedIn = !!session?.user?.id;
+
   return (
     <div style={{ textAlign: "center", paddingTop: "40px" }}>
       <h1 style={{ fontSize: "clamp(2rem, 8vw, 3rem)", fontWeight: 800, marginBottom: "16px" }}>
@@ -43,15 +48,17 @@ export default function Home() {
         </a>
       </div>
 
-      <div style={{ marginTop: "40px" }}>
-        <a
-          href="/api/auth/discord-mobile"
-          className="btn btn-primary"
-          style={{ padding: "14px 32px", fontSize: "1.05rem", borderRadius: "10px" }}
-        >
-          Sign in with Discord
-        </a>
-      </div>
+      {!isLoggedIn && (
+        <div style={{ marginTop: "40px" }}>
+          <a
+            href="/api/auth/discord-mobile"
+            className="btn btn-primary"
+            style={{ padding: "14px 32px", fontSize: "1.05rem", borderRadius: "10px" }}
+          >
+            Sign in with Discord
+          </a>
+        </div>
+      )}
     </div>
   );
 }
