@@ -192,6 +192,10 @@ export function pokemonMatchesCategory(pokemon: Pokemon, categoryId: string): bo
       );
     }
     case "evo":
+      if (value === "has-mega") {
+        // Mega forms themselves have "has-mega" in evolutionMethod but should only match "is-mega"
+        return pokemon.evolutionMethod.includes("has-mega") && !pokemon.status.includes("is-mega");
+      }
       return pokemon.evolutionMethod.includes(value);
     case "status":
       return pokemon.status.includes(value);
@@ -341,6 +345,9 @@ export function getFilteredPokemonNames(rowCategoryId?: string, colCategoryId?: 
   }
   return names;
 }
+
+export const SUBSTITUTE_SPRITE_URL =
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/substitute.png";
 
 // Get sprite URL for a Pokémon (uses PokéAPI sprites)
 export function getPokemonSpriteUrl(name: string): string | null {
