@@ -227,7 +227,7 @@
       "grass",
       "poison"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "monster",
       "plant"
@@ -889,7 +889,7 @@
       "fire",
       "dragon"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "monster",
       "dragon"
@@ -1047,7 +1047,7 @@
       "fire",
       "flying"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "monster",
       "dragon"
@@ -1606,7 +1606,7 @@
     "types": [
       "water"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "monster",
       "water1"
@@ -2084,7 +2084,7 @@
       "bug",
       "poison"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "bug"
     ],
@@ -2368,7 +2368,7 @@
       "normal",
       "flying"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "flying"
     ],
@@ -8695,7 +8695,7 @@
     "types": [
       "psychic"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "humanshape"
     ],
@@ -10594,7 +10594,7 @@
       "water",
       "psychic"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "monster",
       "water1"
@@ -12633,7 +12633,7 @@
       "ghost",
       "poison"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "indeterminate"
     ],
@@ -15498,7 +15498,7 @@
     "types": [
       "normal"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "monster"
     ],
@@ -16943,7 +16943,7 @@
       "bug",
       "flying"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "bug"
     ],
@@ -17513,7 +17513,7 @@
       "water",
       "dark"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "water2",
       "dragon"
@@ -18963,7 +18963,7 @@
       "rock",
       "flying"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "flying"
     ],
@@ -20053,7 +20053,7 @@
       "psychic",
       "fighting"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "no-eggs"
     ],
@@ -20246,7 +20246,7 @@
     "types": [
       "psychic"
     ],
-    "generation": 6,
+    "generation": 1,
     "eggGroups": [
       "no-eggs"
     ],
@@ -24529,7 +24529,7 @@
       "electric",
       "dragon"
     ],
-    "generation": 6,
+    "generation": 2,
     "eggGroups": [
       "monster",
       "ground"
@@ -27644,7 +27644,7 @@
       "steel",
       "ground"
     ],
-    "generation": 6,
+    "generation": 2,
     "eggGroups": [
       "mineral"
     ],
@@ -28316,7 +28316,7 @@
       "bug",
       "steel"
     ],
-    "generation": 6,
+    "generation": 2,
     "eggGroups": [
       "bug"
     ],
@@ -28794,7 +28794,7 @@
       "bug",
       "fighting"
     ],
-    "generation": 6,
+    "generation": 2,
     "eggGroups": [
       "bug"
     ],
@@ -30721,7 +30721,7 @@
       "dark",
       "fire"
     ],
-    "generation": 6,
+    "generation": 2,
     "eggGroups": [
       "ground"
     ],
@@ -32787,7 +32787,7 @@
       "rock",
       "dark"
     ],
-    "generation": 6,
+    "generation": 2,
     "eggGroups": [
       "monster"
     ],
@@ -33759,7 +33759,7 @@
       "grass",
       "dragon"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "monster",
       "dragon"
@@ -34432,7 +34432,7 @@
       "fire",
       "fighting"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "ground"
     ],
@@ -34812,7 +34812,7 @@
       "water",
       "ground"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "monster",
       "water1"
@@ -37361,7 +37361,7 @@
       "psychic",
       "fairy"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "humanshape",
       "indeterminate"
@@ -39592,7 +39592,7 @@
       "dark",
       "ghost"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "humanshape"
     ],
@@ -40051,7 +40051,7 @@
       "steel",
       "fairy"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "ground",
       "fairy"
@@ -40531,7 +40531,7 @@
     "types": [
       "steel"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "monster"
     ],
@@ -40947,7 +40947,7 @@
       "fighting",
       "psychic"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "humanshape"
     ],
@@ -41265,7 +41265,7 @@
     "types": [
       "electric"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "ground"
     ],
@@ -42234,7 +42234,7 @@
       "water",
       "dark"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "water2"
     ],
@@ -42867,7 +42867,7 @@
       "fire",
       "ground"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "ground"
     ],
@@ -44325,7 +44325,7 @@
       "dragon",
       "fairy"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "flying",
       "dragon"
@@ -46672,7 +46672,7 @@
     "types": [
       "ghost"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "indeterminate"
     ],
@@ -47406,7 +47406,7 @@
     "types": [
       "dark"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "ground"
     ],
@@ -47770,7 +47770,7 @@
     "types": [
       "ice"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "fairy",
       "mineral"
@@ -48772,7 +48772,7 @@
       "dragon",
       "flying"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "dragon"
     ],
@@ -49167,7 +49167,7 @@
       "steel",
       "psychic"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "mineral"
     ],
@@ -49909,7 +49909,7 @@
       "dragon",
       "psychic"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "no-eggs"
     ],
@@ -50199,7 +50199,7 @@
       "dragon",
       "psychic"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "no-eggs"
     ],
@@ -50437,7 +50437,7 @@
     "types": [
       "water"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "no-eggs"
     ],
@@ -50668,7 +50668,7 @@
       "ground",
       "fire"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "no-eggs"
     ],
@@ -50802,7 +50802,7 @@
       "dragon",
       "flying"
     ],
-    "generation": 6,
+    "generation": 3,
     "eggGroups": [
       "no-eggs"
     ],
@@ -56298,7 +56298,7 @@
       "normal",
       "fighting"
     ],
-    "generation": 6,
+    "generation": 4,
     "eggGroups": [
       "ground",
       "humanshape"
@@ -58309,7 +58309,7 @@
       "dragon",
       "ground"
     ],
-    "generation": 6,
+    "generation": 4,
     "eggGroups": [
       "monster",
       "dragon"
@@ -58826,7 +58826,7 @@
       "fighting",
       "steel"
     ],
-    "generation": 6,
+    "generation": 4,
     "eggGroups": [
       "ground",
       "humanshape"
@@ -60243,7 +60243,7 @@
       "grass",
       "ice"
     ],
-    "generation": 6,
+    "generation": 4,
     "eggGroups": [
       "monster",
       "plant"
@@ -62238,7 +62238,7 @@
       "psychic",
       "fighting"
     ],
-    "generation": 6,
+    "generation": 4,
     "eggGroups": [
       "humanshape",
       "indeterminate"
@@ -68887,7 +68887,7 @@
       "normal",
       "fairy"
     ],
-    "generation": 6,
+    "generation": 5,
     "eggGroups": [
       "fairy"
     ],

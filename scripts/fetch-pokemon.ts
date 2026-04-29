@@ -446,7 +446,7 @@ async function main() {
       if (meta.isDefault) {
         gen = genNumber(species.generation.url);
       } else if (isMegaVariety) {
-        gen = 6; // All mega/primal forms introduced in Gen 6
+        gen = genNumber(species.generation.url); // Mega inherits base Pokémon's generation
       } else {
         const regSfx = Object.keys(REGIONAL_SUFFIXES).find(s => meta.varietyName.endsWith(s));
         const extraSfx = Object.keys(EXTRA_FORM_SUFFIXES).find(s => meta.varietyName.endsWith(s));
