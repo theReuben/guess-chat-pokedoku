@@ -60,6 +60,7 @@ export const CATEGORIES: Category[] = [
   { id: "evo-friendship", label: "Evolves by Friendship", type: "evolution" },
   { id: "evo-level", label: "Evolves by Level Up", type: "evolution" },
   { id: "evo-has-mega", label: "Has Mega Evolution", type: "evolution" },
+  { id: "evo-has-gmax", label: "Has G-Max Form", type: "evolution" },
 
   // Status
   { id: "status-legendary", label: "Legendary", type: "status" },

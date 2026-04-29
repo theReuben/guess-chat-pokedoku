@@ -179,6 +179,19 @@ const HAS_MEGA = new Set([
   359, 362, 373, 376, 380, 381, 384, 428, 445, 448, 460, 475, 531, 719,
 ]);
 
+// Pokémon that have Gigantamax forms (by national dex number)
+const HAS_GMAX = new Set([
+  3, 6, 9, 12, 25, 52, 68, 94, 99, 131, 133, 143,
+  569, 809, 812, 815, 818, 823, 826, 834, 839, 841, 842,
+  844, 849, 851, 858, 861, 869, 879, 884, 892,
+]);
+
+// Additional form varieties to include beyond regional forms (variety name suffix → generation)
+const EXTRA_FORM_SUFFIXES: Record<string, number> = {
+  "-droopy": 9,
+  "-stretchy": 9,
+};
+
 // --- Main fetch logic ---
 
 interface PokemonEntry {
@@ -319,7 +332,10 @@ async function main() {
         const isRegional = Object.keys(REGIONAL_SUFFIXES).some(sfx =>
           v.pokemon.name.endsWith(sfx)
         );
-        if (v.is_default || isRegional) {
+        const isExtraForm = Object.keys(EXTRA_FORM_SUFFIXES).some(sfx =>
+          v.pokemon.name.endsWith(sfx)
+        );
+        if (v.is_default || isRegional || isExtraForm) {
           varietyFetches.push(fetchJson(v.pokemon.url).catch(() => null));
           varietyMeta.push({ speciesIndex: j, varietyName: v.pokemon.name, isDefault: v.is_default });
         }
@@ -343,13 +359,16 @@ async function main() {
 
       const dexNumber = species.id;
 
-      // Determine generation: species generation for default, regional suffix map for forms
+      // Determine generation: species generation for default, suffix map for forms
       let gen: number;
       if (meta.isDefault) {
         gen = genNumber(species.generation.url);
       } else {
-        const sfx = Object.keys(REGIONAL_SUFFIXES).find(s => meta.varietyName.endsWith(s));
-        gen = sfx ? REGIONAL_SUFFIXES[sfx] : genNumber(species.generation.url);
+        const regSfx = Object.keys(REGIONAL_SUFFIXES).find(s => meta.varietyName.endsWith(s));
+        const extraSfx = Object.keys(EXTRA_FORM_SUFFIXES).find(s => meta.varietyName.endsWith(s));
+        gen = regSfx ? REGIONAL_SUFFIXES[regSfx]
+            : extraSfx ? EXTRA_FORM_SUFFIXES[extraSfx]
+            : genNumber(species.generation.url);
       }
 
       // Format the name nicely (capitalize each hyphen-separated segment)
@@ -375,6 +394,11 @@ async function main() {
       // Add mega
       if (HAS_MEGA.has(dexNumber)) {
         evolutionMethod.push("has-mega");
+      }
+
+      // Add gmax
+      if (HAS_GMAX.has(dexNumber)) {
+        evolutionMethod.push("has-gmax");
       }
 
       // Status

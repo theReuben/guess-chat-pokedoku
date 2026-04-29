@@ -234,7 +234,8 @@
     ],
     "evolutionMethod": [
       "level",
-      "has-mega"
+      "has-mega",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -614,7 +615,8 @@
     ],
     "evolutionMethod": [
       "level",
-      "has-mega"
+      "has-mega",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -1026,7 +1028,8 @@
     ],
     "evolutionMethod": [
       "level",
-      "has-mega"
+      "has-mega",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -1225,7 +1228,8 @@
       "bug"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -2461,7 +2465,8 @@
       "fairy"
     ],
     "evolutionMethod": [
-      "friendship"
+      "friendship",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -5988,7 +5993,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -6122,7 +6128,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-gmax"
     ],
     "status": [],
     "moves": [],
@@ -6145,7 +6152,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-gmax"
     ],
     "status": [],
     "moves": [],
@@ -8149,7 +8157,8 @@
       "humanshape"
     ],
     "evolutionMethod": [
-      "trade"
+      "trade",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -11397,7 +11406,8 @@
     ],
     "evolutionMethod": [
       "trade",
-      "has-mega"
+      "has-mega",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -12044,7 +12054,8 @@
       "water3"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -16015,7 +16026,8 @@
       "water1"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -16175,7 +16187,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -17332,7 +17345,8 @@
       "monster"
     ],
     "evolutionMethod": [
-      "friendship"
+      "friendship",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -64830,7 +64844,8 @@
       "mineral"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -88453,7 +88468,8 @@
       "no-eggs"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-gmax"
     ],
     "status": [
       "mythical"
@@ -88693,7 +88709,8 @@
       "plant"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -88965,7 +88982,8 @@
       "humanshape"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -89210,7 +89228,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -89600,7 +89619,8 @@
       "flying"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -89787,7 +89807,8 @@
       "bug"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -90303,7 +90324,8 @@
       "water1"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -90674,7 +90696,8 @@
       "mineral"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -90800,7 +90823,8 @@
       "dragon"
     ],
     "evolutionMethod": [
-      "item"
+      "item",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -90878,7 +90902,8 @@
       "dragon"
     ],
     "evolutionMethod": [
-      "item"
+      "item",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -91031,7 +91056,8 @@
       "dragon"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -91381,7 +91407,8 @@
       "humanshape"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -91548,7 +91575,8 @@
       "bug"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -92055,7 +92083,8 @@
       "fairy"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -92301,7 +92330,8 @@
       "humanshape"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -93026,7 +93056,8 @@
       "indeterminate"
     ],
     "evolutionMethod": [
-      "other"
+      "other",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -93811,7 +93842,8 @@
       "mineral"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -94215,7 +94247,8 @@
       "dragon"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-gmax"
     ],
     "status": [],
     "moves": [
@@ -94867,7 +94900,8 @@
       "no-eggs"
     ],
     "evolutionMethod": [
-      "other"
+      "other",
+      "has-gmax"
     ],
     "status": [
       "legendary"
@@ -101291,6 +101325,126 @@
   },
   {
     "name": "Tatsugiri",
+    "dexNumber": 978,
+    "types": [
+      "dragon",
+      "water"
+    ],
+    "generation": 9,
+    "eggGroups": [
+      "water2"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [],
+    "moves": [
+      "take-down",
+      "water-gun",
+      "hydro-pump",
+      "surf",
+      "hyper-beam",
+      "counter",
+      "harden",
+      "splash",
+      "rest",
+      "substitute",
+      "protect",
+      "icy-wind",
+      "outrage",
+      "endure",
+      "sleep-talk",
+      "baton-pass",
+      "rapid-spin",
+      "rain-dance",
+      "mirror-coat",
+      "whirlpool",
+      "memento",
+      "facade",
+      "taunt",
+      "helping-hand",
+      "muddy-water",
+      "dragon-dance",
+      "water-pulse",
+      "dragon-pulse",
+      "giga-impact",
+      "nasty-plot",
+      "draco-meteor",
+      "soak",
+      "lunge",
+      "tera-blast",
+      "chilling-water",
+      "dragon-cheer"
+    ],
+    "abilities": [
+      "commander",
+      "storm-drain"
+    ],
+    "weight": 80,
+    "height": 3
+  },
+  {
+    "name": "Tatsugiri-Droopy",
+    "dexNumber": 978,
+    "types": [
+      "dragon",
+      "water"
+    ],
+    "generation": 9,
+    "eggGroups": [
+      "water2"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [],
+    "moves": [
+      "take-down",
+      "water-gun",
+      "hydro-pump",
+      "surf",
+      "hyper-beam",
+      "counter",
+      "harden",
+      "splash",
+      "rest",
+      "substitute",
+      "protect",
+      "icy-wind",
+      "outrage",
+      "endure",
+      "sleep-talk",
+      "baton-pass",
+      "rapid-spin",
+      "rain-dance",
+      "mirror-coat",
+      "whirlpool",
+      "memento",
+      "facade",
+      "taunt",
+      "helping-hand",
+      "muddy-water",
+      "dragon-dance",
+      "water-pulse",
+      "dragon-pulse",
+      "giga-impact",
+      "nasty-plot",
+      "draco-meteor",
+      "soak",
+      "lunge",
+      "tera-blast",
+      "chilling-water",
+      "dragon-cheer"
+    ],
+    "abilities": [
+      "commander",
+      "storm-drain"
+    ],
+    "weight": 80,
+    "height": 3
+  },
+  {
+    "name": "Tatsugiri-Stretchy",
     "dexNumber": 978,
     "types": [
       "dragon",
