@@ -179,6 +179,97 @@ const HAS_MEGA = new Set([
   359, 362, 373, 376, 380, 381, 384, 428, 445, 448, 460, 475, 531, 719,
 ]);
 
+// Mega and Primal form variety name suffixes (PokéAPI variety names)
+const MEGA_FORM_SUFFIXES = ["-mega", "-mega-x", "-mega-y", "-primal"];
+
+// Pokémon that have Gigantamax forms (by national dex number)
+const HAS_GMAX = new Set([
+  3, 6, 9, 12, 25, 52, 68, 94, 99, 131, 133, 143,
+  569, 809, 812, 815, 818, 823, 826, 834, 839, 841, 842,
+  844, 849, 851, 858, 861, 869, 879, 884, 892,
+]);
+
+// Additional form varieties to include beyond regional forms (variety name suffix → generation).
+// These are non-regional alternate forms with meaningful gameplay differences.
+const EXTRA_FORM_SUFFIXES: Record<string, number> = {
+  // Tatsugiri forms (Gen 9)
+  "-droopy": 9,
+  "-stretchy": 9,
+  // Wormadam (Gen 4)
+  "-sandy": 4,
+  "-trash": 4,
+  // Rotom appliances (Gen 4)
+  "-heat": 4,
+  "-wash": 4,
+  "-frost": 4,
+  "-fan": 4,
+  "-mow": 4,
+  // Deoxys (Gen 3)
+  "-attack": 3,
+  "-defense": 3,
+  "-speed": 3,
+  // Giratina Origin / Shaymin Sky (Gen 4)
+  "-origin": 4,
+  "-sky": 4,
+  // Forces of Nature Therian (Gen 5/8)
+  "-therian": 5,
+  // Kyurem fusions (Gen 5)
+  "-black": 5,
+  "-white": 5,
+  // Meloetta Pirouette (Gen 5)
+  "-pirouette": 5,
+  // Aegislash Blade (Gen 6)
+  "-blade": 6,
+  // Zygarde forms introduced in Gen 7
+  "-10-power-construct": 7,
+  "-complete": 7,
+  // Oricorio (Gen 7)
+  "-pompom": 7,
+  "-pau": 7,
+  "-sensu": 7,
+  // Lycanroc (Gen 7)
+  "-midnight": 7,
+  "-dusk": 7,
+  // Wishiwashi School (Gen 7)
+  "-school": 7,
+  // Minior Core (Gen 7)
+  "-core-red": 7,
+  // Necrozma fusions (Gen 7)
+  "-dusk-mane": 7,
+  "-dawn-wings": 7,
+  "-ultra": 7,
+  // Gender forms (Gen 6/8/9)
+  "-f": 6,
+  // Basculin (Gen 5)
+  "-blue-striped": 5,
+  "-white-striped": 5,
+  // Urshifu Rapid Strike (Gen 8)
+  "-rapid-strike": 8,
+  // Calyrex fusions (Gen 8)
+  "-ice-rider": 8,
+  "-shadow-rider": 8,
+  // Maushold (Gen 9)
+  "-family-of-three": 9,
+  // Squawkabilly (Gen 9)
+  "-yellow-plumage": 9,
+  "-white-plumage": 9,
+  "-blue-plumage": 9,
+  // Gimmighoul Roaming (Gen 9)
+  "-roaming": 9,
+  // Palafin Hero (Gen 9)
+  "-hero": 9,
+  // Ogerpon mask forms (Gen 9)
+  "-wellspring-mask": 9,
+  "-hearthflame-mask": 9,
+  "-cornerstone-mask": 9,
+  // Terapagos (Gen 9)
+  "-terastal": 9,
+  "-stellar": 9,
+  // Poltchageist / Sinistcha (Gen 9)
+  "-artisan": 9,
+  "-masterpiece": 9,
+};
+
 // --- Main fetch logic ---
 
 interface PokemonEntry {
@@ -319,7 +410,13 @@ async function main() {
         const isRegional = Object.keys(REGIONAL_SUFFIXES).some(sfx =>
           v.pokemon.name.endsWith(sfx)
         );
-        if (v.is_default || isRegional) {
+        const isExtraForm = Object.keys(EXTRA_FORM_SUFFIXES).some(sfx =>
+          v.pokemon.name.endsWith(sfx)
+        );
+        const isMegaForm = MEGA_FORM_SUFFIXES.some(sfx =>
+          v.pokemon.name.endsWith(sfx)
+        );
+        if (v.is_default || isRegional || isExtraForm || isMegaForm) {
           varietyFetches.push(fetchJson(v.pokemon.url).catch(() => null));
           varietyMeta.push({ speciesIndex: j, varietyName: v.pokemon.name, isDefault: v.is_default });
         }
@@ -343,13 +440,19 @@ async function main() {
 
       const dexNumber = species.id;
 
-      // Determine generation: species generation for default, regional suffix map for forms
+      // Determine generation: species generation for default, suffix map for forms
+      const isMegaVariety = MEGA_FORM_SUFFIXES.some(s => meta.varietyName.endsWith(s));
       let gen: number;
       if (meta.isDefault) {
         gen = genNumber(species.generation.url);
+      } else if (isMegaVariety) {
+        gen = genNumber(species.generation.url); // Mega inherits base Pokémon's generation
       } else {
-        const sfx = Object.keys(REGIONAL_SUFFIXES).find(s => meta.varietyName.endsWith(s));
-        gen = sfx ? REGIONAL_SUFFIXES[sfx] : genNumber(species.generation.url);
+        const regSfx = Object.keys(REGIONAL_SUFFIXES).find(s => meta.varietyName.endsWith(s));
+        const extraSfx = Object.keys(EXTRA_FORM_SUFFIXES).find(s => meta.varietyName.endsWith(s));
+        gen = regSfx ? REGIONAL_SUFFIXES[regSfx]
+            : extraSfx ? EXTRA_FORM_SUFFIXES[extraSfx]
+            : genNumber(species.generation.url);
       }
 
       // Format the name nicely (capitalize each hyphen-separated segment)
@@ -377,6 +480,11 @@ async function main() {
         evolutionMethod.push("has-mega");
       }
 
+      // Add gmax
+      if (HAS_GMAX.has(dexNumber)) {
+        evolutionMethod.push("has-gmax");
+      }
+
       // Status
       const status: string[] = [];
       if (species.is_legendary) status.push("legendary");
@@ -387,6 +495,7 @@ async function main() {
       if (PSEUDO_LEGENDARIES.has(dexNumber)) status.push("pseudo");
       if (ULTRA_BEASTS.has(dexNumber)) status.push("ultra-beast");
       if (PARADOX_POKEMON.has(dexNumber)) status.push("paradox");
+      if (isMegaVariety) status.push("is-mega");
 
       pokemon.push({
         name,
