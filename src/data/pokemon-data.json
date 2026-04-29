@@ -221,129 +221,6 @@
     "height": 10
   },
   {
-    "name": "Mega-Venusaur",
-    "dexNumber": 3,
-    "types": [
-      "grass",
-      "poison"
-    ],
-    "generation": 1,
-    "eggGroups": [
-      "monster",
-      "plant"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "is-mega"
-    ],
-    "moves": [
-      "swords-dance",
-      "cut",
-      "bind",
-      "vine-whip",
-      "headbutt",
-      "tackle",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "growl",
-      "roar",
-      "hyper-beam",
-      "strength",
-      "mega-drain",
-      "leech-seed",
-      "growth",
-      "razor-leaf",
-      "solar-beam",
-      "poison-powder",
-      "sleep-powder",
-      "petal-dance",
-      "string-shot",
-      "earthquake",
-      "toxic",
-      "rage",
-      "mimic",
-      "double-team",
-      "defense-curl",
-      "light-screen",
-      "reflect",
-      "bide",
-      "amnesia",
-      "flash",
-      "rest",
-      "substitute",
-      "snore",
-      "curse",
-      "protect",
-      "scary-face",
-      "sludge-bomb",
-      "mud-slap",
-      "outrage",
-      "giga-drain",
-      "endure",
-      "charm",
-      "false-swipe",
-      "swagger",
-      "fury-cutter",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "safeguard",
-      "sweet-scent",
-      "synthesis",
-      "hidden-power",
-      "sunny-day",
-      "rock-smash",
-      "facade",
-      "nature-power",
-      "helping-hand",
-      "ingrain",
-      "knock-off",
-      "secret-power",
-      "weather-ball",
-      "bullet-seed",
-      "block",
-      "frenzy-plant",
-      "magical-leaf",
-      "natural-gift",
-      "worry-seed",
-      "poison-jab",
-      "seed-bomb",
-      "energy-ball",
-      "earth-power",
-      "giga-impact",
-      "rock-climb",
-      "leaf-storm",
-      "power-whip",
-      "captivate",
-      "grass-knot",
-      "venoshock",
-      "acid-spray",
-      "round",
-      "echoed-voice",
-      "grass-pledge",
-      "bulldoze",
-      "work-up",
-      "petal-blizzard",
-      "grassy-terrain",
-      "confide",
-      "stomping-tantrum",
-      "grassy-glide",
-      "terrain-pulse",
-      "tera-blast",
-      "trailblaze"
-    ],
-    "abilities": [
-      "overgrow",
-      "chlorophyll"
-    ],
-    "weight": 1000,
-    "height": 20
-  },
-  {
     "name": "Venusaur",
     "dexNumber": 3,
     "types": [
@@ -465,6 +342,130 @@
     ],
     "weight": 1000,
     "height": 20
+  },
+  {
+    "name": "Mega-Venusaur",
+    "dexNumber": 3,
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "generation": 1,
+    "eggGroups": [
+      "monster",
+      "plant"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [
+      "swords-dance",
+      "cut",
+      "bind",
+      "vine-whip",
+      "headbutt",
+      "tackle",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "growl",
+      "roar",
+      "hyper-beam",
+      "strength",
+      "mega-drain",
+      "leech-seed",
+      "growth",
+      "razor-leaf",
+      "solar-beam",
+      "poison-powder",
+      "sleep-powder",
+      "petal-dance",
+      "string-shot",
+      "earthquake",
+      "toxic",
+      "rage",
+      "mimic",
+      "double-team",
+      "defense-curl",
+      "light-screen",
+      "reflect",
+      "bide",
+      "amnesia",
+      "flash",
+      "rest",
+      "substitute",
+      "snore",
+      "curse",
+      "protect",
+      "scary-face",
+      "sludge-bomb",
+      "mud-slap",
+      "outrage",
+      "giga-drain",
+      "endure",
+      "charm",
+      "false-swipe",
+      "swagger",
+      "fury-cutter",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "safeguard",
+      "sweet-scent",
+      "synthesis",
+      "hidden-power",
+      "sunny-day",
+      "rock-smash",
+      "facade",
+      "nature-power",
+      "helping-hand",
+      "ingrain",
+      "knock-off",
+      "secret-power",
+      "weather-ball",
+      "bullet-seed",
+      "block",
+      "frenzy-plant",
+      "magical-leaf",
+      "natural-gift",
+      "worry-seed",
+      "poison-jab",
+      "seed-bomb",
+      "energy-ball",
+      "earth-power",
+      "giga-impact",
+      "rock-climb",
+      "leaf-storm",
+      "power-whip",
+      "captivate",
+      "grass-knot",
+      "venoshock",
+      "acid-spray",
+      "round",
+      "echoed-voice",
+      "grass-pledge",
+      "bulldoze",
+      "work-up",
+      "petal-blizzard",
+      "grassy-terrain",
+      "confide",
+      "stomping-tantrum",
+      "grassy-glide",
+      "terrain-pulse",
+      "tera-blast",
+      "trailblaze"
+    ],
+    "abilities": [
+      "overgrow",
+      "chlorophyll"
+    ],
+    "weight": 1000,
+    "height": 20,
+    "spriteId": 10033
   },
   {
     "name": "Charmander",
@@ -1038,7 +1039,8 @@
       "solar-power"
     ],
     "weight": 905,
-    "height": 17
+    "height": 17,
+    "spriteId": 10034
   },
   {
     "name": "Mega-Charizard-Y",
@@ -1196,7 +1198,8 @@
       "solar-power"
     ],
     "weight": 905,
-    "height": 17
+    "height": 17,
+    "spriteId": 10035
   },
   {
     "name": "Squirtle",
@@ -1744,7 +1747,8 @@
       "rain-dish"
     ],
     "weight": 855,
-    "height": 16
+    "height": 16,
+    "spriteId": 10036
   },
   {
     "name": "Caterpie",
@@ -2184,7 +2188,8 @@
       "sniper"
     ],
     "weight": 295,
-    "height": 10
+    "height": 10,
+    "spriteId": 10090
   },
   {
     "name": "Pidgey",
@@ -2362,96 +2367,6 @@
     "height": 11
   },
   {
-    "name": "Mega-Pidgeot",
-    "dexNumber": 18,
-    "types": [
-      "normal",
-      "flying"
-    ],
-    "generation": 1,
-    "eggGroups": [
-      "flying"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "is-mega"
-    ],
-    "moves": [
-      "razor-wind",
-      "gust",
-      "wing-attack",
-      "whirlwind",
-      "fly",
-      "sand-attack",
-      "headbutt",
-      "tackle",
-      "take-down",
-      "double-edge",
-      "hyper-beam",
-      "toxic",
-      "agility",
-      "quick-attack",
-      "rage",
-      "mimic",
-      "double-team",
-      "reflect",
-      "bide",
-      "mirror-move",
-      "swift",
-      "sky-attack",
-      "rest",
-      "substitute",
-      "thief",
-      "snore",
-      "curse",
-      "protect",
-      "mud-slap",
-      "detect",
-      "endure",
-      "swagger",
-      "steel-wing",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "hidden-power",
-      "twister",
-      "rain-dance",
-      "sunny-day",
-      "uproar",
-      "heat-wave",
-      "facade",
-      "secret-power",
-      "feather-dance",
-      "air-cutter",
-      "aerial-ace",
-      "roost",
-      "natural-gift",
-      "pluck",
-      "tailwind",
-      "u-turn",
-      "air-slash",
-      "giga-impact",
-      "defog",
-      "captivate",
-      "ominous-wind",
-      "round",
-      "work-up",
-      "hurricane",
-      "confide",
-      "laser-focus"
-    ],
-    "abilities": [
-      "keen-eye",
-      "tangled-feet",
-      "big-pecks"
-    ],
-    "weight": 395,
-    "height": 15
-  },
-  {
     "name": "Pidgeot",
     "dexNumber": 18,
     "types": [
@@ -2539,6 +2454,97 @@
     ],
     "weight": 395,
     "height": 15
+  },
+  {
+    "name": "Mega-Pidgeot",
+    "dexNumber": 18,
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "generation": 1,
+    "eggGroups": [
+      "flying"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [
+      "razor-wind",
+      "gust",
+      "wing-attack",
+      "whirlwind",
+      "fly",
+      "sand-attack",
+      "headbutt",
+      "tackle",
+      "take-down",
+      "double-edge",
+      "hyper-beam",
+      "toxic",
+      "agility",
+      "quick-attack",
+      "rage",
+      "mimic",
+      "double-team",
+      "reflect",
+      "bide",
+      "mirror-move",
+      "swift",
+      "sky-attack",
+      "rest",
+      "substitute",
+      "thief",
+      "snore",
+      "curse",
+      "protect",
+      "mud-slap",
+      "detect",
+      "endure",
+      "swagger",
+      "steel-wing",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "hidden-power",
+      "twister",
+      "rain-dance",
+      "sunny-day",
+      "uproar",
+      "heat-wave",
+      "facade",
+      "secret-power",
+      "feather-dance",
+      "air-cutter",
+      "aerial-ace",
+      "roost",
+      "natural-gift",
+      "pluck",
+      "tailwind",
+      "u-turn",
+      "air-slash",
+      "giga-impact",
+      "defog",
+      "captivate",
+      "ominous-wind",
+      "round",
+      "work-up",
+      "hurricane",
+      "confide",
+      "laser-focus"
+    ],
+    "abilities": [
+      "keen-eye",
+      "tangled-feet",
+      "big-pecks"
+    ],
+    "weight": 395,
+    "height": 15,
+    "spriteId": 10073
   },
   {
     "name": "Rattata",
@@ -2668,7 +2674,8 @@
       "hustle"
     ],
     "weight": 35,
-    "height": 3
+    "height": 3,
+    "spriteId": 10091
   },
   {
     "name": "Raticate",
@@ -2801,7 +2808,8 @@
       "hustle"
     ],
     "weight": 185,
-    "height": 7
+    "height": 7,
+    "spriteId": 10092
   },
   {
     "name": "Spearow",
@@ -3379,7 +3387,8 @@
       "fairy"
     ],
     "evolutionMethod": [
-      "stone"
+      "stone",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -3513,7 +3522,8 @@
       "fairy"
     ],
     "evolutionMethod": [
-      "stone"
+      "stone",
+      "has-mega"
     ],
     "status": [],
     "moves": [],
@@ -3521,7 +3531,54 @@
       "surge-surfer"
     ],
     "weight": 300,
-    "height": 8
+    "height": 8,
+    "spriteId": 10100
+  },
+  {
+    "name": "Mega-Raichu-X",
+    "dexNumber": 26,
+    "spriteId": 10304,
+    "types": [
+      "electric"
+    ],
+    "generation": 1,
+    "eggGroups": [
+      "ground",
+      "fairy"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 380,
+    "height": 12
+  },
+  {
+    "name": "Mega-Raichu-Y",
+    "dexNumber": 26,
+    "spriteId": 10305,
+    "types": [
+      "electric"
+    ],
+    "generation": 1,
+    "eggGroups": [
+      "ground",
+      "fairy"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 260,
+    "height": 10
   },
   {
     "name": "Sandshrew",
@@ -3665,7 +3722,8 @@
       "snow-cloak"
     ],
     "weight": 120,
-    "height": 6
+    "height": 6,
+    "spriteId": 10101
   },
   {
     "name": "Sandslash",
@@ -3815,7 +3873,8 @@
       "slush-rush"
     ],
     "weight": 295,
-    "height": 10
+    "height": 10,
+    "spriteId": 10102
   },
   {
     "name": "Nidoran-F",
@@ -4741,7 +4800,8 @@
       "fairy"
     ],
     "evolutionMethod": [
-      "stone"
+      "stone",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -4918,6 +4978,31 @@
     "height": 13
   },
   {
+    "name": "Mega-Clefable",
+    "dexNumber": 36,
+    "spriteId": 10278,
+    "types": [
+      "fairy",
+      "flying"
+    ],
+    "generation": 1,
+    "eggGroups": [
+      "fairy"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "magic-bounce"
+    ],
+    "weight": 423,
+    "height": 17
+  },
+  {
     "name": "Vulpix",
     "dexNumber": 37,
     "types": [
@@ -5047,7 +5132,8 @@
       "snow-cloak"
     ],
     "weight": 99,
-    "height": 6
+    "height": 6,
+    "spriteId": 10103
   },
   {
     "name": "Ninetales",
@@ -5191,7 +5277,8 @@
       "snow-warning"
     ],
     "weight": 199,
-    "height": 11
+    "height": 11,
+    "spriteId": 10104
   },
   {
     "name": "Jigglypuff",
@@ -6633,7 +6720,8 @@
       "sand-force"
     ],
     "weight": 8,
-    "height": 2
+    "height": 2,
+    "spriteId": 10105
   },
   {
     "name": "Dugtrio",
@@ -6764,7 +6852,8 @@
       "sand-force"
     ],
     "weight": 333,
-    "height": 7
+    "height": 7,
+    "spriteId": 10106
   },
   {
     "name": "Meowth",
@@ -6923,7 +7012,8 @@
       "unnerve"
     ],
     "weight": 42,
-    "height": 4
+    "height": 4,
+    "spriteId": 10107
   },
   {
     "name": "Meowth-Galar",
@@ -6947,7 +7037,8 @@
       "unnerve"
     ],
     "weight": 42,
-    "height": 4
+    "height": 4,
+    "spriteId": 10161
   },
   {
     "name": "Persian",
@@ -7105,7 +7196,8 @@
       "unnerve"
     ],
     "weight": 320,
-    "height": 10
+    "height": 10,
+    "spriteId": 10108
   },
   {
     "name": "Psyduck",
@@ -7809,7 +7901,8 @@
       "justified"
     ],
     "weight": 190,
-    "height": 7
+    "height": 7,
+    "spriteId": 10229
   },
   {
     "name": "Arcanine",
@@ -7947,7 +8040,8 @@
       "justified"
     ],
     "weight": 1550,
-    "height": 19
+    "height": 19,
+    "spriteId": 10230
   },
   {
     "name": "Poliwag",
@@ -8824,7 +8918,8 @@
       "magic-guard"
     ],
     "weight": 480,
-    "height": 15
+    "height": 15,
+    "spriteId": 10037
   },
   {
     "name": "Machop",
@@ -9420,7 +9515,8 @@
       "plant"
     ],
     "evolutionMethod": [
-      "stone"
+      "stone",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -9520,6 +9616,31 @@
     ],
     "weight": 155,
     "height": 17
+  },
+  {
+    "name": "Mega-Victreebel",
+    "dexNumber": 71,
+    "spriteId": 10279,
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "generation": 1,
+    "eggGroups": [
+      "plant"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "innards-out"
+    ],
+    "weight": 1255,
+    "height": 45
   },
   {
     "name": "Tentacool",
@@ -9896,7 +10017,8 @@
       "sand-veil"
     ],
     "weight": 200,
-    "height": 4
+    "height": 4,
+    "spriteId": 10109
   },
   {
     "name": "Graveler",
@@ -10035,7 +10157,8 @@
       "sand-veil"
     ],
     "weight": 1050,
-    "height": 10
+    "height": 10,
+    "spriteId": 10110
   },
   {
     "name": "Golem",
@@ -10180,7 +10303,8 @@
       "sand-veil"
     ],
     "weight": 3000,
-    "height": 14
+    "height": 14,
+    "spriteId": 10111
   },
   {
     "name": "Ponyta",
@@ -10295,7 +10419,8 @@
       "flame-body"
     ],
     "weight": 300,
-    "height": 10
+    "height": 10,
+    "spriteId": 10162
   },
   {
     "name": "Rapidash",
@@ -10421,7 +10546,8 @@
       "flame-body"
     ],
     "weight": 950,
-    "height": 17
+    "height": 17,
+    "spriteId": 10163
   },
   {
     "name": "Slowpoke",
@@ -10585,170 +10711,8 @@
       "regenerator"
     ],
     "weight": 360,
-    "height": 12
-  },
-  {
-    "name": "Mega-Slowbro",
-    "dexNumber": 80,
-    "types": [
-      "water",
-      "psychic"
-    ],
-    "generation": 1,
-    "eggGroups": [
-      "monster",
-      "water1"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "is-mega"
-    ],
-    "moves": [
-      "mega-punch",
-      "pay-day",
-      "ice-punch",
-      "stomp",
-      "mega-kick",
-      "headbutt",
-      "tackle",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "growl",
-      "disable",
-      "flamethrower",
-      "water-gun",
-      "hydro-pump",
-      "surf",
-      "ice-beam",
-      "blizzard",
-      "psybeam",
-      "bubble-beam",
-      "hyper-beam",
-      "submission",
-      "counter",
-      "seismic-toss",
-      "strength",
-      "thunder-wave",
-      "earthquake",
-      "fissure",
-      "dig",
-      "toxic",
-      "confusion",
-      "psychic",
-      "rage",
-      "teleport",
-      "mimic",
-      "double-team",
-      "withdraw",
-      "light-screen",
-      "reflect",
-      "bide",
-      "metronome",
-      "fire-blast",
-      "waterfall",
-      "swift",
-      "skull-bash",
-      "amnesia",
-      "dream-eater",
-      "flash",
-      "psywave",
-      "rest",
-      "tri-attack",
-      "substitute",
-      "nightmare",
-      "snore",
-      "curse",
-      "protect",
-      "mud-slap",
-      "zap-cannon",
-      "icy-wind",
-      "endure",
-      "swagger",
-      "fury-cutter",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "safeguard",
-      "dynamic-punch",
-      "iron-tail",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "psych-up",
-      "shadow-ball",
-      "future-sight",
-      "rock-smash",
-      "whirlpool",
-      "hail",
-      "facade",
-      "focus-punch",
-      "helping-hand",
-      "trick",
-      "magic-coat",
-      "recycle",
-      "brick-break",
-      "yawn",
-      "skill-swap",
-      "imprison",
-      "secret-power",
-      "dive",
-      "slack-off",
-      "weather-ball",
-      "signal-beam",
-      "muddy-water",
-      "aerial-ace",
-      "iron-defense",
-      "block",
-      "mud-shot",
-      "calm-mind",
-      "water-pulse",
-      "brine",
-      "natural-gift",
-      "fling",
-      "aqua-tail",
-      "drain-punch",
-      "focus-blast",
-      "giga-impact",
-      "nasty-plot",
-      "avalanche",
-      "zen-headbutt",
-      "trick-room",
-      "captivate",
-      "grass-knot",
-      "wonder-room",
-      "psyshock",
-      "telekinesis",
-      "foul-play",
-      "after-you",
-      "round",
-      "echoed-voice",
-      "stored-power",
-      "scald",
-      "heal-pulse",
-      "incinerate",
-      "bulldoze",
-      "razor-shell",
-      "confide",
-      "psychic-terrain",
-      "liquidation",
-      "body-press",
-      "expanding-force",
-      "tera-blast",
-      "snowscape",
-      "chilling-water",
-      "psychic-noise"
-    ],
-    "abilities": [
-      "oblivious",
-      "own-tempo",
-      "regenerator"
-    ],
-    "weight": 785,
-    "height": 16
+    "height": 12,
+    "spriteId": 10164
   },
   {
     "name": "Slowbro",
@@ -10914,6 +10878,170 @@
     "height": 16
   },
   {
+    "name": "Mega-Slowbro",
+    "dexNumber": 80,
+    "types": [
+      "water",
+      "psychic"
+    ],
+    "generation": 1,
+    "eggGroups": [
+      "monster",
+      "water1"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [
+      "mega-punch",
+      "pay-day",
+      "ice-punch",
+      "stomp",
+      "mega-kick",
+      "headbutt",
+      "tackle",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "growl",
+      "disable",
+      "flamethrower",
+      "water-gun",
+      "hydro-pump",
+      "surf",
+      "ice-beam",
+      "blizzard",
+      "psybeam",
+      "bubble-beam",
+      "hyper-beam",
+      "submission",
+      "counter",
+      "seismic-toss",
+      "strength",
+      "thunder-wave",
+      "earthquake",
+      "fissure",
+      "dig",
+      "toxic",
+      "confusion",
+      "psychic",
+      "rage",
+      "teleport",
+      "mimic",
+      "double-team",
+      "withdraw",
+      "light-screen",
+      "reflect",
+      "bide",
+      "metronome",
+      "fire-blast",
+      "waterfall",
+      "swift",
+      "skull-bash",
+      "amnesia",
+      "dream-eater",
+      "flash",
+      "psywave",
+      "rest",
+      "tri-attack",
+      "substitute",
+      "nightmare",
+      "snore",
+      "curse",
+      "protect",
+      "mud-slap",
+      "zap-cannon",
+      "icy-wind",
+      "endure",
+      "swagger",
+      "fury-cutter",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "safeguard",
+      "dynamic-punch",
+      "iron-tail",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "psych-up",
+      "shadow-ball",
+      "future-sight",
+      "rock-smash",
+      "whirlpool",
+      "hail",
+      "facade",
+      "focus-punch",
+      "helping-hand",
+      "trick",
+      "magic-coat",
+      "recycle",
+      "brick-break",
+      "yawn",
+      "skill-swap",
+      "imprison",
+      "secret-power",
+      "dive",
+      "slack-off",
+      "weather-ball",
+      "signal-beam",
+      "muddy-water",
+      "aerial-ace",
+      "iron-defense",
+      "block",
+      "mud-shot",
+      "calm-mind",
+      "water-pulse",
+      "brine",
+      "natural-gift",
+      "fling",
+      "aqua-tail",
+      "drain-punch",
+      "focus-blast",
+      "giga-impact",
+      "nasty-plot",
+      "avalanche",
+      "zen-headbutt",
+      "trick-room",
+      "captivate",
+      "grass-knot",
+      "wonder-room",
+      "psyshock",
+      "telekinesis",
+      "foul-play",
+      "after-you",
+      "round",
+      "echoed-voice",
+      "stored-power",
+      "scald",
+      "heal-pulse",
+      "incinerate",
+      "bulldoze",
+      "razor-shell",
+      "confide",
+      "psychic-terrain",
+      "liquidation",
+      "body-press",
+      "expanding-force",
+      "tera-blast",
+      "snowscape",
+      "chilling-water",
+      "psychic-noise"
+    ],
+    "abilities": [
+      "oblivious",
+      "own-tempo",
+      "regenerator"
+    ],
+    "weight": 785,
+    "height": 16,
+    "spriteId": 10071
+  },
+  {
     "name": "Slowbro-Galar",
     "dexNumber": 80,
     "types": [
@@ -10936,7 +11064,8 @@
       "regenerator"
     ],
     "weight": 785,
-    "height": 16
+    "height": 16,
+    "spriteId": 10165
   },
   {
     "name": "Magnemite",
@@ -11283,7 +11412,8 @@
       "defiant"
     ],
     "weight": 150,
-    "height": 8
+    "height": 8,
+    "spriteId": 10166
   },
   {
     "name": "Doduo",
@@ -11870,7 +12000,8 @@
       "poison-touch"
     ],
     "weight": 300,
-    "height": 9
+    "height": 9,
+    "spriteId": 10112
   },
   {
     "name": "Muk",
@@ -12021,7 +12152,8 @@
       "poison-touch"
     ],
     "weight": 300,
-    "height": 12
+    "height": 12,
+    "spriteId": 10113
   },
   {
     "name": "Shellder",
@@ -12773,7 +12905,8 @@
       "cursed-body"
     ],
     "weight": 405,
-    "height": 15
+    "height": 15,
+    "spriteId": 10038
   },
   {
     "name": "Onix",
@@ -13500,7 +13633,8 @@
       "aftermath"
     ],
     "weight": 104,
-    "height": 5
+    "height": 5,
+    "spriteId": 10231
   },
   {
     "name": "Electrode",
@@ -13621,7 +13755,8 @@
       "aftermath"
     ],
     "weight": 666,
-    "height": 12
+    "height": 12,
+    "spriteId": 10232
   },
   {
     "name": "Exeggcute",
@@ -13880,7 +14015,8 @@
       "harvest"
     ],
     "weight": 1200,
-    "height": 20
+    "height": 20,
+    "spriteId": 10114
   },
   {
     "name": "Cubone",
@@ -14147,7 +14283,8 @@
       "battle-armor"
     ],
     "weight": 450,
-    "height": 10
+    "height": 10,
+    "spriteId": 10115
   },
   {
     "name": "Hitmonlee",
@@ -14772,7 +14909,8 @@
       "stench"
     ],
     "weight": 95,
-    "height": 12
+    "height": 12,
+    "spriteId": 10167
   },
   {
     "name": "Rhyhorn",
@@ -15638,7 +15776,8 @@
       "inner-focus"
     ],
     "weight": 800,
-    "height": 22
+    "height": 22,
+    "spriteId": 10039
   },
   {
     "name": "Horsea",
@@ -16147,7 +16286,8 @@
       "water3"
     ],
     "evolutionMethod": [
-      "stone"
+      "stone",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -16252,6 +16392,31 @@
     ],
     "weight": 800,
     "height": 11
+  },
+  {
+    "name": "Mega-Starmie",
+    "dexNumber": 121,
+    "spriteId": 10280,
+    "types": [
+      "water",
+      "psychic"
+    ],
+    "generation": 1,
+    "eggGroups": [
+      "water3"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "huge-power"
+    ],
+    "weight": 800,
+    "height": 23
   },
   {
     "name": "Mr-Mime",
@@ -16428,7 +16593,8 @@
       "technician"
     ],
     "weight": 545,
-    "height": 13
+    "height": 13,
+    "spriteId": 10168
   },
   {
     "name": "Scyther",
@@ -16937,6 +17103,116 @@
     "height": 13
   },
   {
+    "name": "Pinsir",
+    "dexNumber": 127,
+    "types": [
+      "bug"
+    ],
+    "generation": 1,
+    "eggGroups": [
+      "bug"
+    ],
+    "evolutionMethod": [
+      "none",
+      "has-mega"
+    ],
+    "status": [],
+    "moves": [
+      "vice-grip",
+      "guillotine",
+      "swords-dance",
+      "cut",
+      "bind",
+      "headbutt",
+      "fury-attack",
+      "body-slam",
+      "take-down",
+      "thrash",
+      "double-edge",
+      "hyper-beam",
+      "submission",
+      "seismic-toss",
+      "strength",
+      "string-shot",
+      "earthquake",
+      "dig",
+      "toxic",
+      "quick-attack",
+      "rage",
+      "mimic",
+      "double-team",
+      "harden",
+      "focus-energy",
+      "bide",
+      "rest",
+      "rock-slide",
+      "slash",
+      "substitute",
+      "thief",
+      "snore",
+      "curse",
+      "flail",
+      "reversal",
+      "protect",
+      "feint-attack",
+      "outrage",
+      "endure",
+      "false-swipe",
+      "swagger",
+      "fury-cutter",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "vital-throw",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "rock-smash",
+      "facade",
+      "focus-punch",
+      "helping-hand",
+      "superpower",
+      "revenge",
+      "brick-break",
+      "knock-off",
+      "secret-power",
+      "rock-tomb",
+      "iron-defense",
+      "bulk-up",
+      "natural-gift",
+      "feint",
+      "close-combat",
+      "fling",
+      "me-first",
+      "x-scissor",
+      "focus-blast",
+      "giga-impact",
+      "rock-climb",
+      "stone-edge",
+      "captivate",
+      "stealth-rock",
+      "bug-bite",
+      "double-hit",
+      "smack-down",
+      "storm-throw",
+      "round",
+      "struggle-bug",
+      "bulldoze",
+      "confide",
+      "high-horsepower",
+      "throat-chop",
+      "brutal-swing"
+    ],
+    "abilities": [
+      "hyper-cutter",
+      "mold-breaker",
+      "moxie"
+    ],
+    "weight": 550,
+    "height": 15
+  },
+  {
     "name": "Mega-Pinsir",
     "dexNumber": 127,
     "types": [
@@ -17046,117 +17322,8 @@
       "moxie"
     ],
     "weight": 550,
-    "height": 15
-  },
-  {
-    "name": "Pinsir",
-    "dexNumber": 127,
-    "types": [
-      "bug"
-    ],
-    "generation": 1,
-    "eggGroups": [
-      "bug"
-    ],
-    "evolutionMethod": [
-      "none",
-      "has-mega"
-    ],
-    "status": [],
-    "moves": [
-      "vice-grip",
-      "guillotine",
-      "swords-dance",
-      "cut",
-      "bind",
-      "headbutt",
-      "fury-attack",
-      "body-slam",
-      "take-down",
-      "thrash",
-      "double-edge",
-      "hyper-beam",
-      "submission",
-      "seismic-toss",
-      "strength",
-      "string-shot",
-      "earthquake",
-      "dig",
-      "toxic",
-      "quick-attack",
-      "rage",
-      "mimic",
-      "double-team",
-      "harden",
-      "focus-energy",
-      "bide",
-      "rest",
-      "rock-slide",
-      "slash",
-      "substitute",
-      "thief",
-      "snore",
-      "curse",
-      "flail",
-      "reversal",
-      "protect",
-      "feint-attack",
-      "outrage",
-      "endure",
-      "false-swipe",
-      "swagger",
-      "fury-cutter",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "vital-throw",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "rock-smash",
-      "facade",
-      "focus-punch",
-      "helping-hand",
-      "superpower",
-      "revenge",
-      "brick-break",
-      "knock-off",
-      "secret-power",
-      "rock-tomb",
-      "iron-defense",
-      "bulk-up",
-      "natural-gift",
-      "feint",
-      "close-combat",
-      "fling",
-      "me-first",
-      "x-scissor",
-      "focus-blast",
-      "giga-impact",
-      "rock-climb",
-      "stone-edge",
-      "captivate",
-      "stealth-rock",
-      "bug-bite",
-      "double-hit",
-      "smack-down",
-      "storm-throw",
-      "round",
-      "struggle-bug",
-      "bulldoze",
-      "confide",
-      "high-horsepower",
-      "throat-chop",
-      "brutal-swing"
-    ],
-    "abilities": [
-      "hyper-cutter",
-      "mold-breaker",
-      "moxie"
-    ],
-    "weight": 550,
-    "height": 15
+    "height": 15,
+    "spriteId": 10040
   },
   {
     "name": "Tauros",
@@ -17279,10 +17446,9 @@
     "height": 14
   },
   {
-    "name": "Tauros-Paldea-Aqua",
+    "name": "Tauros-Paldea-Combat",
     "dexNumber": 128,
     "types": [
-      "water",
       "fighting"
     ],
     "generation": 9,
@@ -17300,7 +17466,8 @@
       "sheer-force"
     ],
     "weight": 884,
-    "height": 14
+    "height": 14,
+    "spriteId": 10250
   },
   {
     "name": "Tauros-Paldea-Blaze",
@@ -17324,12 +17491,14 @@
       "sheer-force"
     ],
     "weight": 884,
-    "height": 14
+    "height": 14,
+    "spriteId": 10251
   },
   {
-    "name": "Tauros-Paldea-Combat",
+    "name": "Tauros-Paldea-Aqua",
     "dexNumber": 128,
     "types": [
+      "water",
       "fighting"
     ],
     "generation": 9,
@@ -17347,7 +17516,8 @@
       "sheer-force"
     ],
     "weight": 884,
-    "height": 14
+    "height": 14,
+    "spriteId": 10252
   },
   {
     "name": "Magikarp",
@@ -17633,7 +17803,8 @@
       "moxie"
     ],
     "weight": 2350,
-    "height": 65
+    "height": 65,
+    "spriteId": 10041
   },
   {
     "name": "Lapras",
@@ -19080,7 +19251,8 @@
       "unnerve"
     ],
     "weight": 590,
-    "height": 18
+    "height": 18,
+    "spriteId": 10042
   },
   {
     "name": "Snorlax",
@@ -19383,7 +19555,8 @@
       "snow-cloak"
     ],
     "weight": 554,
-    "height": 17
+    "height": 17,
+    "spriteId": 10169
   },
   {
     "name": "Zapdos",
@@ -19522,7 +19695,8 @@
       "static"
     ],
     "weight": 526,
-    "height": 16
+    "height": 16,
+    "spriteId": 10170
   },
   {
     "name": "Moltres",
@@ -19657,7 +19831,8 @@
       "flame-body"
     ],
     "weight": 600,
-    "height": 20
+    "height": 20,
+    "spriteId": 10171
   },
   {
     "name": "Dratini",
@@ -19894,7 +20069,8 @@
       "dragon"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [
       "pseudo"
@@ -20047,391 +20223,30 @@
     "height": 22
   },
   {
-    "name": "Mega-Mewtwo-X",
-    "dexNumber": 150,
+    "name": "Mega-Dragonite",
+    "dexNumber": 149,
+    "spriteId": 10281,
     "types": [
-      "psychic",
-      "fighting"
+      "dragon",
+      "flying"
     ],
     "generation": 1,
     "eggGroups": [
-      "no-eggs"
+      "water1",
+      "dragon"
     ],
     "evolutionMethod": [
-      "none"
+      "has-mega"
     ],
     "status": [
-      "legendary",
       "is-mega"
     ],
-    "moves": [
-      "mega-punch",
-      "pay-day",
-      "fire-punch",
-      "ice-punch",
-      "thunder-punch",
-      "mega-kick",
-      "headbutt",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "disable",
-      "flamethrower",
-      "mist",
-      "water-gun",
-      "ice-beam",
-      "blizzard",
-      "psybeam",
-      "bubble-beam",
-      "hyper-beam",
-      "submission",
-      "low-kick",
-      "counter",
-      "seismic-toss",
-      "strength",
-      "solar-beam",
-      "thunderbolt",
-      "thunder-wave",
-      "thunder",
-      "earthquake",
-      "toxic",
-      "confusion",
-      "psychic",
-      "agility",
-      "rage",
-      "teleport",
-      "night-shade",
-      "mimic",
-      "double-team",
-      "recover",
-      "confuse-ray",
-      "barrier",
-      "light-screen",
-      "reflect",
-      "bide",
-      "metronome",
-      "self-destruct",
-      "fire-blast",
-      "swift",
-      "skull-bash",
-      "amnesia",
-      "dream-eater",
-      "flash",
-      "psywave",
-      "rest",
-      "rock-slide",
-      "tri-attack",
-      "substitute",
-      "nightmare",
-      "snore",
-      "curse",
-      "reversal",
-      "spite",
-      "protect",
-      "scary-face",
-      "mud-slap",
-      "zap-cannon",
-      "icy-wind",
-      "detect",
-      "sandstorm",
-      "endure",
-      "swagger",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "safeguard",
-      "dynamic-punch",
-      "iron-tail",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "psych-up",
-      "ancient-power",
-      "shadow-ball",
-      "future-sight",
-      "rock-smash",
-      "hail",
-      "torment",
-      "will-o-wisp",
-      "facade",
-      "focus-punch",
-      "taunt",
-      "helping-hand",
-      "trick",
-      "role-play",
-      "magic-coat",
-      "recycle",
-      "brick-break",
-      "knock-off",
-      "skill-swap",
-      "imprison",
-      "snatch",
-      "secret-power",
-      "dive",
-      "weather-ball",
-      "rock-tomb",
-      "signal-beam",
-      "aerial-ace",
-      "bulk-up",
-      "calm-mind",
-      "shock-wave",
-      "water-pulse",
-      "gravity",
-      "miracle-eye",
-      "natural-gift",
-      "embargo",
-      "fling",
-      "me-first",
-      "power-swap",
-      "guard-swap",
-      "aura-sphere",
-      "poison-jab",
-      "dark-pulse",
-      "aqua-tail",
-      "power-gem",
-      "drain-punch",
-      "focus-blast",
-      "energy-ball",
-      "earth-power",
-      "giga-impact",
-      "nasty-plot",
-      "avalanche",
-      "psycho-cut",
-      "zen-headbutt",
-      "rock-climb",
-      "trick-room",
-      "stone-edge",
-      "grass-knot",
-      "charge-beam",
-      "wonder-room",
-      "psyshock",
-      "telekinesis",
-      "magic-room",
-      "electro-ball",
-      "low-sweep",
-      "foul-play",
-      "round",
-      "stored-power",
-      "ally-switch",
-      "hex",
-      "incinerate",
-      "bulldoze",
-      "psystrike",
-      "hurricane",
-      "confide",
-      "power-up-punch",
-      "laser-focus",
-      "psychic-terrain",
-      "speed-swap",
-      "brutal-swing",
-      "stomping-tantrum",
-      "life-dew",
-      "expanding-force",
-      "lash-out",
-      "tera-blast",
-      "trailblaze",
-      "chilling-water",
-      "psychic-noise"
-    ],
+    "moves": [],
     "abilities": [
-      "pressure",
-      "unnerve"
+      "multiscale"
     ],
-    "weight": 1220,
-    "height": 20
-  },
-  {
-    "name": "Mega-Mewtwo-Y",
-    "dexNumber": 150,
-    "types": [
-      "psychic"
-    ],
-    "generation": 1,
-    "eggGroups": [
-      "no-eggs"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "legendary",
-      "is-mega"
-    ],
-    "moves": [
-      "mega-punch",
-      "pay-day",
-      "fire-punch",
-      "ice-punch",
-      "thunder-punch",
-      "mega-kick",
-      "headbutt",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "disable",
-      "flamethrower",
-      "mist",
-      "water-gun",
-      "ice-beam",
-      "blizzard",
-      "psybeam",
-      "bubble-beam",
-      "hyper-beam",
-      "submission",
-      "low-kick",
-      "counter",
-      "seismic-toss",
-      "strength",
-      "solar-beam",
-      "thunderbolt",
-      "thunder-wave",
-      "thunder",
-      "earthquake",
-      "toxic",
-      "confusion",
-      "psychic",
-      "agility",
-      "rage",
-      "teleport",
-      "night-shade",
-      "mimic",
-      "double-team",
-      "recover",
-      "confuse-ray",
-      "barrier",
-      "light-screen",
-      "reflect",
-      "bide",
-      "metronome",
-      "self-destruct",
-      "fire-blast",
-      "swift",
-      "skull-bash",
-      "amnesia",
-      "dream-eater",
-      "flash",
-      "psywave",
-      "rest",
-      "rock-slide",
-      "tri-attack",
-      "substitute",
-      "nightmare",
-      "snore",
-      "curse",
-      "reversal",
-      "spite",
-      "protect",
-      "scary-face",
-      "mud-slap",
-      "zap-cannon",
-      "icy-wind",
-      "detect",
-      "sandstorm",
-      "endure",
-      "swagger",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "safeguard",
-      "dynamic-punch",
-      "iron-tail",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "psych-up",
-      "ancient-power",
-      "shadow-ball",
-      "future-sight",
-      "rock-smash",
-      "hail",
-      "torment",
-      "will-o-wisp",
-      "facade",
-      "focus-punch",
-      "taunt",
-      "helping-hand",
-      "trick",
-      "role-play",
-      "magic-coat",
-      "recycle",
-      "brick-break",
-      "knock-off",
-      "skill-swap",
-      "imprison",
-      "snatch",
-      "secret-power",
-      "dive",
-      "weather-ball",
-      "rock-tomb",
-      "signal-beam",
-      "aerial-ace",
-      "bulk-up",
-      "calm-mind",
-      "shock-wave",
-      "water-pulse",
-      "gravity",
-      "miracle-eye",
-      "natural-gift",
-      "embargo",
-      "fling",
-      "me-first",
-      "power-swap",
-      "guard-swap",
-      "aura-sphere",
-      "poison-jab",
-      "dark-pulse",
-      "aqua-tail",
-      "power-gem",
-      "drain-punch",
-      "focus-blast",
-      "energy-ball",
-      "earth-power",
-      "giga-impact",
-      "nasty-plot",
-      "avalanche",
-      "psycho-cut",
-      "zen-headbutt",
-      "rock-climb",
-      "trick-room",
-      "stone-edge",
-      "grass-knot",
-      "charge-beam",
-      "wonder-room",
-      "psyshock",
-      "telekinesis",
-      "magic-room",
-      "electro-ball",
-      "low-sweep",
-      "foul-play",
-      "round",
-      "stored-power",
-      "ally-switch",
-      "hex",
-      "incinerate",
-      "bulldoze",
-      "psystrike",
-      "hurricane",
-      "confide",
-      "power-up-punch",
-      "laser-focus",
-      "psychic-terrain",
-      "speed-swap",
-      "brutal-swing",
-      "stomping-tantrum",
-      "life-dew",
-      "expanding-force",
-      "lash-out",
-      "tera-blast",
-      "trailblaze",
-      "chilling-water",
-      "psychic-noise"
-    ],
-    "abilities": [
-      "pressure",
-      "unnerve"
-    ],
-    "weight": 1220,
-    "height": 20
+    "weight": 2900,
+    "height": 22
   },
   {
     "name": "Mewtwo",
@@ -20625,6 +20440,395 @@
     ],
     "weight": 1220,
     "height": 20
+  },
+  {
+    "name": "Mega-Mewtwo-X",
+    "dexNumber": 150,
+    "types": [
+      "psychic",
+      "fighting"
+    ],
+    "generation": 1,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "legendary",
+      "is-mega"
+    ],
+    "moves": [
+      "mega-punch",
+      "pay-day",
+      "fire-punch",
+      "ice-punch",
+      "thunder-punch",
+      "mega-kick",
+      "headbutt",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "disable",
+      "flamethrower",
+      "mist",
+      "water-gun",
+      "ice-beam",
+      "blizzard",
+      "psybeam",
+      "bubble-beam",
+      "hyper-beam",
+      "submission",
+      "low-kick",
+      "counter",
+      "seismic-toss",
+      "strength",
+      "solar-beam",
+      "thunderbolt",
+      "thunder-wave",
+      "thunder",
+      "earthquake",
+      "toxic",
+      "confusion",
+      "psychic",
+      "agility",
+      "rage",
+      "teleport",
+      "night-shade",
+      "mimic",
+      "double-team",
+      "recover",
+      "confuse-ray",
+      "barrier",
+      "light-screen",
+      "reflect",
+      "bide",
+      "metronome",
+      "self-destruct",
+      "fire-blast",
+      "swift",
+      "skull-bash",
+      "amnesia",
+      "dream-eater",
+      "flash",
+      "psywave",
+      "rest",
+      "rock-slide",
+      "tri-attack",
+      "substitute",
+      "nightmare",
+      "snore",
+      "curse",
+      "reversal",
+      "spite",
+      "protect",
+      "scary-face",
+      "mud-slap",
+      "zap-cannon",
+      "icy-wind",
+      "detect",
+      "sandstorm",
+      "endure",
+      "swagger",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "safeguard",
+      "dynamic-punch",
+      "iron-tail",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "psych-up",
+      "ancient-power",
+      "shadow-ball",
+      "future-sight",
+      "rock-smash",
+      "hail",
+      "torment",
+      "will-o-wisp",
+      "facade",
+      "focus-punch",
+      "taunt",
+      "helping-hand",
+      "trick",
+      "role-play",
+      "magic-coat",
+      "recycle",
+      "brick-break",
+      "knock-off",
+      "skill-swap",
+      "imprison",
+      "snatch",
+      "secret-power",
+      "dive",
+      "weather-ball",
+      "rock-tomb",
+      "signal-beam",
+      "aerial-ace",
+      "bulk-up",
+      "calm-mind",
+      "shock-wave",
+      "water-pulse",
+      "gravity",
+      "miracle-eye",
+      "natural-gift",
+      "embargo",
+      "fling",
+      "me-first",
+      "power-swap",
+      "guard-swap",
+      "aura-sphere",
+      "poison-jab",
+      "dark-pulse",
+      "aqua-tail",
+      "power-gem",
+      "drain-punch",
+      "focus-blast",
+      "energy-ball",
+      "earth-power",
+      "giga-impact",
+      "nasty-plot",
+      "avalanche",
+      "psycho-cut",
+      "zen-headbutt",
+      "rock-climb",
+      "trick-room",
+      "stone-edge",
+      "grass-knot",
+      "charge-beam",
+      "wonder-room",
+      "psyshock",
+      "telekinesis",
+      "magic-room",
+      "electro-ball",
+      "low-sweep",
+      "foul-play",
+      "round",
+      "stored-power",
+      "ally-switch",
+      "hex",
+      "incinerate",
+      "bulldoze",
+      "psystrike",
+      "hurricane",
+      "confide",
+      "power-up-punch",
+      "laser-focus",
+      "psychic-terrain",
+      "speed-swap",
+      "brutal-swing",
+      "stomping-tantrum",
+      "life-dew",
+      "expanding-force",
+      "lash-out",
+      "tera-blast",
+      "trailblaze",
+      "chilling-water",
+      "psychic-noise"
+    ],
+    "abilities": [
+      "pressure",
+      "unnerve"
+    ],
+    "weight": 1220,
+    "height": 20,
+    "spriteId": 10043
+  },
+  {
+    "name": "Mega-Mewtwo-Y",
+    "dexNumber": 150,
+    "types": [
+      "psychic"
+    ],
+    "generation": 1,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "legendary",
+      "is-mega"
+    ],
+    "moves": [
+      "mega-punch",
+      "pay-day",
+      "fire-punch",
+      "ice-punch",
+      "thunder-punch",
+      "mega-kick",
+      "headbutt",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "disable",
+      "flamethrower",
+      "mist",
+      "water-gun",
+      "ice-beam",
+      "blizzard",
+      "psybeam",
+      "bubble-beam",
+      "hyper-beam",
+      "submission",
+      "low-kick",
+      "counter",
+      "seismic-toss",
+      "strength",
+      "solar-beam",
+      "thunderbolt",
+      "thunder-wave",
+      "thunder",
+      "earthquake",
+      "toxic",
+      "confusion",
+      "psychic",
+      "agility",
+      "rage",
+      "teleport",
+      "night-shade",
+      "mimic",
+      "double-team",
+      "recover",
+      "confuse-ray",
+      "barrier",
+      "light-screen",
+      "reflect",
+      "bide",
+      "metronome",
+      "self-destruct",
+      "fire-blast",
+      "swift",
+      "skull-bash",
+      "amnesia",
+      "dream-eater",
+      "flash",
+      "psywave",
+      "rest",
+      "rock-slide",
+      "tri-attack",
+      "substitute",
+      "nightmare",
+      "snore",
+      "curse",
+      "reversal",
+      "spite",
+      "protect",
+      "scary-face",
+      "mud-slap",
+      "zap-cannon",
+      "icy-wind",
+      "detect",
+      "sandstorm",
+      "endure",
+      "swagger",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "safeguard",
+      "dynamic-punch",
+      "iron-tail",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "psych-up",
+      "ancient-power",
+      "shadow-ball",
+      "future-sight",
+      "rock-smash",
+      "hail",
+      "torment",
+      "will-o-wisp",
+      "facade",
+      "focus-punch",
+      "taunt",
+      "helping-hand",
+      "trick",
+      "role-play",
+      "magic-coat",
+      "recycle",
+      "brick-break",
+      "knock-off",
+      "skill-swap",
+      "imprison",
+      "snatch",
+      "secret-power",
+      "dive",
+      "weather-ball",
+      "rock-tomb",
+      "signal-beam",
+      "aerial-ace",
+      "bulk-up",
+      "calm-mind",
+      "shock-wave",
+      "water-pulse",
+      "gravity",
+      "miracle-eye",
+      "natural-gift",
+      "embargo",
+      "fling",
+      "me-first",
+      "power-swap",
+      "guard-swap",
+      "aura-sphere",
+      "poison-jab",
+      "dark-pulse",
+      "aqua-tail",
+      "power-gem",
+      "drain-punch",
+      "focus-blast",
+      "energy-ball",
+      "earth-power",
+      "giga-impact",
+      "nasty-plot",
+      "avalanche",
+      "psycho-cut",
+      "zen-headbutt",
+      "rock-climb",
+      "trick-room",
+      "stone-edge",
+      "grass-knot",
+      "charge-beam",
+      "wonder-room",
+      "psyshock",
+      "telekinesis",
+      "magic-room",
+      "electro-ball",
+      "low-sweep",
+      "foul-play",
+      "round",
+      "stored-power",
+      "ally-switch",
+      "hex",
+      "incinerate",
+      "bulldoze",
+      "psystrike",
+      "hurricane",
+      "confide",
+      "power-up-punch",
+      "laser-focus",
+      "psychic-terrain",
+      "speed-swap",
+      "brutal-swing",
+      "stomping-tantrum",
+      "life-dew",
+      "expanding-force",
+      "lash-out",
+      "tera-blast",
+      "trailblaze",
+      "chilling-water",
+      "psychic-noise"
+    ],
+    "abilities": [
+      "pressure",
+      "unnerve"
+    ],
+    "weight": 1220,
+    "height": 20,
+    "spriteId": 10044
   },
   {
     "name": "Mew",
@@ -21241,7 +21445,8 @@
       "plant"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -21344,6 +21549,32 @@
     ],
     "weight": 1005,
     "height": 18
+  },
+  {
+    "name": "Mega-Meganium",
+    "dexNumber": 154,
+    "spriteId": 10282,
+    "types": [
+      "grass",
+      "fairy"
+    ],
+    "generation": 2,
+    "eggGroups": [
+      "monster",
+      "plant"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "mega-sol"
+    ],
+    "weight": 2010,
+    "height": 24
   },
   {
     "name": "Cyndaquil",
@@ -21702,7 +21933,8 @@
       "flash-fire"
     ],
     "weight": 795,
-    "height": 17
+    "height": 17,
+    "spriteId": 10233
   },
   {
     "name": "Totodile",
@@ -21964,7 +22196,8 @@
       "water1"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -22091,6 +22324,32 @@
       "sheer-force"
     ],
     "weight": 888,
+    "height": 23
+  },
+  {
+    "name": "Mega-Feraligatr",
+    "dexNumber": 160,
+    "spriteId": 10283,
+    "types": [
+      "water",
+      "dragon"
+    ],
+    "generation": 2,
+    "eggGroups": [
+      "monster",
+      "water1"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "dragonize"
+    ],
+    "weight": 1088,
     "height": 23
   },
   {
@@ -24647,7 +24906,8 @@
       "plus"
     ],
     "weight": 615,
-    "height": 14
+    "height": 14,
+    "spriteId": 10045
   },
   {
     "name": "Bellossom",
@@ -26132,7 +26392,8 @@
       "unaware"
     ],
     "weight": 85,
-    "height": 4
+    "height": 4,
+    "spriteId": 10253
   },
   {
     "name": "Quagsire",
@@ -26814,7 +27075,8 @@
       "regenerator"
     ],
     "weight": 795,
-    "height": 20
+    "height": 20,
+    "spriteId": 10172
   },
   {
     "name": "Misdreavus",
@@ -27638,129 +27900,6 @@
     "height": 11
   },
   {
-    "name": "Mega-Steelix",
-    "dexNumber": 208,
-    "types": [
-      "steel",
-      "ground"
-    ],
-    "generation": 2,
-    "eggGroups": [
-      "mineral"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "is-mega"
-    ],
-    "moves": [
-      "cut",
-      "bind",
-      "slam",
-      "headbutt",
-      "tackle",
-      "body-slam",
-      "double-edge",
-      "roar",
-      "hyper-beam",
-      "strength",
-      "rock-throw",
-      "earthquake",
-      "dig",
-      "toxic",
-      "rage",
-      "mimic",
-      "screech",
-      "double-team",
-      "harden",
-      "defense-curl",
-      "self-destruct",
-      "explosion",
-      "rest",
-      "rock-slide",
-      "substitute",
-      "snore",
-      "curse",
-      "protect",
-      "scary-face",
-      "mud-slap",
-      "sandstorm",
-      "endure",
-      "rollout",
-      "swagger",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "dragon-breath",
-      "iron-tail",
-      "hidden-power",
-      "twister",
-      "sunny-day",
-      "crunch",
-      "psych-up",
-      "ancient-power",
-      "rock-smash",
-      "torment",
-      "facade",
-      "nature-power",
-      "taunt",
-      "secret-power",
-      "mud-sport",
-      "rock-tomb",
-      "sand-tomb",
-      "iron-defense",
-      "block",
-      "dragon-dance",
-      "rock-blast",
-      "gyro-ball",
-      "natural-gift",
-      "payback",
-      "magnet-rise",
-      "rock-polish",
-      "dark-pulse",
-      "aqua-tail",
-      "dragon-pulse",
-      "earth-power",
-      "giga-impact",
-      "thunder-fang",
-      "ice-fang",
-      "fire-fang",
-      "flash-cannon",
-      "rock-climb",
-      "iron-head",
-      "stone-edge",
-      "captivate",
-      "stealth-rock",
-      "autotomize",
-      "smack-down",
-      "heavy-slam",
-      "round",
-      "bulldoze",
-      "dragon-tail",
-      "drill-run",
-      "confide",
-      "high-horsepower",
-      "brutal-swing",
-      "psychic-fangs",
-      "stomping-tantrum",
-      "body-press",
-      "breaking-swipe",
-      "steel-beam",
-      "steel-roller",
-      "meteor-beam",
-      "scorching-sands"
-    ],
-    "abilities": [
-      "rock-head",
-      "sturdy",
-      "sheer-force"
-    ],
-    "weight": 4000,
-    "height": 92
-  },
-  {
     "name": "Steelix",
     "dexNumber": 208,
     "types": [
@@ -27881,6 +28020,130 @@
     ],
     "weight": 4000,
     "height": 92
+  },
+  {
+    "name": "Mega-Steelix",
+    "dexNumber": 208,
+    "types": [
+      "steel",
+      "ground"
+    ],
+    "generation": 2,
+    "eggGroups": [
+      "mineral"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [
+      "cut",
+      "bind",
+      "slam",
+      "headbutt",
+      "tackle",
+      "body-slam",
+      "double-edge",
+      "roar",
+      "hyper-beam",
+      "strength",
+      "rock-throw",
+      "earthquake",
+      "dig",
+      "toxic",
+      "rage",
+      "mimic",
+      "screech",
+      "double-team",
+      "harden",
+      "defense-curl",
+      "self-destruct",
+      "explosion",
+      "rest",
+      "rock-slide",
+      "substitute",
+      "snore",
+      "curse",
+      "protect",
+      "scary-face",
+      "mud-slap",
+      "sandstorm",
+      "endure",
+      "rollout",
+      "swagger",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "dragon-breath",
+      "iron-tail",
+      "hidden-power",
+      "twister",
+      "sunny-day",
+      "crunch",
+      "psych-up",
+      "ancient-power",
+      "rock-smash",
+      "torment",
+      "facade",
+      "nature-power",
+      "taunt",
+      "secret-power",
+      "mud-sport",
+      "rock-tomb",
+      "sand-tomb",
+      "iron-defense",
+      "block",
+      "dragon-dance",
+      "rock-blast",
+      "gyro-ball",
+      "natural-gift",
+      "payback",
+      "magnet-rise",
+      "rock-polish",
+      "dark-pulse",
+      "aqua-tail",
+      "dragon-pulse",
+      "earth-power",
+      "giga-impact",
+      "thunder-fang",
+      "ice-fang",
+      "fire-fang",
+      "flash-cannon",
+      "rock-climb",
+      "iron-head",
+      "stone-edge",
+      "captivate",
+      "stealth-rock",
+      "autotomize",
+      "smack-down",
+      "heavy-slam",
+      "round",
+      "bulldoze",
+      "dragon-tail",
+      "drill-run",
+      "confide",
+      "high-horsepower",
+      "brutal-swing",
+      "psychic-fangs",
+      "stomping-tantrum",
+      "body-press",
+      "breaking-swipe",
+      "steel-beam",
+      "steel-roller",
+      "meteor-beam",
+      "scorching-sands"
+    ],
+    "abilities": [
+      "rock-head",
+      "sturdy",
+      "sheer-force"
+    ],
+    "weight": 4000,
+    "height": 92,
+    "spriteId": 10072
   },
   {
     "name": "Snubbull",
@@ -28307,131 +28570,8 @@
       "intimidate"
     ],
     "weight": 39,
-    "height": 5
-  },
-  {
-    "name": "Mega-Scizor",
-    "dexNumber": 212,
-    "types": [
-      "bug",
-      "steel"
-    ],
-    "generation": 2,
-    "eggGroups": [
-      "bug"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "is-mega"
-    ],
-    "moves": [
-      "razor-wind",
-      "swords-dance",
-      "cut",
-      "wing-attack",
-      "headbutt",
-      "take-down",
-      "double-edge",
-      "leer",
-      "hyper-beam",
-      "counter",
-      "strength",
-      "toxic",
-      "agility",
-      "quick-attack",
-      "mimic",
-      "double-team",
-      "light-screen",
-      "focus-energy",
-      "swift",
-      "rest",
-      "slash",
-      "substitute",
-      "thief",
-      "snore",
-      "curse",
-      "reversal",
-      "protect",
-      "scary-face",
-      "detect",
-      "sandstorm",
-      "endure",
-      "false-swipe",
-      "swagger",
-      "fury-cutter",
-      "steel-wing",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "safeguard",
-      "baton-pass",
-      "pursuit",
-      "metal-claw",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "rock-smash",
-      "facade",
-      "helping-hand",
-      "superpower",
-      "brick-break",
-      "knock-off",
-      "secret-power",
-      "air-cutter",
-      "silver-wind",
-      "sand-tomb",
-      "aerial-ace",
-      "iron-defense",
-      "roost",
-      "natural-gift",
-      "feint",
-      "tailwind",
-      "u-turn",
-      "close-combat",
-      "assurance",
-      "fling",
-      "night-slash",
-      "air-slash",
-      "x-scissor",
-      "bug-buzz",
-      "vacuum-wave",
-      "giga-impact",
-      "bullet-punch",
-      "psycho-cut",
-      "flash-cannon",
-      "defog",
-      "cross-poison",
-      "iron-head",
-      "captivate",
-      "bug-bite",
-      "double-hit",
-      "ominous-wind",
-      "venoshock",
-      "round",
-      "acrobatics",
-      "struggle-bug",
-      "confide",
-      "laser-focus",
-      "lunge",
-      "brutal-swing",
-      "steel-beam",
-      "skitter-smack",
-      "dual-wingbeat",
-      "tera-blast",
-      "pounce",
-      "trailblaze",
-      "hard-press"
-    ],
-    "abilities": [
-      "swarm",
-      "technician",
-      "light-metal"
-    ],
-    "weight": 1180,
-    "height": 18
+    "height": 5,
+    "spriteId": 10234
   },
   {
     "name": "Scizor",
@@ -28555,6 +28695,131 @@
     ],
     "weight": 1180,
     "height": 18
+  },
+  {
+    "name": "Mega-Scizor",
+    "dexNumber": 212,
+    "types": [
+      "bug",
+      "steel"
+    ],
+    "generation": 2,
+    "eggGroups": [
+      "bug"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [
+      "razor-wind",
+      "swords-dance",
+      "cut",
+      "wing-attack",
+      "headbutt",
+      "take-down",
+      "double-edge",
+      "leer",
+      "hyper-beam",
+      "counter",
+      "strength",
+      "toxic",
+      "agility",
+      "quick-attack",
+      "mimic",
+      "double-team",
+      "light-screen",
+      "focus-energy",
+      "swift",
+      "rest",
+      "slash",
+      "substitute",
+      "thief",
+      "snore",
+      "curse",
+      "reversal",
+      "protect",
+      "scary-face",
+      "detect",
+      "sandstorm",
+      "endure",
+      "false-swipe",
+      "swagger",
+      "fury-cutter",
+      "steel-wing",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "safeguard",
+      "baton-pass",
+      "pursuit",
+      "metal-claw",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "rock-smash",
+      "facade",
+      "helping-hand",
+      "superpower",
+      "brick-break",
+      "knock-off",
+      "secret-power",
+      "air-cutter",
+      "silver-wind",
+      "sand-tomb",
+      "aerial-ace",
+      "iron-defense",
+      "roost",
+      "natural-gift",
+      "feint",
+      "tailwind",
+      "u-turn",
+      "close-combat",
+      "assurance",
+      "fling",
+      "night-slash",
+      "air-slash",
+      "x-scissor",
+      "bug-buzz",
+      "vacuum-wave",
+      "giga-impact",
+      "bullet-punch",
+      "psycho-cut",
+      "flash-cannon",
+      "defog",
+      "cross-poison",
+      "iron-head",
+      "captivate",
+      "bug-bite",
+      "double-hit",
+      "ominous-wind",
+      "venoshock",
+      "round",
+      "acrobatics",
+      "struggle-bug",
+      "confide",
+      "laser-focus",
+      "lunge",
+      "brutal-swing",
+      "steel-beam",
+      "skitter-smack",
+      "dual-wingbeat",
+      "tera-blast",
+      "pounce",
+      "trailblaze",
+      "hard-press"
+    ],
+    "abilities": [
+      "swarm",
+      "technician",
+      "light-metal"
+    ],
+    "weight": 1180,
+    "height": 18,
+    "spriteId": 10046
   },
   {
     "name": "Shuckle",
@@ -28911,7 +29176,8 @@
       "moxie"
     ],
     "weight": 540,
-    "height": 15
+    "height": 15,
+    "spriteId": 10047
   },
   {
     "name": "Sneasel",
@@ -29077,7 +29343,8 @@
       "pickpocket"
     ],
     "weight": 280,
-    "height": 9
+    "height": 9,
+    "spriteId": 10235
   },
   {
     "name": "Teddiursa",
@@ -29913,7 +30180,8 @@
       "regenerator"
     ],
     "weight": 50,
-    "height": 6
+    "height": 6,
+    "spriteId": 10173
   },
   {
     "name": "Remoraid",
@@ -30370,7 +30638,8 @@
       "flying"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -30471,6 +30740,31 @@
       "weak-armor"
     ],
     "weight": 505,
+    "height": 17
+  },
+  {
+    "name": "Mega-Skarmory",
+    "dexNumber": 227,
+    "spriteId": 10284,
+    "types": [
+      "steel",
+      "flying"
+    ],
+    "generation": 2,
+    "eggGroups": [
+      "flying"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "stalwart"
+    ],
+    "weight": 404,
     "height": 17
   },
   {
@@ -30834,7 +31128,8 @@
       "unnerve"
     ],
     "weight": 350,
-    "height": 14
+    "height": 14,
+    "spriteId": 10048
   },
   {
     "name": "Kingdra",
@@ -32781,167 +33076,6 @@
     "height": 12
   },
   {
-    "name": "Mega-Tyranitar",
-    "dexNumber": 248,
-    "types": [
-      "rock",
-      "dark"
-    ],
-    "generation": 2,
-    "eggGroups": [
-      "monster"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "pseudo",
-      "is-mega"
-    ],
-    "moves": [
-      "mega-punch",
-      "fire-punch",
-      "ice-punch",
-      "thunder-punch",
-      "cut",
-      "mega-kick",
-      "headbutt",
-      "tackle",
-      "body-slam",
-      "take-down",
-      "thrash",
-      "double-edge",
-      "leer",
-      "bite",
-      "roar",
-      "flamethrower",
-      "hydro-pump",
-      "surf",
-      "ice-beam",
-      "blizzard",
-      "hyper-beam",
-      "low-kick",
-      "counter",
-      "seismic-toss",
-      "strength",
-      "thunderbolt",
-      "thunder-wave",
-      "thunder",
-      "rock-throw",
-      "earthquake",
-      "dig",
-      "toxic",
-      "mimic",
-      "screech",
-      "double-team",
-      "focus-energy",
-      "fire-blast",
-      "rest",
-      "rock-slide",
-      "substitute",
-      "nightmare",
-      "snore",
-      "curse",
-      "spite",
-      "protect",
-      "scary-face",
-      "mud-slap",
-      "icy-wind",
-      "detect",
-      "outrage",
-      "sandstorm",
-      "endure",
-      "swagger",
-      "fury-cutter",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "dynamic-punch",
-      "dragon-breath",
-      "iron-tail",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "crunch",
-      "ancient-power",
-      "rock-smash",
-      "whirlpool",
-      "uproar",
-      "torment",
-      "facade",
-      "focus-punch",
-      "taunt",
-      "helping-hand",
-      "superpower",
-      "revenge",
-      "brick-break",
-      "knock-off",
-      "secret-power",
-      "rock-tomb",
-      "sand-tomb",
-      "muddy-water",
-      "aerial-ace",
-      "iron-defense",
-      "block",
-      "dragon-claw",
-      "mud-shot",
-      "dragon-dance",
-      "rock-blast",
-      "shock-wave",
-      "water-pulse",
-      "natural-gift",
-      "payback",
-      "assurance",
-      "fling",
-      "rock-polish",
-      "dark-pulse",
-      "aqua-tail",
-      "dragon-pulse",
-      "power-gem",
-      "focus-blast",
-      "earth-power",
-      "giga-impact",
-      "avalanche",
-      "shadow-claw",
-      "thunder-fang",
-      "ice-fang",
-      "fire-fang",
-      "rock-climb",
-      "iron-head",
-      "stone-edge",
-      "captivate",
-      "stealth-rock",
-      "hone-claws",
-      "smack-down",
-      "heavy-slam",
-      "foul-play",
-      "round",
-      "chip-away",
-      "incinerate",
-      "retaliate",
-      "bulldoze",
-      "dragon-tail",
-      "snarl",
-      "confide",
-      "power-up-punch",
-      "high-horsepower",
-      "brutal-swing",
-      "stomping-tantrum",
-      "body-press",
-      "breaking-swipe",
-      "lash-out",
-      "tera-blast",
-      "hard-press"
-    ],
-    "abilities": [
-      "sand-stream",
-      "unnerve"
-    ],
-    "weight": 2020,
-    "height": 20
-  },
-  {
     "name": "Tyranitar",
     "dexNumber": 248,
     "types": [
@@ -33101,6 +33235,168 @@
     ],
     "weight": 2020,
     "height": 20
+  },
+  {
+    "name": "Mega-Tyranitar",
+    "dexNumber": 248,
+    "types": [
+      "rock",
+      "dark"
+    ],
+    "generation": 2,
+    "eggGroups": [
+      "monster"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "pseudo",
+      "is-mega"
+    ],
+    "moves": [
+      "mega-punch",
+      "fire-punch",
+      "ice-punch",
+      "thunder-punch",
+      "cut",
+      "mega-kick",
+      "headbutt",
+      "tackle",
+      "body-slam",
+      "take-down",
+      "thrash",
+      "double-edge",
+      "leer",
+      "bite",
+      "roar",
+      "flamethrower",
+      "hydro-pump",
+      "surf",
+      "ice-beam",
+      "blizzard",
+      "hyper-beam",
+      "low-kick",
+      "counter",
+      "seismic-toss",
+      "strength",
+      "thunderbolt",
+      "thunder-wave",
+      "thunder",
+      "rock-throw",
+      "earthquake",
+      "dig",
+      "toxic",
+      "mimic",
+      "screech",
+      "double-team",
+      "focus-energy",
+      "fire-blast",
+      "rest",
+      "rock-slide",
+      "substitute",
+      "nightmare",
+      "snore",
+      "curse",
+      "spite",
+      "protect",
+      "scary-face",
+      "mud-slap",
+      "icy-wind",
+      "detect",
+      "outrage",
+      "sandstorm",
+      "endure",
+      "swagger",
+      "fury-cutter",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "dynamic-punch",
+      "dragon-breath",
+      "iron-tail",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "crunch",
+      "ancient-power",
+      "rock-smash",
+      "whirlpool",
+      "uproar",
+      "torment",
+      "facade",
+      "focus-punch",
+      "taunt",
+      "helping-hand",
+      "superpower",
+      "revenge",
+      "brick-break",
+      "knock-off",
+      "secret-power",
+      "rock-tomb",
+      "sand-tomb",
+      "muddy-water",
+      "aerial-ace",
+      "iron-defense",
+      "block",
+      "dragon-claw",
+      "mud-shot",
+      "dragon-dance",
+      "rock-blast",
+      "shock-wave",
+      "water-pulse",
+      "natural-gift",
+      "payback",
+      "assurance",
+      "fling",
+      "rock-polish",
+      "dark-pulse",
+      "aqua-tail",
+      "dragon-pulse",
+      "power-gem",
+      "focus-blast",
+      "earth-power",
+      "giga-impact",
+      "avalanche",
+      "shadow-claw",
+      "thunder-fang",
+      "ice-fang",
+      "fire-fang",
+      "rock-climb",
+      "iron-head",
+      "stone-edge",
+      "captivate",
+      "stealth-rock",
+      "hone-claws",
+      "smack-down",
+      "heavy-slam",
+      "foul-play",
+      "round",
+      "chip-away",
+      "incinerate",
+      "retaliate",
+      "bulldoze",
+      "dragon-tail",
+      "snarl",
+      "confide",
+      "power-up-punch",
+      "high-horsepower",
+      "brutal-swing",
+      "stomping-tantrum",
+      "body-press",
+      "breaking-swipe",
+      "lash-out",
+      "tera-blast",
+      "hard-press"
+    ],
+    "abilities": [
+      "sand-stream",
+      "unnerve"
+    ],
+    "weight": 2020,
+    "height": 20,
+    "spriteId": 10049
   },
   {
     "name": "Lugia",
@@ -33753,6 +34049,152 @@
     "height": 9
   },
   {
+    "name": "Sceptile",
+    "dexNumber": 254,
+    "types": [
+      "grass"
+    ],
+    "generation": 3,
+    "eggGroups": [
+      "monster",
+      "dragon"
+    ],
+    "evolutionMethod": [
+      "level",
+      "has-mega"
+    ],
+    "status": [],
+    "moves": [
+      "pound",
+      "mega-punch",
+      "thunder-punch",
+      "swords-dance",
+      "cut",
+      "slam",
+      "double-kick",
+      "mega-kick",
+      "headbutt",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "leer",
+      "roar",
+      "hyper-beam",
+      "low-kick",
+      "counter",
+      "seismic-toss",
+      "strength",
+      "absorb",
+      "mega-drain",
+      "leech-seed",
+      "solar-beam",
+      "earthquake",
+      "dig",
+      "toxic",
+      "agility",
+      "quick-attack",
+      "mimic",
+      "screech",
+      "double-team",
+      "swift",
+      "flash",
+      "rest",
+      "rock-slide",
+      "slash",
+      "substitute",
+      "thief",
+      "snore",
+      "protect",
+      "mud-slap",
+      "detect",
+      "outrage",
+      "giga-drain",
+      "endure",
+      "false-swipe",
+      "swagger",
+      "fury-cutter",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "safeguard",
+      "dynamic-punch",
+      "dragon-breath",
+      "pursuit",
+      "iron-tail",
+      "synthesis",
+      "hidden-power",
+      "sunny-day",
+      "crunch",
+      "rock-smash",
+      "facade",
+      "focus-punch",
+      "nature-power",
+      "helping-hand",
+      "brick-break",
+      "endeavor",
+      "secret-power",
+      "rock-tomb",
+      "bullet-seed",
+      "aerial-ace",
+      "dragon-claw",
+      "frenzy-plant",
+      "magical-leaf",
+      "leaf-blade",
+      "dragon-dance",
+      "natural-gift",
+      "assurance",
+      "fling",
+      "worry-seed",
+      "night-slash",
+      "seed-bomb",
+      "x-scissor",
+      "dragon-pulse",
+      "drain-punch",
+      "vacuum-wave",
+      "focus-blast",
+      "energy-ball",
+      "giga-impact",
+      "rock-climb",
+      "leaf-storm",
+      "cross-poison",
+      "captivate",
+      "grass-knot",
+      "hone-claws",
+      "low-sweep",
+      "round",
+      "quick-guard",
+      "acrobatics",
+      "grass-pledge",
+      "bulldoze",
+      "dragon-tail",
+      "work-up",
+      "dual-chop",
+      "grassy-terrain",
+      "confide",
+      "power-up-punch",
+      "solar-blade",
+      "leafage",
+      "laser-focus",
+      "throat-chop",
+      "brutal-swing",
+      "breaking-swipe",
+      "scale-shot",
+      "grassy-glide",
+      "tera-blast",
+      "shed-tail",
+      "trailblaze",
+      "dragon-cheer",
+      "upper-hand"
+    ],
+    "abilities": [
+      "overgrow",
+      "unburden"
+    ],
+    "weight": 522,
+    "height": 17
+  },
+  {
     "name": "Mega-Sceptile",
     "dexNumber": 254,
     "types": [
@@ -33898,153 +34340,8 @@
       "unburden"
     ],
     "weight": 522,
-    "height": 17
-  },
-  {
-    "name": "Sceptile",
-    "dexNumber": 254,
-    "types": [
-      "grass"
-    ],
-    "generation": 3,
-    "eggGroups": [
-      "monster",
-      "dragon"
-    ],
-    "evolutionMethod": [
-      "level",
-      "has-mega"
-    ],
-    "status": [],
-    "moves": [
-      "pound",
-      "mega-punch",
-      "thunder-punch",
-      "swords-dance",
-      "cut",
-      "slam",
-      "double-kick",
-      "mega-kick",
-      "headbutt",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "leer",
-      "roar",
-      "hyper-beam",
-      "low-kick",
-      "counter",
-      "seismic-toss",
-      "strength",
-      "absorb",
-      "mega-drain",
-      "leech-seed",
-      "solar-beam",
-      "earthquake",
-      "dig",
-      "toxic",
-      "agility",
-      "quick-attack",
-      "mimic",
-      "screech",
-      "double-team",
-      "swift",
-      "flash",
-      "rest",
-      "rock-slide",
-      "slash",
-      "substitute",
-      "thief",
-      "snore",
-      "protect",
-      "mud-slap",
-      "detect",
-      "outrage",
-      "giga-drain",
-      "endure",
-      "false-swipe",
-      "swagger",
-      "fury-cutter",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "safeguard",
-      "dynamic-punch",
-      "dragon-breath",
-      "pursuit",
-      "iron-tail",
-      "synthesis",
-      "hidden-power",
-      "sunny-day",
-      "crunch",
-      "rock-smash",
-      "facade",
-      "focus-punch",
-      "nature-power",
-      "helping-hand",
-      "brick-break",
-      "endeavor",
-      "secret-power",
-      "rock-tomb",
-      "bullet-seed",
-      "aerial-ace",
-      "dragon-claw",
-      "frenzy-plant",
-      "magical-leaf",
-      "leaf-blade",
-      "dragon-dance",
-      "natural-gift",
-      "assurance",
-      "fling",
-      "worry-seed",
-      "night-slash",
-      "seed-bomb",
-      "x-scissor",
-      "dragon-pulse",
-      "drain-punch",
-      "vacuum-wave",
-      "focus-blast",
-      "energy-ball",
-      "giga-impact",
-      "rock-climb",
-      "leaf-storm",
-      "cross-poison",
-      "captivate",
-      "grass-knot",
-      "hone-claws",
-      "low-sweep",
-      "round",
-      "quick-guard",
-      "acrobatics",
-      "grass-pledge",
-      "bulldoze",
-      "dragon-tail",
-      "work-up",
-      "dual-chop",
-      "grassy-terrain",
-      "confide",
-      "power-up-punch",
-      "solar-blade",
-      "leafage",
-      "laser-focus",
-      "throat-chop",
-      "brutal-swing",
-      "breaking-swipe",
-      "scale-shot",
-      "grassy-glide",
-      "tera-blast",
-      "shed-tail",
-      "trailblaze",
-      "dragon-cheer",
-      "upper-hand"
-    ],
-    "abilities": [
-      "overgrow",
-      "unburden"
-    ],
-    "weight": 522,
-    "height": 17
+    "height": 17,
+    "spriteId": 10065
   },
   {
     "name": "Torchic",
@@ -34571,7 +34868,8 @@
       "speed-boost"
     ],
     "weight": 520,
-    "height": 19
+    "height": 19,
+    "spriteId": 10050
   },
   {
     "name": "Mudkip",
@@ -34806,149 +35104,6 @@
     "height": 7
   },
   {
-    "name": "Mega-Swampert",
-    "dexNumber": 260,
-    "types": [
-      "water",
-      "ground"
-    ],
-    "generation": 3,
-    "eggGroups": [
-      "monster",
-      "water1"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "is-mega"
-    ],
-    "moves": [
-      "mega-punch",
-      "ice-punch",
-      "stomp",
-      "mega-kick",
-      "headbutt",
-      "tackle",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "bite",
-      "growl",
-      "roar",
-      "supersonic",
-      "water-gun",
-      "hydro-pump",
-      "surf",
-      "ice-beam",
-      "blizzard",
-      "hyper-beam",
-      "low-kick",
-      "counter",
-      "seismic-toss",
-      "strength",
-      "rock-throw",
-      "earthquake",
-      "dig",
-      "toxic",
-      "mimic",
-      "screech",
-      "double-team",
-      "defense-curl",
-      "bide",
-      "sludge",
-      "waterfall",
-      "amnesia",
-      "rest",
-      "rock-slide",
-      "substitute",
-      "snore",
-      "curse",
-      "protect",
-      "scary-face",
-      "mud-slap",
-      "foresight",
-      "icy-wind",
-      "outrage",
-      "endure",
-      "rollout",
-      "swagger",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "dynamic-punch",
-      "iron-tail",
-      "hidden-power",
-      "rain-dance",
-      "mirror-coat",
-      "ancient-power",
-      "rock-smash",
-      "whirlpool",
-      "uproar",
-      "hail",
-      "facade",
-      "focus-punch",
-      "helping-hand",
-      "superpower",
-      "brick-break",
-      "yawn",
-      "knock-off",
-      "endeavor",
-      "secret-power",
-      "dive",
-      "mud-sport",
-      "hydro-cannon",
-      "weather-ball",
-      "rock-tomb",
-      "sand-tomb",
-      "muddy-water",
-      "bulk-up",
-      "mud-shot",
-      "water-pulse",
-      "hammer-arm",
-      "natural-gift",
-      "fling",
-      "poison-jab",
-      "aqua-tail",
-      "focus-blast",
-      "earth-power",
-      "giga-impact",
-      "avalanche",
-      "mud-bomb",
-      "rock-climb",
-      "stone-edge",
-      "captivate",
-      "stealth-rock",
-      "wide-guard",
-      "smack-down",
-      "sludge-wave",
-      "round",
-      "echoed-voice",
-      "scald",
-      "water-pledge",
-      "bulldoze",
-      "work-up",
-      "confide",
-      "power-up-punch",
-      "darkest-lariat",
-      "high-horsepower",
-      "stomping-tantrum",
-      "liquidation",
-      "body-press",
-      "flip-turn",
-      "tera-blast",
-      "chilling-water",
-      "hard-press"
-    ],
-    "abilities": [
-      "torrent",
-      "damp"
-    ],
-    "weight": 819,
-    "height": 15
-  },
-  {
     "name": "Swampert",
     "dexNumber": 260,
     "types": [
@@ -35089,6 +35244,150 @@
     ],
     "weight": 819,
     "height": 15
+  },
+  {
+    "name": "Mega-Swampert",
+    "dexNumber": 260,
+    "types": [
+      "water",
+      "ground"
+    ],
+    "generation": 3,
+    "eggGroups": [
+      "monster",
+      "water1"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [
+      "mega-punch",
+      "ice-punch",
+      "stomp",
+      "mega-kick",
+      "headbutt",
+      "tackle",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "bite",
+      "growl",
+      "roar",
+      "supersonic",
+      "water-gun",
+      "hydro-pump",
+      "surf",
+      "ice-beam",
+      "blizzard",
+      "hyper-beam",
+      "low-kick",
+      "counter",
+      "seismic-toss",
+      "strength",
+      "rock-throw",
+      "earthquake",
+      "dig",
+      "toxic",
+      "mimic",
+      "screech",
+      "double-team",
+      "defense-curl",
+      "bide",
+      "sludge",
+      "waterfall",
+      "amnesia",
+      "rest",
+      "rock-slide",
+      "substitute",
+      "snore",
+      "curse",
+      "protect",
+      "scary-face",
+      "mud-slap",
+      "foresight",
+      "icy-wind",
+      "outrage",
+      "endure",
+      "rollout",
+      "swagger",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "dynamic-punch",
+      "iron-tail",
+      "hidden-power",
+      "rain-dance",
+      "mirror-coat",
+      "ancient-power",
+      "rock-smash",
+      "whirlpool",
+      "uproar",
+      "hail",
+      "facade",
+      "focus-punch",
+      "helping-hand",
+      "superpower",
+      "brick-break",
+      "yawn",
+      "knock-off",
+      "endeavor",
+      "secret-power",
+      "dive",
+      "mud-sport",
+      "hydro-cannon",
+      "weather-ball",
+      "rock-tomb",
+      "sand-tomb",
+      "muddy-water",
+      "bulk-up",
+      "mud-shot",
+      "water-pulse",
+      "hammer-arm",
+      "natural-gift",
+      "fling",
+      "poison-jab",
+      "aqua-tail",
+      "focus-blast",
+      "earth-power",
+      "giga-impact",
+      "avalanche",
+      "mud-bomb",
+      "rock-climb",
+      "stone-edge",
+      "captivate",
+      "stealth-rock",
+      "wide-guard",
+      "smack-down",
+      "sludge-wave",
+      "round",
+      "echoed-voice",
+      "scald",
+      "water-pledge",
+      "bulldoze",
+      "work-up",
+      "confide",
+      "power-up-punch",
+      "darkest-lariat",
+      "high-horsepower",
+      "stomping-tantrum",
+      "liquidation",
+      "body-press",
+      "flip-turn",
+      "tera-blast",
+      "chilling-water",
+      "hard-press"
+    ],
+    "abilities": [
+      "torrent",
+      "damp"
+    ],
+    "weight": 819,
+    "height": 15,
+    "spriteId": 10064
   },
   {
     "name": "Poochyena",
@@ -35422,7 +35721,8 @@
       "quick-feet"
     ],
     "weight": 175,
-    "height": 4
+    "height": 4,
+    "spriteId": 10174
   },
   {
     "name": "Linoone",
@@ -35558,7 +35858,8 @@
       "quick-feet"
     ],
     "weight": 325,
-    "height": 5
+    "height": 5,
+    "spriteId": 10175
   },
   {
     "name": "Wurmple",
@@ -37495,7 +37796,8 @@
       "telepathy"
     ],
     "weight": 484,
-    "height": 16
+    "height": 16,
+    "spriteId": 10051
   },
   {
     "name": "Surskit",
@@ -39586,168 +39888,6 @@
     "height": 11
   },
   {
-    "name": "Mega-Sableye",
-    "dexNumber": 302,
-    "types": [
-      "dark",
-      "ghost"
-    ],
-    "generation": 3,
-    "eggGroups": [
-      "humanshape"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "is-mega"
-    ],
-    "moves": [
-      "mega-punch",
-      "fire-punch",
-      "ice-punch",
-      "thunder-punch",
-      "scratch",
-      "cut",
-      "mega-kick",
-      "headbutt",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "leer",
-      "disable",
-      "psybeam",
-      "hyper-beam",
-      "low-kick",
-      "counter",
-      "seismic-toss",
-      "thunder-wave",
-      "dig",
-      "toxic",
-      "psychic",
-      "night-shade",
-      "mimic",
-      "double-team",
-      "recover",
-      "confuse-ray",
-      "light-screen",
-      "reflect",
-      "metronome",
-      "dream-eater",
-      "flash",
-      "fury-swipes",
-      "rest",
-      "substitute",
-      "thief",
-      "nightmare",
-      "snore",
-      "spite",
-      "protect",
-      "feint-attack",
-      "mud-slap",
-      "foresight",
-      "icy-wind",
-      "detect",
-      "giga-drain",
-      "endure",
-      "swagger",
-      "fury-cutter",
-      "mean-look",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "pain-split",
-      "dynamic-punch",
-      "encore",
-      "metal-claw",
-      "moonlight",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "psych-up",
-      "shadow-ball",
-      "rock-smash",
-      "fake-out",
-      "torment",
-      "flatter",
-      "will-o-wisp",
-      "facade",
-      "focus-punch",
-      "taunt",
-      "helping-hand",
-      "trick",
-      "role-play",
-      "magic-coat",
-      "brick-break",
-      "knock-off",
-      "skill-swap",
-      "imprison",
-      "snatch",
-      "secret-power",
-      "astonish",
-      "rock-tomb",
-      "signal-beam",
-      "aerial-ace",
-      "bulk-up",
-      "mud-shot",
-      "calm-mind",
-      "shock-wave",
-      "water-pulse",
-      "gravity",
-      "gyro-ball",
-      "natural-gift",
-      "feint",
-      "metal-burst",
-      "payback",
-      "embargo",
-      "fling",
-      "punishment",
-      "sucker-punch",
-      "poison-jab",
-      "dark-pulse",
-      "x-scissor",
-      "power-gem",
-      "drain-punch",
-      "energy-ball",
-      "giga-impact",
-      "nasty-plot",
-      "shadow-claw",
-      "shadow-sneak",
-      "zen-headbutt",
-      "captivate",
-      "ominous-wind",
-      "hone-claws",
-      "wonder-room",
-      "telekinesis",
-      "low-sweep",
-      "foul-play",
-      "round",
-      "ally-switch",
-      "hex",
-      "incinerate",
-      "quash",
-      "retaliate",
-      "snarl",
-      "phantom-force",
-      "confide",
-      "dazzling-gleam",
-      "power-up-punch",
-      "throat-chop",
-      "skitter-smack",
-      "lash-out",
-      "poltergeist",
-      "tera-blast"
-    ],
-    "abilities": [
-      "keen-eye",
-      "stall",
-      "prankster"
-    ],
-    "weight": 110,
-    "height": 5
-  },
-  {
     "name": "Sableye",
     "dexNumber": 302,
     "types": [
@@ -39907,6 +40047,169 @@
     ],
     "weight": 110,
     "height": 5
+  },
+  {
+    "name": "Mega-Sableye",
+    "dexNumber": 302,
+    "types": [
+      "dark",
+      "ghost"
+    ],
+    "generation": 3,
+    "eggGroups": [
+      "humanshape"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [
+      "mega-punch",
+      "fire-punch",
+      "ice-punch",
+      "thunder-punch",
+      "scratch",
+      "cut",
+      "mega-kick",
+      "headbutt",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "leer",
+      "disable",
+      "psybeam",
+      "hyper-beam",
+      "low-kick",
+      "counter",
+      "seismic-toss",
+      "thunder-wave",
+      "dig",
+      "toxic",
+      "psychic",
+      "night-shade",
+      "mimic",
+      "double-team",
+      "recover",
+      "confuse-ray",
+      "light-screen",
+      "reflect",
+      "metronome",
+      "dream-eater",
+      "flash",
+      "fury-swipes",
+      "rest",
+      "substitute",
+      "thief",
+      "nightmare",
+      "snore",
+      "spite",
+      "protect",
+      "feint-attack",
+      "mud-slap",
+      "foresight",
+      "icy-wind",
+      "detect",
+      "giga-drain",
+      "endure",
+      "swagger",
+      "fury-cutter",
+      "mean-look",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "pain-split",
+      "dynamic-punch",
+      "encore",
+      "metal-claw",
+      "moonlight",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "psych-up",
+      "shadow-ball",
+      "rock-smash",
+      "fake-out",
+      "torment",
+      "flatter",
+      "will-o-wisp",
+      "facade",
+      "focus-punch",
+      "taunt",
+      "helping-hand",
+      "trick",
+      "role-play",
+      "magic-coat",
+      "brick-break",
+      "knock-off",
+      "skill-swap",
+      "imprison",
+      "snatch",
+      "secret-power",
+      "astonish",
+      "rock-tomb",
+      "signal-beam",
+      "aerial-ace",
+      "bulk-up",
+      "mud-shot",
+      "calm-mind",
+      "shock-wave",
+      "water-pulse",
+      "gravity",
+      "gyro-ball",
+      "natural-gift",
+      "feint",
+      "metal-burst",
+      "payback",
+      "embargo",
+      "fling",
+      "punishment",
+      "sucker-punch",
+      "poison-jab",
+      "dark-pulse",
+      "x-scissor",
+      "power-gem",
+      "drain-punch",
+      "energy-ball",
+      "giga-impact",
+      "nasty-plot",
+      "shadow-claw",
+      "shadow-sneak",
+      "zen-headbutt",
+      "captivate",
+      "ominous-wind",
+      "hone-claws",
+      "wonder-room",
+      "telekinesis",
+      "low-sweep",
+      "foul-play",
+      "round",
+      "ally-switch",
+      "hex",
+      "incinerate",
+      "quash",
+      "retaliate",
+      "snarl",
+      "phantom-force",
+      "confide",
+      "dazzling-gleam",
+      "power-up-punch",
+      "throat-chop",
+      "skitter-smack",
+      "lash-out",
+      "poltergeist",
+      "tera-blast"
+    ],
+    "abilities": [
+      "keen-eye",
+      "stall",
+      "prankster"
+    ],
+    "weight": 110,
+    "height": 5,
+    "spriteId": 10066
   },
   {
     "name": "Mawile",
@@ -40179,7 +40482,8 @@
       "sheer-force"
     ],
     "weight": 115,
-    "height": 6
+    "height": 6,
+    "spriteId": 10052
   },
   {
     "name": "Aron",
@@ -40670,7 +40974,8 @@
       "heavy-metal"
     ],
     "weight": 3600,
-    "height": 21
+    "height": 21,
+    "spriteId": 10053
   },
   {
     "name": "Meditite",
@@ -41073,7 +41378,8 @@
       "telepathy"
     ],
     "weight": 315,
-    "height": 13
+    "height": 13,
+    "spriteId": 10054
   },
   {
     "name": "Electrike",
@@ -41353,7 +41659,8 @@
       "minus"
     ],
     "weight": 402,
-    "height": 15
+    "height": 15,
+    "spriteId": 10055
   },
   {
     "name": "Plusle",
@@ -42228,114 +42535,6 @@
     "height": 8
   },
   {
-    "name": "Mega-Sharpedo",
-    "dexNumber": 319,
-    "types": [
-      "water",
-      "dark"
-    ],
-    "generation": 3,
-    "eggGroups": [
-      "water2"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "is-mega"
-    ],
-    "moves": [
-      "take-down",
-      "double-edge",
-      "leer",
-      "bite",
-      "roar",
-      "hydro-pump",
-      "surf",
-      "ice-beam",
-      "blizzard",
-      "hyper-beam",
-      "strength",
-      "earthquake",
-      "toxic",
-      "agility",
-      "rage",
-      "mimic",
-      "screech",
-      "double-team",
-      "focus-energy",
-      "waterfall",
-      "swift",
-      "skull-bash",
-      "rest",
-      "super-fang",
-      "slash",
-      "substitute",
-      "thief",
-      "snore",
-      "spite",
-      "protect",
-      "scary-face",
-      "mud-slap",
-      "icy-wind",
-      "endure",
-      "swagger",
-      "fury-cutter",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "hidden-power",
-      "rain-dance",
-      "crunch",
-      "ancient-power",
-      "rock-smash",
-      "whirlpool",
-      "uproar",
-      "hail",
-      "torment",
-      "facade",
-      "taunt",
-      "secret-power",
-      "dive",
-      "poison-fang",
-      "rock-tomb",
-      "bounce",
-      "water-pulse",
-      "brine",
-      "natural-gift",
-      "feint",
-      "close-combat",
-      "payback",
-      "assurance",
-      "poison-jab",
-      "dark-pulse",
-      "night-slash",
-      "giga-impact",
-      "avalanche",
-      "ice-fang",
-      "zen-headbutt",
-      "captivate",
-      "aqua-jet",
-      "round",
-      "scald",
-      "retaliate",
-      "bulldoze",
-      "snarl",
-      "confide",
-      "psychic-fangs",
-      "liquidation",
-      "scale-shot",
-      "flip-turn"
-    ],
-    "abilities": [
-      "rough-skin",
-      "speed-boost"
-    ],
-    "weight": 888,
-    "height": 18
-  },
-  {
     "name": "Sharpedo",
     "dexNumber": 319,
     "types": [
@@ -42441,6 +42640,115 @@
     ],
     "weight": 888,
     "height": 18
+  },
+  {
+    "name": "Mega-Sharpedo",
+    "dexNumber": 319,
+    "types": [
+      "water",
+      "dark"
+    ],
+    "generation": 3,
+    "eggGroups": [
+      "water2"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [
+      "take-down",
+      "double-edge",
+      "leer",
+      "bite",
+      "roar",
+      "hydro-pump",
+      "surf",
+      "ice-beam",
+      "blizzard",
+      "hyper-beam",
+      "strength",
+      "earthquake",
+      "toxic",
+      "agility",
+      "rage",
+      "mimic",
+      "screech",
+      "double-team",
+      "focus-energy",
+      "waterfall",
+      "swift",
+      "skull-bash",
+      "rest",
+      "super-fang",
+      "slash",
+      "substitute",
+      "thief",
+      "snore",
+      "spite",
+      "protect",
+      "scary-face",
+      "mud-slap",
+      "icy-wind",
+      "endure",
+      "swagger",
+      "fury-cutter",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "hidden-power",
+      "rain-dance",
+      "crunch",
+      "ancient-power",
+      "rock-smash",
+      "whirlpool",
+      "uproar",
+      "hail",
+      "torment",
+      "facade",
+      "taunt",
+      "secret-power",
+      "dive",
+      "poison-fang",
+      "rock-tomb",
+      "bounce",
+      "water-pulse",
+      "brine",
+      "natural-gift",
+      "feint",
+      "close-combat",
+      "payback",
+      "assurance",
+      "poison-jab",
+      "dark-pulse",
+      "night-slash",
+      "giga-impact",
+      "avalanche",
+      "ice-fang",
+      "zen-headbutt",
+      "captivate",
+      "aqua-jet",
+      "round",
+      "scald",
+      "retaliate",
+      "bulldoze",
+      "snarl",
+      "confide",
+      "psychic-fangs",
+      "liquidation",
+      "scale-shot",
+      "flip-turn"
+    ],
+    "abilities": [
+      "rough-skin",
+      "speed-boost"
+    ],
+    "weight": 888,
+    "height": 18,
+    "spriteId": 10070
   },
   {
     "name": "Wailmer",
@@ -42976,7 +43284,8 @@
       "anger-point"
     ],
     "weight": 2200,
-    "height": 19
+    "height": 19,
+    "spriteId": 10087
   },
   {
     "name": "Torkoal",
@@ -44443,7 +44752,8 @@
       "cloud-nine"
     ],
     "weight": 206,
-    "height": 11
+    "height": 11,
+    "spriteId": 10067
   },
   {
     "name": "Zangoose",
@@ -46783,7 +47093,8 @@
       "cursed-body"
     ],
     "weight": 125,
-    "height": 11
+    "height": 11,
+    "spriteId": 10056
   },
   {
     "name": "Duskull",
@@ -47149,7 +47460,8 @@
       "indeterminate"
     ],
     "evolutionMethod": [
-      "friendship"
+      "friendship",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -47262,6 +47574,31 @@
     ],
     "weight": 10,
     "height": 6
+  },
+  {
+    "name": "Mega-Chimecho",
+    "dexNumber": 358,
+    "spriteId": 10306,
+    "types": [
+      "psychic",
+      "steel"
+    ],
+    "generation": 3,
+    "eggGroups": [
+      "indeterminate"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "levitate"
+    ],
+    "weight": 80,
+    "height": 12
   },
   {
     "name": "Absol",
@@ -47536,6 +47873,30 @@
       "justified"
     ],
     "weight": 470,
+    "height": 12,
+    "spriteId": 10057
+  },
+  {
+    "name": "Mega-Absol-Z",
+    "dexNumber": 359,
+    "spriteId": 10307,
+    "types": [
+      "dark",
+      "ghost"
+    ],
+    "generation": 3,
+    "eggGroups": [
+      "ground"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 490,
     "height": 12
   },
   {
@@ -47869,7 +48230,8 @@
       "moody"
     ],
     "weight": 2565,
-    "height": 15
+    "height": 15,
+    "spriteId": 10074
   },
   {
     "name": "Spheal",
@@ -48766,127 +49128,6 @@
     "height": 11
   },
   {
-    "name": "Mega-Salamence",
-    "dexNumber": 373,
-    "types": [
-      "dragon",
-      "flying"
-    ],
-    "generation": 3,
-    "eggGroups": [
-      "dragon"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "pseudo",
-      "is-mega"
-    ],
-    "moves": [
-      "cut",
-      "fly",
-      "headbutt",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "leer",
-      "bite",
-      "roar",
-      "ember",
-      "flamethrower",
-      "hydro-pump",
-      "hyper-beam",
-      "strength",
-      "fire-spin",
-      "earthquake",
-      "toxic",
-      "rage",
-      "mimic",
-      "double-team",
-      "defense-curl",
-      "focus-energy",
-      "fire-blast",
-      "swift",
-      "rest",
-      "rock-slide",
-      "substitute",
-      "snore",
-      "protect",
-      "scary-face",
-      "mud-slap",
-      "outrage",
-      "endure",
-      "rollout",
-      "swagger",
-      "fury-cutter",
-      "steel-wing",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "dragon-breath",
-      "iron-tail",
-      "hidden-power",
-      "twister",
-      "rain-dance",
-      "sunny-day",
-      "crunch",
-      "rock-smash",
-      "heat-wave",
-      "facade",
-      "helping-hand",
-      "brick-break",
-      "refresh",
-      "secret-power",
-      "hyper-voice",
-      "air-cutter",
-      "rock-tomb",
-      "aerial-ace",
-      "iron-defense",
-      "dragon-claw",
-      "dragon-dance",
-      "roost",
-      "natural-gift",
-      "tailwind",
-      "aqua-tail",
-      "air-slash",
-      "dragon-pulse",
-      "giga-impact",
-      "shadow-claw",
-      "thunder-fang",
-      "fire-fang",
-      "zen-headbutt",
-      "defog",
-      "draco-meteor",
-      "iron-head",
-      "stone-edge",
-      "captivate",
-      "ominous-wind",
-      "hone-claws",
-      "round",
-      "incinerate",
-      "bulldoze",
-      "dragon-tail",
-      "hurricane",
-      "confide",
-      "laser-focus",
-      "brutal-swing",
-      "psychic-fangs",
-      "breaking-swipe",
-      "dual-wingbeat",
-      "tera-blast",
-      "dragon-cheer",
-      "temper-flare"
-    ],
-    "abilities": [
-      "intimidate",
-      "moxie"
-    ],
-    "weight": 1026,
-    "height": 15
-  },
-  {
     "name": "Salamence",
     "dexNumber": 373,
     "types": [
@@ -49006,6 +49247,128 @@
     ],
     "weight": 1026,
     "height": 15
+  },
+  {
+    "name": "Mega-Salamence",
+    "dexNumber": 373,
+    "types": [
+      "dragon",
+      "flying"
+    ],
+    "generation": 3,
+    "eggGroups": [
+      "dragon"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "pseudo",
+      "is-mega"
+    ],
+    "moves": [
+      "cut",
+      "fly",
+      "headbutt",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "leer",
+      "bite",
+      "roar",
+      "ember",
+      "flamethrower",
+      "hydro-pump",
+      "hyper-beam",
+      "strength",
+      "fire-spin",
+      "earthquake",
+      "toxic",
+      "rage",
+      "mimic",
+      "double-team",
+      "defense-curl",
+      "focus-energy",
+      "fire-blast",
+      "swift",
+      "rest",
+      "rock-slide",
+      "substitute",
+      "snore",
+      "protect",
+      "scary-face",
+      "mud-slap",
+      "outrage",
+      "endure",
+      "rollout",
+      "swagger",
+      "fury-cutter",
+      "steel-wing",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "dragon-breath",
+      "iron-tail",
+      "hidden-power",
+      "twister",
+      "rain-dance",
+      "sunny-day",
+      "crunch",
+      "rock-smash",
+      "heat-wave",
+      "facade",
+      "helping-hand",
+      "brick-break",
+      "refresh",
+      "secret-power",
+      "hyper-voice",
+      "air-cutter",
+      "rock-tomb",
+      "aerial-ace",
+      "iron-defense",
+      "dragon-claw",
+      "dragon-dance",
+      "roost",
+      "natural-gift",
+      "tailwind",
+      "aqua-tail",
+      "air-slash",
+      "dragon-pulse",
+      "giga-impact",
+      "shadow-claw",
+      "thunder-fang",
+      "fire-fang",
+      "zen-headbutt",
+      "defog",
+      "draco-meteor",
+      "iron-head",
+      "stone-edge",
+      "captivate",
+      "ominous-wind",
+      "hone-claws",
+      "round",
+      "incinerate",
+      "bulldoze",
+      "dragon-tail",
+      "hurricane",
+      "confide",
+      "laser-focus",
+      "brutal-swing",
+      "psychic-fangs",
+      "breaking-swipe",
+      "dual-wingbeat",
+      "tera-blast",
+      "dragon-cheer",
+      "temper-flare"
+    ],
+    "abilities": [
+      "intimidate",
+      "moxie"
+    ],
+    "weight": 1026,
+    "height": 15,
+    "spriteId": 10089
   },
   {
     "name": "Beldum",
@@ -49161,136 +49524,6 @@
     "height": 12
   },
   {
-    "name": "Mega-Metagross",
-    "dexNumber": 376,
-    "types": [
-      "steel",
-      "psychic"
-    ],
-    "generation": 3,
-    "eggGroups": [
-      "mineral"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "pseudo",
-      "is-mega"
-    ],
-    "moves": [
-      "ice-punch",
-      "thunder-punch",
-      "cut",
-      "headbutt",
-      "tackle",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "hyper-beam",
-      "strength",
-      "earthquake",
-      "toxic",
-      "confusion",
-      "psychic",
-      "agility",
-      "mimic",
-      "double-team",
-      "defense-curl",
-      "light-screen",
-      "reflect",
-      "self-destruct",
-      "swift",
-      "flash",
-      "explosion",
-      "rest",
-      "rock-slide",
-      "substitute",
-      "snore",
-      "protect",
-      "scary-face",
-      "sludge-bomb",
-      "mud-slap",
-      "icy-wind",
-      "sandstorm",
-      "endure",
-      "rollout",
-      "swagger",
-      "fury-cutter",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "dynamic-punch",
-      "pursuit",
-      "metal-claw",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "psych-up",
-      "shadow-ball",
-      "future-sight",
-      "rock-smash",
-      "facade",
-      "focus-punch",
-      "trick",
-      "brick-break",
-      "knock-off",
-      "secret-power",
-      "meteor-mash",
-      "rock-tomb",
-      "cosmic-power",
-      "signal-beam",
-      "aerial-ace",
-      "iron-defense",
-      "block",
-      "gravity",
-      "miracle-eye",
-      "hammer-arm",
-      "gyro-ball",
-      "natural-gift",
-      "magnet-rise",
-      "rock-polish",
-      "giga-impact",
-      "bullet-punch",
-      "shadow-claw",
-      "psycho-cut",
-      "zen-headbutt",
-      "flash-cannon",
-      "iron-head",
-      "stone-edge",
-      "stealth-rock",
-      "grass-knot",
-      "hone-claws",
-      "psyshock",
-      "telekinesis",
-      "heavy-slam",
-      "round",
-      "ally-switch",
-      "bulldoze",
-      "confide",
-      "power-up-punch",
-      "laser-focus",
-      "brutal-swing",
-      "psychic-fangs",
-      "stomping-tantrum",
-      "body-press",
-      "steel-beam",
-      "expanding-force",
-      "steel-roller",
-      "meteor-beam",
-      "tera-blast",
-      "trailblaze",
-      "hard-press",
-      "psychic-noise"
-    ],
-    "abilities": [
-      "clear-body",
-      "light-metal"
-    ],
-    "weight": 5500,
-    "height": 16
-  },
-  {
     "name": "Metagross",
     "dexNumber": 376,
     "types": [
@@ -49419,6 +49652,137 @@
     ],
     "weight": 5500,
     "height": 16
+  },
+  {
+    "name": "Mega-Metagross",
+    "dexNumber": 376,
+    "types": [
+      "steel",
+      "psychic"
+    ],
+    "generation": 3,
+    "eggGroups": [
+      "mineral"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "pseudo",
+      "is-mega"
+    ],
+    "moves": [
+      "ice-punch",
+      "thunder-punch",
+      "cut",
+      "headbutt",
+      "tackle",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "hyper-beam",
+      "strength",
+      "earthquake",
+      "toxic",
+      "confusion",
+      "psychic",
+      "agility",
+      "mimic",
+      "double-team",
+      "defense-curl",
+      "light-screen",
+      "reflect",
+      "self-destruct",
+      "swift",
+      "flash",
+      "explosion",
+      "rest",
+      "rock-slide",
+      "substitute",
+      "snore",
+      "protect",
+      "scary-face",
+      "sludge-bomb",
+      "mud-slap",
+      "icy-wind",
+      "sandstorm",
+      "endure",
+      "rollout",
+      "swagger",
+      "fury-cutter",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "dynamic-punch",
+      "pursuit",
+      "metal-claw",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "psych-up",
+      "shadow-ball",
+      "future-sight",
+      "rock-smash",
+      "facade",
+      "focus-punch",
+      "trick",
+      "brick-break",
+      "knock-off",
+      "secret-power",
+      "meteor-mash",
+      "rock-tomb",
+      "cosmic-power",
+      "signal-beam",
+      "aerial-ace",
+      "iron-defense",
+      "block",
+      "gravity",
+      "miracle-eye",
+      "hammer-arm",
+      "gyro-ball",
+      "natural-gift",
+      "magnet-rise",
+      "rock-polish",
+      "giga-impact",
+      "bullet-punch",
+      "shadow-claw",
+      "psycho-cut",
+      "zen-headbutt",
+      "flash-cannon",
+      "iron-head",
+      "stone-edge",
+      "stealth-rock",
+      "grass-knot",
+      "hone-claws",
+      "psyshock",
+      "telekinesis",
+      "heavy-slam",
+      "round",
+      "ally-switch",
+      "bulldoze",
+      "confide",
+      "power-up-punch",
+      "laser-focus",
+      "brutal-swing",
+      "psychic-fangs",
+      "stomping-tantrum",
+      "body-press",
+      "steel-beam",
+      "expanding-force",
+      "steel-roller",
+      "meteor-beam",
+      "tera-blast",
+      "trailblaze",
+      "hard-press",
+      "psychic-noise"
+    ],
+    "abilities": [
+      "clear-body",
+      "light-metal"
+    ],
+    "weight": 5500,
+    "height": 16,
+    "spriteId": 10076
   },
   {
     "name": "Regirock",
@@ -50048,7 +50412,8 @@
       "levitate"
     ],
     "weight": 400,
-    "height": 14
+    "height": 14,
+    "spriteId": 10062
   },
   {
     "name": "Latios",
@@ -50332,7 +50697,8 @@
       "levitate"
     ],
     "weight": 600,
-    "height": 20
+    "height": 20,
+    "spriteId": 10063
   },
   {
     "name": "Kyogre",
@@ -50527,7 +50893,8 @@
       "drizzle"
     ],
     "weight": 3520,
-    "height": 45
+    "height": 45,
+    "spriteId": 10077
   },
   {
     "name": "Groudon",
@@ -50793,138 +51160,8 @@
       "drought"
     ],
     "weight": 9500,
-    "height": 35
-  },
-  {
-    "name": "Mega-Rayquaza",
-    "dexNumber": 384,
-    "types": [
-      "dragon",
-      "flying"
-    ],
-    "generation": 3,
-    "eggGroups": [
-      "no-eggs"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "legendary",
-      "is-mega"
-    ],
-    "moves": [
-      "swords-dance",
-      "fly",
-      "bind",
-      "headbutt",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "roar",
-      "flamethrower",
-      "hydro-pump",
-      "surf",
-      "ice-beam",
-      "blizzard",
-      "hyper-beam",
-      "strength",
-      "solar-beam",
-      "thunderbolt",
-      "thunder-wave",
-      "thunder",
-      "earthquake",
-      "toxic",
-      "mimic",
-      "double-team",
-      "fire-blast",
-      "waterfall",
-      "swift",
-      "rest",
-      "rock-slide",
-      "substitute",
-      "snore",
-      "protect",
-      "scary-face",
-      "mud-slap",
-      "icy-wind",
-      "outrage",
-      "sandstorm",
-      "endure",
-      "swagger",
-      "fury-cutter",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "iron-tail",
-      "hidden-power",
-      "twister",
-      "rain-dance",
-      "sunny-day",
-      "crunch",
-      "psych-up",
-      "extreme-speed",
-      "ancient-power",
-      "rock-smash",
-      "whirlpool",
-      "uproar",
-      "facade",
-      "helping-hand",
-      "brick-break",
-      "secret-power",
-      "dive",
-      "hyper-voice",
-      "overheat",
-      "rock-tomb",
-      "cosmic-power",
-      "aerial-ace",
-      "dragon-claw",
-      "bulk-up",
-      "dragon-dance",
-      "shock-wave",
-      "water-pulse",
-      "gyro-ball",
-      "natural-gift",
-      "tailwind",
-      "u-turn",
-      "fling",
-      "aqua-tail",
-      "air-slash",
-      "dragon-pulse",
-      "focus-blast",
-      "energy-ball",
-      "earth-power",
-      "giga-impact",
-      "avalanche",
-      "shadow-claw",
-      "defog",
-      "draco-meteor",
-      "iron-head",
-      "stone-edge",
-      "stealth-rock",
-      "hone-claws",
-      "round",
-      "echoed-voice",
-      "sky-drop",
-      "incinerate",
-      "bulldoze",
-      "dragon-tail",
-      "wild-charge",
-      "hurricane",
-      "confide",
-      "dragon-ascent",
-      "brutal-swing",
-      "breaking-swipe",
-      "scale-shot",
-      "meteor-beam",
-      "tera-blast",
-      "dragon-cheer"
-    ],
-    "abilities": [
-      "air-lock"
-    ],
-    "weight": 2065,
-    "height": 70
+    "height": 35,
+    "spriteId": 10078
   },
   {
     "name": "Rayquaza",
@@ -51056,6 +51293,138 @@
     ],
     "weight": 2065,
     "height": 70
+  },
+  {
+    "name": "Mega-Rayquaza",
+    "dexNumber": 384,
+    "types": [
+      "dragon",
+      "flying"
+    ],
+    "generation": 3,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "legendary",
+      "is-mega"
+    ],
+    "moves": [
+      "swords-dance",
+      "fly",
+      "bind",
+      "headbutt",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "roar",
+      "flamethrower",
+      "hydro-pump",
+      "surf",
+      "ice-beam",
+      "blizzard",
+      "hyper-beam",
+      "strength",
+      "solar-beam",
+      "thunderbolt",
+      "thunder-wave",
+      "thunder",
+      "earthquake",
+      "toxic",
+      "mimic",
+      "double-team",
+      "fire-blast",
+      "waterfall",
+      "swift",
+      "rest",
+      "rock-slide",
+      "substitute",
+      "snore",
+      "protect",
+      "scary-face",
+      "mud-slap",
+      "icy-wind",
+      "outrage",
+      "sandstorm",
+      "endure",
+      "swagger",
+      "fury-cutter",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "iron-tail",
+      "hidden-power",
+      "twister",
+      "rain-dance",
+      "sunny-day",
+      "crunch",
+      "psych-up",
+      "extreme-speed",
+      "ancient-power",
+      "rock-smash",
+      "whirlpool",
+      "uproar",
+      "facade",
+      "helping-hand",
+      "brick-break",
+      "secret-power",
+      "dive",
+      "hyper-voice",
+      "overheat",
+      "rock-tomb",
+      "cosmic-power",
+      "aerial-ace",
+      "dragon-claw",
+      "bulk-up",
+      "dragon-dance",
+      "shock-wave",
+      "water-pulse",
+      "gyro-ball",
+      "natural-gift",
+      "tailwind",
+      "u-turn",
+      "fling",
+      "aqua-tail",
+      "air-slash",
+      "dragon-pulse",
+      "focus-blast",
+      "energy-ball",
+      "earth-power",
+      "giga-impact",
+      "avalanche",
+      "shadow-claw",
+      "defog",
+      "draco-meteor",
+      "iron-head",
+      "stone-edge",
+      "stealth-rock",
+      "hone-claws",
+      "round",
+      "echoed-voice",
+      "sky-drop",
+      "incinerate",
+      "bulldoze",
+      "dragon-tail",
+      "wild-charge",
+      "hurricane",
+      "confide",
+      "dragon-ascent",
+      "brutal-swing",
+      "breaking-swipe",
+      "scale-shot",
+      "meteor-beam",
+      "tera-blast",
+      "dragon-cheer"
+    ],
+    "abilities": [
+      "air-lock"
+    ],
+    "weight": 2065,
+    "height": 70,
+    "spriteId": 10079
   },
   {
     "name": "Jirachi",
@@ -51468,7 +51837,8 @@
       "pressure"
     ],
     "weight": 608,
-    "height": 17
+    "height": 17,
+    "spriteId": 10001
   },
   {
     "name": "Deoxys-Defense",
@@ -51608,7 +51978,8 @@
       "pressure"
     ],
     "weight": 608,
-    "height": 17
+    "height": 17,
+    "spriteId": 10002
   },
   {
     "name": "Deoxys-Speed",
@@ -51748,7 +52119,8 @@
       "pressure"
     ],
     "weight": 608,
-    "height": 17
+    "height": 17,
+    "spriteId": 10003
   },
   {
     "name": "Turtwig",
@@ -53064,7 +53436,8 @@
       "flying"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -53140,6 +53513,29 @@
     ],
     "weight": 249,
     "height": 12
+  },
+  {
+    "name": "Mega-Staraptor",
+    "dexNumber": 398,
+    "spriteId": 10308,
+    "types": [
+      "fighting",
+      "flying"
+    ],
+    "generation": 4,
+    "eggGroups": [
+      "flying"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 500,
+    "height": 19
   },
   {
     "name": "Bidoof",
@@ -54618,7 +55014,8 @@
       "overcoat"
     ],
     "weight": 65,
-    "height": 5
+    "height": 5,
+    "spriteId": 10004
   },
   {
     "name": "Wormadam-Trash",
@@ -54706,7 +55103,8 @@
       "overcoat"
     ],
     "weight": 65,
-    "height": 5
+    "height": 5,
+    "spriteId": 10005
   },
   {
     "name": "Mothim",
@@ -56420,7 +56818,8 @@
       "limber"
     ],
     "weight": 333,
-    "height": 12
+    "height": 12,
+    "spriteId": 10088
   },
   {
     "name": "Mismagius",
@@ -58421,6 +58820,30 @@
       "rough-skin"
     ],
     "weight": 950,
+    "height": 19,
+    "spriteId": 10058
+  },
+  {
+    "name": "Mega-Garchomp-Z",
+    "dexNumber": 445,
+    "spriteId": 10309,
+    "types": [
+      "dragon"
+    ],
+    "generation": 4,
+    "eggGroups": [
+      "monster",
+      "dragon"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 990,
     "height": 19
   },
   {
@@ -58960,7 +59383,32 @@
       "justified"
     ],
     "weight": 540,
-    "height": 12
+    "height": 12,
+    "spriteId": 10059
+  },
+  {
+    "name": "Mega-Lucario-Z",
+    "dexNumber": 448,
+    "spriteId": 10310,
+    "types": [
+      "fighting",
+      "steel"
+    ],
+    "generation": 4,
+    "eggGroups": [
+      "ground",
+      "humanshape"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 494,
+    "height": 13
   },
   {
     "name": "Hippopotas",
@@ -60356,7 +60804,8 @@
       "soundproof"
     ],
     "weight": 1355,
-    "height": 22
+    "height": 22,
+    "spriteId": 10060
   },
   {
     "name": "Weavile",
@@ -62402,7 +62851,8 @@
       "justified"
     ],
     "weight": 520,
-    "height": 16
+    "height": 16,
+    "spriteId": 10068
   },
   {
     "name": "Probopass",
@@ -62659,7 +63109,8 @@
       "mineral"
     ],
     "evolutionMethod": [
-      "stone"
+      "stone",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -62767,189 +63218,37 @@
     "height": 13
   },
   {
+    "name": "Mega-Froslass",
+    "dexNumber": 478,
+    "spriteId": 10285,
+    "types": [
+      "ice",
+      "ghost"
+    ],
+    "generation": 4,
+    "eggGroups": [
+      "fairy",
+      "mineral"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "snow-warning"
+    ],
+    "weight": 296,
+    "height": 26
+  },
+  {
     "name": "Rotom",
     "dexNumber": 479,
     "types": [
       "electric",
       "ghost"
-    ],
-    "generation": 4,
-    "eggGroups": [
-      "indeterminate"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [],
-    "moves": [
-      "thunder-shock",
-      "thunderbolt",
-      "thunder-wave",
-      "thunder",
-      "toxic",
-      "night-shade",
-      "double-team",
-      "confuse-ray",
-      "light-screen",
-      "reflect",
-      "swift",
-      "dream-eater",
-      "flash",
-      "rest",
-      "substitute",
-      "thief",
-      "snore",
-      "spite",
-      "protect",
-      "mud-slap",
-      "endure",
-      "swagger",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "pain-split",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "psych-up",
-      "shadow-ball",
-      "uproar",
-      "will-o-wisp",
-      "facade",
-      "charge",
-      "helping-hand",
-      "trick",
-      "snatch",
-      "secret-power",
-      "hyper-voice",
-      "astonish",
-      "signal-beam",
-      "shock-wave",
-      "natural-gift",
-      "sucker-punch",
-      "dark-pulse",
-      "nasty-plot",
-      "defog",
-      "discharge",
-      "charge-beam",
-      "ominous-wind",
-      "telekinesis",
-      "electro-ball",
-      "foul-play",
-      "round",
-      "stored-power",
-      "ally-switch",
-      "hex",
-      "volt-switch",
-      "electroweb",
-      "confide",
-      "eerie-impulse",
-      "electric-terrain",
-      "rising-voltage",
-      "poltergeist",
-      "tera-blast"
-    ],
-    "abilities": [
-      "levitate"
-    ],
-    "weight": 3,
-    "height": 3
-  },
-  {
-    "name": "Rotom-Fan",
-    "dexNumber": 479,
-    "types": [
-      "electric",
-      "flying"
-    ],
-    "generation": 4,
-    "eggGroups": [
-      "indeterminate"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [],
-    "moves": [
-      "thunder-shock",
-      "thunderbolt",
-      "thunder-wave",
-      "thunder",
-      "toxic",
-      "night-shade",
-      "double-team",
-      "confuse-ray",
-      "light-screen",
-      "reflect",
-      "swift",
-      "dream-eater",
-      "flash",
-      "rest",
-      "substitute",
-      "thief",
-      "snore",
-      "spite",
-      "protect",
-      "mud-slap",
-      "endure",
-      "swagger",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "pain-split",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "psych-up",
-      "shadow-ball",
-      "uproar",
-      "will-o-wisp",
-      "facade",
-      "charge",
-      "helping-hand",
-      "trick",
-      "snatch",
-      "secret-power",
-      "hyper-voice",
-      "astonish",
-      "signal-beam",
-      "shock-wave",
-      "natural-gift",
-      "sucker-punch",
-      "dark-pulse",
-      "nasty-plot",
-      "defog",
-      "discharge",
-      "charge-beam",
-      "ominous-wind",
-      "telekinesis",
-      "electro-ball",
-      "foul-play",
-      "round",
-      "stored-power",
-      "ally-switch",
-      "hex",
-      "volt-switch",
-      "electroweb",
-      "confide",
-      "eerie-impulse",
-      "electric-terrain",
-      "rising-voltage",
-      "poltergeist",
-      "tera-blast"
-    ],
-    "abilities": [
-      "levitate"
-    ],
-    "weight": 3,
-    "height": 3
-  },
-  {
-    "name": "Rotom-Frost",
-    "dexNumber": 479,
-    "types": [
-      "electric",
-      "ice"
     ],
     "generation": 4,
     "eggGroups": [
@@ -63120,96 +63419,8 @@
       "levitate"
     ],
     "weight": 3,
-    "height": 3
-  },
-  {
-    "name": "Rotom-Mow",
-    "dexNumber": 479,
-    "types": [
-      "electric",
-      "grass"
-    ],
-    "generation": 4,
-    "eggGroups": [
-      "indeterminate"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [],
-    "moves": [
-      "thunder-shock",
-      "thunderbolt",
-      "thunder-wave",
-      "thunder",
-      "toxic",
-      "night-shade",
-      "double-team",
-      "confuse-ray",
-      "light-screen",
-      "reflect",
-      "swift",
-      "dream-eater",
-      "flash",
-      "rest",
-      "substitute",
-      "thief",
-      "snore",
-      "spite",
-      "protect",
-      "mud-slap",
-      "endure",
-      "swagger",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "pain-split",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "psych-up",
-      "shadow-ball",
-      "uproar",
-      "will-o-wisp",
-      "facade",
-      "charge",
-      "helping-hand",
-      "trick",
-      "snatch",
-      "secret-power",
-      "hyper-voice",
-      "astonish",
-      "signal-beam",
-      "shock-wave",
-      "natural-gift",
-      "sucker-punch",
-      "dark-pulse",
-      "nasty-plot",
-      "defog",
-      "discharge",
-      "charge-beam",
-      "ominous-wind",
-      "telekinesis",
-      "electro-ball",
-      "foul-play",
-      "round",
-      "stored-power",
-      "ally-switch",
-      "hex",
-      "volt-switch",
-      "electroweb",
-      "confide",
-      "eerie-impulse",
-      "electric-terrain",
-      "rising-voltage",
-      "poltergeist",
-      "tera-blast"
-    ],
-    "abilities": [
-      "levitate"
-    ],
-    "weight": 3,
-    "height": 3
+    "height": 3,
+    "spriteId": 10008
   },
   {
     "name": "Rotom-Wash",
@@ -63298,7 +63509,278 @@
       "levitate"
     ],
     "weight": 3,
-    "height": 3
+    "height": 3,
+    "spriteId": 10009
+  },
+  {
+    "name": "Rotom-Frost",
+    "dexNumber": 479,
+    "types": [
+      "electric",
+      "ice"
+    ],
+    "generation": 4,
+    "eggGroups": [
+      "indeterminate"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [],
+    "moves": [
+      "thunder-shock",
+      "thunderbolt",
+      "thunder-wave",
+      "thunder",
+      "toxic",
+      "night-shade",
+      "double-team",
+      "confuse-ray",
+      "light-screen",
+      "reflect",
+      "swift",
+      "dream-eater",
+      "flash",
+      "rest",
+      "substitute",
+      "thief",
+      "snore",
+      "spite",
+      "protect",
+      "mud-slap",
+      "endure",
+      "swagger",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "pain-split",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "psych-up",
+      "shadow-ball",
+      "uproar",
+      "will-o-wisp",
+      "facade",
+      "charge",
+      "helping-hand",
+      "trick",
+      "snatch",
+      "secret-power",
+      "hyper-voice",
+      "astonish",
+      "signal-beam",
+      "shock-wave",
+      "natural-gift",
+      "sucker-punch",
+      "dark-pulse",
+      "nasty-plot",
+      "defog",
+      "discharge",
+      "charge-beam",
+      "ominous-wind",
+      "telekinesis",
+      "electro-ball",
+      "foul-play",
+      "round",
+      "stored-power",
+      "ally-switch",
+      "hex",
+      "volt-switch",
+      "electroweb",
+      "confide",
+      "eerie-impulse",
+      "electric-terrain",
+      "rising-voltage",
+      "poltergeist",
+      "tera-blast"
+    ],
+    "abilities": [
+      "levitate"
+    ],
+    "weight": 3,
+    "height": 3,
+    "spriteId": 10010
+  },
+  {
+    "name": "Rotom-Fan",
+    "dexNumber": 479,
+    "types": [
+      "electric",
+      "flying"
+    ],
+    "generation": 4,
+    "eggGroups": [
+      "indeterminate"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [],
+    "moves": [
+      "thunder-shock",
+      "thunderbolt",
+      "thunder-wave",
+      "thunder",
+      "toxic",
+      "night-shade",
+      "double-team",
+      "confuse-ray",
+      "light-screen",
+      "reflect",
+      "swift",
+      "dream-eater",
+      "flash",
+      "rest",
+      "substitute",
+      "thief",
+      "snore",
+      "spite",
+      "protect",
+      "mud-slap",
+      "endure",
+      "swagger",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "pain-split",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "psych-up",
+      "shadow-ball",
+      "uproar",
+      "will-o-wisp",
+      "facade",
+      "charge",
+      "helping-hand",
+      "trick",
+      "snatch",
+      "secret-power",
+      "hyper-voice",
+      "astonish",
+      "signal-beam",
+      "shock-wave",
+      "natural-gift",
+      "sucker-punch",
+      "dark-pulse",
+      "nasty-plot",
+      "defog",
+      "discharge",
+      "charge-beam",
+      "ominous-wind",
+      "telekinesis",
+      "electro-ball",
+      "foul-play",
+      "round",
+      "stored-power",
+      "ally-switch",
+      "hex",
+      "volt-switch",
+      "electroweb",
+      "confide",
+      "eerie-impulse",
+      "electric-terrain",
+      "rising-voltage",
+      "poltergeist",
+      "tera-blast"
+    ],
+    "abilities": [
+      "levitate"
+    ],
+    "weight": 3,
+    "height": 3,
+    "spriteId": 10011
+  },
+  {
+    "name": "Rotom-Mow",
+    "dexNumber": 479,
+    "types": [
+      "electric",
+      "grass"
+    ],
+    "generation": 4,
+    "eggGroups": [
+      "indeterminate"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [],
+    "moves": [
+      "thunder-shock",
+      "thunderbolt",
+      "thunder-wave",
+      "thunder",
+      "toxic",
+      "night-shade",
+      "double-team",
+      "confuse-ray",
+      "light-screen",
+      "reflect",
+      "swift",
+      "dream-eater",
+      "flash",
+      "rest",
+      "substitute",
+      "thief",
+      "snore",
+      "spite",
+      "protect",
+      "mud-slap",
+      "endure",
+      "swagger",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "pain-split",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "psych-up",
+      "shadow-ball",
+      "uproar",
+      "will-o-wisp",
+      "facade",
+      "charge",
+      "helping-hand",
+      "trick",
+      "snatch",
+      "secret-power",
+      "hyper-voice",
+      "astonish",
+      "signal-beam",
+      "shock-wave",
+      "natural-gift",
+      "sucker-punch",
+      "dark-pulse",
+      "nasty-plot",
+      "defog",
+      "discharge",
+      "charge-beam",
+      "ominous-wind",
+      "telekinesis",
+      "electro-ball",
+      "foul-play",
+      "round",
+      "stored-power",
+      "ally-switch",
+      "hex",
+      "volt-switch",
+      "electroweb",
+      "confide",
+      "eerie-impulse",
+      "electric-terrain",
+      "rising-voltage",
+      "poltergeist",
+      "tera-blast"
+    ],
+    "abilities": [
+      "levitate"
+    ],
+    "weight": 3,
+    "height": 3,
+    "spriteId": 10012
   },
   {
     "name": "Uxie",
@@ -63925,7 +64407,8 @@
       "no-eggs"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [
       "legendary"
@@ -64024,6 +64507,30 @@
     ],
     "weight": 4300,
     "height": 17
+  },
+  {
+    "name": "Mega-Heatran",
+    "dexNumber": 485,
+    "spriteId": 10311,
+    "types": [
+      "fire",
+      "steel"
+    ],
+    "generation": 4,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega",
+      "legendary"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 5700,
+    "height": 28
   },
   {
     "name": "Regigigas",
@@ -64374,7 +64881,8 @@
       "telepathy"
     ],
     "weight": 7500,
-    "height": 45
+    "height": 45,
+    "spriteId": 10007
   },
   {
     "name": "Cresselia",
@@ -64694,7 +65202,8 @@
       "no-eggs"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [
       "mythical"
@@ -64800,6 +65309,29 @@
     ],
     "weight": 505,
     "height": 15
+  },
+  {
+    "name": "Mega-Darkrai",
+    "dexNumber": 491,
+    "spriteId": 10312,
+    "types": [
+      "dark"
+    ],
+    "generation": 4,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega",
+      "mythical"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 2400,
+    "height": 30
   },
   {
     "name": "Shaymin",
@@ -65000,7 +65532,8 @@
       "natural-cure"
     ],
     "weight": 21,
-    "height": 2
+    "height": 2,
+    "spriteId": 10006
   },
   {
     "name": "Arceus",
@@ -65854,7 +66387,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -65967,6 +66501,31 @@
     ],
     "weight": 1500,
     "height": 16
+  },
+  {
+    "name": "Mega-Emboar",
+    "dexNumber": 500,
+    "spriteId": 10286,
+    "types": [
+      "fire",
+      "fighting"
+    ],
+    "generation": 5,
+    "eggGroups": [
+      "ground"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "mold-breaker"
+    ],
+    "weight": 1803,
+    "height": 18
   },
   {
     "name": "Oshawott",
@@ -66310,7 +66869,8 @@
       "shell-armor"
     ],
     "weight": 946,
-    "height": 15
+    "height": 15,
+    "spriteId": 10236
   },
   {
     "name": "Patrat",
@@ -68661,7 +69221,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -68747,6 +69308,31 @@
     ],
     "weight": 404,
     "height": 7
+  },
+  {
+    "name": "Mega-Excadrill",
+    "dexNumber": 530,
+    "spriteId": 10287,
+    "types": [
+      "ground",
+      "steel"
+    ],
+    "generation": 5,
+    "eggGroups": [
+      "ground"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "piercing-drill"
+    ],
+    "weight": 600,
+    "height": 9
   },
   {
     "name": "Audino",
@@ -69012,7 +69598,8 @@
       "klutz"
     ],
     "weight": 310,
-    "height": 11
+    "height": 11,
+    "spriteId": 10069
   },
   {
     "name": "Timburr",
@@ -70217,7 +70804,8 @@
       "bug"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -70300,6 +70888,29 @@
     ],
     "weight": 2005,
     "height": 25
+  },
+  {
+    "name": "Mega-Scolipede",
+    "dexNumber": 545,
+    "spriteId": 10288,
+    "types": [
+      "bug",
+      "poison"
+    ],
+    "generation": 5,
+    "eggGroups": [
+      "bug"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 2305,
+    "height": 32
   },
   {
     "name": "Cottonee",
@@ -70683,7 +71294,8 @@
       "leaf-guard"
     ],
     "weight": 163,
-    "height": 11
+    "height": 11,
+    "spriteId": 10237
   },
   {
     "name": "Basculin",
@@ -70879,7 +71491,8 @@
       "mold-breaker"
     ],
     "weight": 180,
-    "height": 10
+    "height": 10,
+    "spriteId": 10016
   },
   {
     "name": "Basculin-White-Striped",
@@ -70977,7 +71590,8 @@
       "mold-breaker"
     ],
     "weight": 180,
-    "height": 10
+    "height": 10,
+    "spriteId": 10247
   },
   {
     "name": "Sandile",
@@ -71443,7 +72057,8 @@
       "inner-focus"
     ],
     "weight": 375,
-    "height": 6
+    "height": 6,
+    "spriteId": 10176
   },
   {
     "name": "Darmanitan",
@@ -71578,7 +72193,8 @@
       "zen-mode"
     ],
     "weight": 929,
-    "height": 13
+    "height": 13,
+    "spriteId": 10177
   },
   {
     "name": "Maractus",
@@ -71983,7 +72599,8 @@
       "dragon"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -72102,6 +72719,30 @@
       "intimidate"
     ],
     "weight": 300,
+    "height": 11
+  },
+  {
+    "name": "Mega-Scrafty",
+    "dexNumber": 560,
+    "spriteId": 10289,
+    "types": [
+      "dark",
+      "fighting"
+    ],
+    "generation": 5,
+    "eggGroups": [
+      "ground",
+      "dragon"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 310,
     "height": 11
   },
   {
@@ -72326,7 +72967,8 @@
       "mummy"
     ],
     "weight": 15,
-    "height": 5
+    "height": 5,
+    "spriteId": 10179
   },
   {
     "name": "Cofagrigus",
@@ -73131,7 +73773,8 @@
       "illusion"
     ],
     "weight": 125,
-    "height": 7
+    "height": 7,
+    "spriteId": 10238
   },
   {
     "name": "Zoroark",
@@ -73268,7 +73911,8 @@
       "illusion"
     ],
     "weight": 811,
-    "height": 16
+    "height": 16,
+    "spriteId": 10239
   },
   {
     "name": "Minccino",
@@ -76183,7 +76827,8 @@
       "indeterminate"
     ],
     "evolutionMethod": [
-      "stone"
+      "stone",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -76290,6 +76935,28 @@
     ],
     "weight": 805,
     "height": 21
+  },
+  {
+    "name": "Mega-Eelektross",
+    "dexNumber": 604,
+    "spriteId": 10290,
+    "types": [
+      "electric"
+    ],
+    "generation": 5,
+    "eggGroups": [
+      "indeterminate"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 1800,
+    "height": 30
   },
   {
     "name": "Elgyem",
@@ -76710,7 +77377,8 @@
       "indeterminate"
     ],
     "evolutionMethod": [
-      "stone"
+      "stone",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -76797,6 +77465,31 @@
     ],
     "weight": 343,
     "height": 10
+  },
+  {
+    "name": "Mega-Chandelure",
+    "dexNumber": 609,
+    "spriteId": 10291,
+    "types": [
+      "ghost",
+      "fire"
+    ],
+    "generation": 5,
+    "eggGroups": [
+      "indeterminate"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "infiltrator"
+    ],
+    "weight": 696,
+    "height": 25
   },
   {
     "name": "Axew",
@@ -77719,7 +78412,8 @@
       "sand-veil"
     ],
     "weight": 110,
-    "height": 7
+    "height": 7,
+    "spriteId": 10180
   },
   {
     "name": "Mienfoo",
@@ -78187,7 +78881,8 @@
       "mineral"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -78304,6 +78999,31 @@
     ],
     "weight": 3300,
     "height": 28
+  },
+  {
+    "name": "Mega-Golurk",
+    "dexNumber": 623,
+    "spriteId": 10313,
+    "types": [
+      "ground",
+      "ghost"
+    ],
+    "generation": 5,
+    "eggGroups": [
+      "mineral"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "unseen-fist"
+    ],
+    "weight": 3300,
+    "height": 40
   },
   {
     "name": "Pawniard",
@@ -78834,7 +79554,8 @@
       "defiant"
     ],
     "weight": 410,
-    "height": 15
+    "height": 15,
+    "spriteId": 10240
   },
   {
     "name": "Vullaby",
@@ -80263,7 +80984,8 @@
       "defiant"
     ],
     "weight": 630,
-    "height": 15
+    "height": 15,
+    "spriteId": 10019
   },
   {
     "name": "Thundurus",
@@ -80503,7 +81225,8 @@
       "defiant"
     ],
     "weight": 610,
-    "height": 15
+    "height": 15,
+    "spriteId": 10020
   },
   {
     "name": "Reshiram",
@@ -80958,7 +81681,8 @@
       "sheer-force"
     ],
     "weight": 680,
-    "height": 15
+    "height": 15,
+    "spriteId": 10021
   },
   {
     "name": "Kyurem",
@@ -81180,7 +81904,8 @@
       "pressure"
     ],
     "weight": 3250,
-    "height": 30
+    "height": 30,
+    "spriteId": 10022
   },
   {
     "name": "Kyurem-White",
@@ -81291,7 +82016,8 @@
       "pressure"
     ],
     "weight": 3250,
-    "height": 30
+    "height": 30,
+    "spriteId": 10023
   },
   {
     "name": "Keldeo",
@@ -81657,7 +82383,8 @@
       "serene-grace"
     ],
     "weight": 65,
-    "height": 6
+    "height": 6,
+    "spriteId": 10018
   },
   {
     "name": "Genesect",
@@ -82017,7 +82744,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -82141,6 +82869,31 @@
     ],
     "abilities": [
       "overgrow",
+      "bulletproof"
+    ],
+    "weight": 900,
+    "height": 16
+  },
+  {
+    "name": "Mega-Chesnaught",
+    "dexNumber": 652,
+    "spriteId": 10292,
+    "types": [
+      "grass",
+      "fighting"
+    ],
+    "generation": 6,
+    "eggGroups": [
+      "ground"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
       "bulletproof"
     ],
     "weight": 900,
@@ -82365,7 +83118,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -82479,6 +83233,31 @@
     "abilities": [
       "blaze",
       "magician"
+    ],
+    "weight": 390,
+    "height": 15
+  },
+  {
+    "name": "Mega-Delphox",
+    "dexNumber": 655,
+    "spriteId": 10293,
+    "types": [
+      "fire",
+      "psychic"
+    ],
+    "generation": 6,
+    "eggGroups": [
+      "ground"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "levitate"
     ],
     "weight": 390,
     "height": 15
@@ -82697,7 +83476,8 @@
       "water1"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -82797,6 +83577,31 @@
     ],
     "abilities": [
       "torrent",
+      "protean"
+    ],
+    "weight": 400,
+    "height": 15
+  },
+  {
+    "name": "Mega-Greninja",
+    "dexNumber": 658,
+    "spriteId": 10294,
+    "types": [
+      "water",
+      "dark"
+    ],
+    "generation": 6,
+    "eggGroups": [
+      "water1"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
       "protean"
     ],
     "weight": 400,
@@ -83526,7 +84331,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -83607,6 +84413,29 @@
       "moxie"
     ],
     "weight": 815,
+    "height": 15
+  },
+  {
+    "name": "Mega-Pyroar",
+    "dexNumber": 668,
+    "spriteId": 10295,
+    "types": [
+      "fire",
+      "normal"
+    ],
+    "generation": 6,
+    "eggGroups": [
+      "ground"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 933,
     "height": 15
   },
   {
@@ -83712,7 +84541,8 @@
       "fairy"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -83790,6 +84620,30 @@
       "symbiosis"
     ],
     "weight": 9,
+    "height": 2
+  },
+  {
+    "name": "Mega-Floette",
+    "dexNumber": 670,
+    "spriteId": 10296,
+    "types": [
+      "fairy"
+    ],
+    "generation": 6,
+    "eggGroups": [
+      "fairy"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "fairy-aura"
+    ],
+    "weight": 1008,
     "height": 2
   },
   {
@@ -84520,7 +85374,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -84635,7 +85490,8 @@
       "ground"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -84737,7 +85593,32 @@
       "prankster"
     ],
     "weight": 85,
-    "height": 6
+    "height": 6,
+    "spriteId": 10025
+  },
+  {
+    "name": "Mega-Meowstic",
+    "dexNumber": 678,
+    "spriteId": 10314,
+    "types": [
+      "psychic"
+    ],
+    "generation": 6,
+    "eggGroups": [
+      "ground"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "trace"
+    ],
+    "weight": 101,
+    "height": 8
   },
   {
     "name": "Honedge",
@@ -85064,7 +85945,8 @@
       "stance-change"
     ],
     "weight": 530,
-    "height": 17
+    "height": 17,
+    "spriteId": 10026
   },
   {
     "name": "Spritzee",
@@ -85530,7 +86412,8 @@
       "water2"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -85633,6 +86516,30 @@
     ],
     "weight": 470,
     "height": 15
+  },
+  {
+    "name": "Mega-Malamar",
+    "dexNumber": 687,
+    "spriteId": 10297,
+    "types": [
+      "dark",
+      "psychic"
+    ],
+    "generation": 6,
+    "eggGroups": [
+      "water1",
+      "water2"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 698,
+    "height": 29
   },
   {
     "name": "Binacle",
@@ -85757,7 +86664,8 @@
       "water3"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -85869,6 +86777,29 @@
     "height": 13
   },
   {
+    "name": "Mega-Barbaracle",
+    "dexNumber": 689,
+    "spriteId": 10298,
+    "types": [
+      "rock",
+      "fighting"
+    ],
+    "generation": 6,
+    "eggGroups": [
+      "water3"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 1000,
+    "height": 22
+  },
+  {
     "name": "Skrelp",
     "dexNumber": 690,
     "types": [
@@ -85976,7 +86907,8 @@
       "dragon"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -86061,6 +86993,30 @@
     ],
     "weight": 815,
     "height": 18
+  },
+  {
+    "name": "Mega-Dragalge",
+    "dexNumber": 691,
+    "spriteId": 10299,
+    "types": [
+      "poison",
+      "dragon"
+    ],
+    "generation": 6,
+    "eggGroups": [
+      "water1",
+      "dragon"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 1003,
+    "height": 21
   },
   {
     "name": "Clauncher",
@@ -86971,7 +87927,8 @@
       "humanshape"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -87091,6 +88048,32 @@
     ],
     "weight": 215,
     "height": 8
+  },
+  {
+    "name": "Mega-Hawlucha",
+    "dexNumber": 701,
+    "spriteId": 10300,
+    "types": [
+      "fighting",
+      "flying"
+    ],
+    "generation": 6,
+    "eggGroups": [
+      "flying",
+      "humanshape"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "no-guard"
+    ],
+    "weight": 250,
+    "height": 10
   },
   {
     "name": "Dedenne",
@@ -87477,7 +88460,8 @@
       "gooey"
     ],
     "weight": 175,
-    "height": 8
+    "height": 8,
+    "spriteId": 10241
   },
   {
     "name": "Goodra",
@@ -87615,7 +88599,8 @@
       "gooey"
     ],
     "weight": 1505,
-    "height": 20
+    "height": 20,
+    "spriteId": 10242
   },
   {
     "name": "Klefki",
@@ -88351,7 +89336,8 @@
       "sturdy"
     ],
     "weight": 5050,
-    "height": 20
+    "height": 20,
+    "spriteId": 10243
   },
   {
     "name": "Noibat",
@@ -88759,102 +89745,8 @@
       "no-eggs"
     ],
     "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "legendary"
-    ],
-    "moves": [
-      "bind",
-      "body-slam",
-      "bite",
-      "hyper-beam",
-      "strength",
-      "earthquake",
-      "dig",
-      "toxic",
-      "double-team",
-      "haze",
-      "swift",
-      "glare",
-      "rest",
-      "rock-slide",
-      "substitute",
-      "snore",
-      "reversal",
-      "spite",
-      "protect",
-      "outrage",
-      "sandstorm",
-      "endure",
-      "swagger",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "safeguard",
-      "pain-split",
-      "dragon-breath",
-      "iron-tail",
-      "hidden-power",
-      "sunny-day",
-      "crunch",
-      "extreme-speed",
-      "rock-smash",
-      "facade",
-      "superpower",
-      "brick-break",
-      "secret-power",
-      "camouflage",
-      "hyper-voice",
-      "block",
-      "dragon-dance",
-      "shock-wave",
-      "payback",
-      "dragon-pulse",
-      "focus-blast",
-      "earth-power",
-      "giga-impact",
-      "zen-headbutt",
-      "draco-meteor",
-      "stone-edge",
-      "grass-knot",
-      "sludge-wave",
-      "coil",
-      "round",
-      "retaliate",
-      "bulldoze",
-      "dragon-tail",
-      "confide",
-      "thousand-arrows",
-      "thousand-waves",
-      "lands-wrath",
-      "high-horsepower",
-      "core-enforcer",
-      "stomping-tantrum",
-      "breaking-swipe",
-      "scale-shot",
-      "skitter-smack",
-      "scorching-sands"
-    ],
-    "abilities": [
-      "aura-break"
-    ],
-    "weight": 3050,
-    "height": 50
-  },
-  {
-    "name": "Zygarde-10",
-    "dexNumber": 718,
-    "types": [
-      "dragon",
-      "ground"
-    ],
-    "generation": 7,
-    "eggGroups": [
-      "no-eggs"
-    ],
-    "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [
       "legendary"
@@ -88949,7 +89841,8 @@
       "no-eggs"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [
       "legendary"
@@ -89030,7 +89923,129 @@
       "aura-break"
     ],
     "weight": 3050,
-    "height": 50
+    "height": 50,
+    "spriteId": 10120
+  },
+  {
+    "name": "Zygarde-10",
+    "dexNumber": 718,
+    "types": [
+      "dragon",
+      "ground"
+    ],
+    "generation": 7,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "none",
+      "has-mega"
+    ],
+    "status": [
+      "legendary"
+    ],
+    "moves": [
+      "bind",
+      "body-slam",
+      "bite",
+      "hyper-beam",
+      "strength",
+      "earthquake",
+      "dig",
+      "toxic",
+      "double-team",
+      "haze",
+      "swift",
+      "glare",
+      "rest",
+      "rock-slide",
+      "substitute",
+      "snore",
+      "reversal",
+      "spite",
+      "protect",
+      "outrage",
+      "sandstorm",
+      "endure",
+      "swagger",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "safeguard",
+      "pain-split",
+      "dragon-breath",
+      "iron-tail",
+      "hidden-power",
+      "sunny-day",
+      "crunch",
+      "extreme-speed",
+      "rock-smash",
+      "facade",
+      "superpower",
+      "brick-break",
+      "secret-power",
+      "camouflage",
+      "hyper-voice",
+      "block",
+      "dragon-dance",
+      "shock-wave",
+      "payback",
+      "dragon-pulse",
+      "focus-blast",
+      "earth-power",
+      "giga-impact",
+      "zen-headbutt",
+      "draco-meteor",
+      "stone-edge",
+      "grass-knot",
+      "sludge-wave",
+      "coil",
+      "round",
+      "retaliate",
+      "bulldoze",
+      "dragon-tail",
+      "confide",
+      "thousand-arrows",
+      "thousand-waves",
+      "lands-wrath",
+      "high-horsepower",
+      "core-enforcer",
+      "stomping-tantrum",
+      "breaking-swipe",
+      "scale-shot",
+      "skitter-smack",
+      "scorching-sands"
+    ],
+    "abilities": [
+      "aura-break"
+    ],
+    "weight": 3050,
+    "height": 50,
+    "spriteId": 10181
+  },
+  {
+    "name": "Mega-Zygarde",
+    "dexNumber": 718,
+    "spriteId": 10301,
+    "types": [
+      "dragon",
+      "ground"
+    ],
+    "generation": 6,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega",
+      "legendary"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 6100,
+    "height": 77
   },
   {
     "name": "Diancie",
@@ -89262,7 +90277,8 @@
       "clear-body"
     ],
     "weight": 88,
-    "height": 7
+    "height": 7,
+    "spriteId": 10075
   },
   {
     "name": "Hoopa",
@@ -89847,7 +90863,8 @@
       "long-reach"
     ],
     "weight": 366,
-    "height": 16
+    "height": 16,
+    "spriteId": 10244
   },
   {
     "name": "Litten",
@@ -91271,7 +92288,8 @@
     ],
     "evolutionMethod": [
       "level",
-      "stone"
+      "stone",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -91369,98 +92387,35 @@
     "height": 17
   },
   {
+    "name": "Mega-Crabominable",
+    "dexNumber": 740,
+    "spriteId": 10315,
+    "types": [
+      "fighting",
+      "ice"
+    ],
+    "generation": 7,
+    "eggGroups": [
+      "water3"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "iron-fist"
+    ],
+    "weight": 2528,
+    "height": 26
+  },
+  {
     "name": "Oricorio",
     "dexNumber": 741,
     "types": [
       "fire",
-      "flying"
-    ],
-    "generation": 7,
-    "eggGroups": [
-      "flying"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [],
-    "moves": [
-      "pound",
-      "double-slap",
-      "swords-dance",
-      "fly",
-      "take-down",
-      "growl",
-      "peck",
-      "toxic",
-      "agility",
-      "double-team",
-      "mirror-move",
-      "swift",
-      "sky-attack",
-      "rest",
-      "substitute",
-      "snore",
-      "reversal",
-      "protect",
-      "icy-wind",
-      "sandstorm",
-      "endure",
-      "charm",
-      "swagger",
-      "steel-wing",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "safeguard",
-      "baton-pass",
-      "hidden-power",
-      "rain-dance",
-      "sunny-day",
-      "psych-up",
-      "flatter",
-      "facade",
-      "taunt",
-      "helping-hand",
-      "role-play",
-      "feather-dance",
-      "teeter-dance",
-      "air-cutter",
-      "aerial-ace",
-      "covet",
-      "calm-mind",
-      "roost",
-      "pluck",
-      "tailwind",
-      "u-turn",
-      "embargo",
-      "air-slash",
-      "defog",
-      "captivate",
-      "quiver-dance",
-      "round",
-      "quash",
-      "acrobatics",
-      "work-up",
-      "hurricane",
-      "confide",
-      "revelation-dance",
-      "dual-wingbeat",
-      "tera-blast",
-      "trailblaze",
-      "alluring-voice"
-    ],
-    "abilities": [
-      "dancer"
-    ],
-    "weight": 34,
-    "height": 6
-  },
-  {
-    "name": "Oricorio-Pau",
-    "dexNumber": 741,
-    "types": [
-      "psychic",
       "flying"
     ],
     "generation": 7,
@@ -91630,7 +92585,97 @@
       "dancer"
     ],
     "weight": 34,
-    "height": 6
+    "height": 6,
+    "spriteId": 10123
+  },
+  {
+    "name": "Oricorio-Pau",
+    "dexNumber": 741,
+    "types": [
+      "psychic",
+      "flying"
+    ],
+    "generation": 7,
+    "eggGroups": [
+      "flying"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [],
+    "moves": [
+      "pound",
+      "double-slap",
+      "swords-dance",
+      "fly",
+      "take-down",
+      "growl",
+      "peck",
+      "toxic",
+      "agility",
+      "double-team",
+      "mirror-move",
+      "swift",
+      "sky-attack",
+      "rest",
+      "substitute",
+      "snore",
+      "reversal",
+      "protect",
+      "icy-wind",
+      "sandstorm",
+      "endure",
+      "charm",
+      "swagger",
+      "steel-wing",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "safeguard",
+      "baton-pass",
+      "hidden-power",
+      "rain-dance",
+      "sunny-day",
+      "psych-up",
+      "flatter",
+      "facade",
+      "taunt",
+      "helping-hand",
+      "role-play",
+      "feather-dance",
+      "teeter-dance",
+      "air-cutter",
+      "aerial-ace",
+      "covet",
+      "calm-mind",
+      "roost",
+      "pluck",
+      "tailwind",
+      "u-turn",
+      "embargo",
+      "air-slash",
+      "defog",
+      "captivate",
+      "quiver-dance",
+      "round",
+      "quash",
+      "acrobatics",
+      "work-up",
+      "hurricane",
+      "confide",
+      "revelation-dance",
+      "dual-wingbeat",
+      "tera-blast",
+      "trailblaze",
+      "alluring-voice"
+    ],
+    "abilities": [
+      "dancer"
+    ],
+    "weight": 34,
+    "height": 6,
+    "spriteId": 10124
   },
   {
     "name": "Oricorio-Sensu",
@@ -91718,7 +92763,8 @@
       "dancer"
     ],
     "weight": 34,
-    "height": 6
+    "height": 6,
+    "spriteId": 10125
   },
   {
     "name": "Cutiefly",
@@ -92125,106 +93171,6 @@
     "height": 8
   },
   {
-    "name": "Lycanroc-Dusk",
-    "dexNumber": 745,
-    "types": [
-      "rock"
-    ],
-    "generation": 7,
-    "eggGroups": [
-      "ground"
-    ],
-    "evolutionMethod": [
-      "level"
-    ],
-    "status": [],
-    "moves": [
-      "swords-dance",
-      "sand-attack",
-      "tackle",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "leer",
-      "bite",
-      "roar",
-      "rock-throw",
-      "dig",
-      "toxic",
-      "agility",
-      "quick-attack",
-      "double-team",
-      "swift",
-      "rest",
-      "rock-slide",
-      "substitute",
-      "snore",
-      "protect",
-      "scary-face",
-      "mud-slap",
-      "sandstorm",
-      "endure",
-      "charm",
-      "swagger",
-      "attract",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "iron-tail",
-      "hidden-power",
-      "sunny-day",
-      "crunch",
-      "facade",
-      "taunt",
-      "helping-hand",
-      "brick-break",
-      "endeavor",
-      "hyper-voice",
-      "odor-sleuth",
-      "rock-tomb",
-      "iron-defense",
-      "howl",
-      "bulk-up",
-      "covet",
-      "rock-blast",
-      "close-combat",
-      "assurance",
-      "last-resort",
-      "sucker-punch",
-      "rock-polish",
-      "earth-power",
-      "giga-impact",
-      "thunder-fang",
-      "fire-fang",
-      "zen-headbutt",
-      "rock-climb",
-      "iron-head",
-      "stone-edge",
-      "stealth-rock",
-      "round",
-      "echoed-voice",
-      "quick-guard",
-      "bulldoze",
-      "drill-run",
-      "tail-slap",
-      "snarl",
-      "play-rough",
-      "confide",
-      "psychic-fangs",
-      "stomping-tantrum",
-      "accelerock",
-      "tera-blast",
-      "trailblaze"
-    ],
-    "abilities": [
-      "keen-eye",
-      "sand-rush",
-      "steadfast"
-    ],
-    "weight": 250,
-    "height": 8
-  },
-  {
     "name": "Lycanroc-Midnight",
     "dexNumber": 745,
     "types": [
@@ -92322,7 +93268,109 @@
       "steadfast"
     ],
     "weight": 250,
-    "height": 8
+    "height": 8,
+    "spriteId": 10126
+  },
+  {
+    "name": "Lycanroc-Dusk",
+    "dexNumber": 745,
+    "types": [
+      "rock"
+    ],
+    "generation": 7,
+    "eggGroups": [
+      "ground"
+    ],
+    "evolutionMethod": [
+      "level"
+    ],
+    "status": [],
+    "moves": [
+      "swords-dance",
+      "sand-attack",
+      "tackle",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "leer",
+      "bite",
+      "roar",
+      "rock-throw",
+      "dig",
+      "toxic",
+      "agility",
+      "quick-attack",
+      "double-team",
+      "swift",
+      "rest",
+      "rock-slide",
+      "substitute",
+      "snore",
+      "protect",
+      "scary-face",
+      "mud-slap",
+      "sandstorm",
+      "endure",
+      "charm",
+      "swagger",
+      "attract",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "iron-tail",
+      "hidden-power",
+      "sunny-day",
+      "crunch",
+      "facade",
+      "taunt",
+      "helping-hand",
+      "brick-break",
+      "endeavor",
+      "hyper-voice",
+      "odor-sleuth",
+      "rock-tomb",
+      "iron-defense",
+      "howl",
+      "bulk-up",
+      "covet",
+      "rock-blast",
+      "close-combat",
+      "assurance",
+      "last-resort",
+      "sucker-punch",
+      "rock-polish",
+      "earth-power",
+      "giga-impact",
+      "thunder-fang",
+      "fire-fang",
+      "zen-headbutt",
+      "rock-climb",
+      "iron-head",
+      "stone-edge",
+      "stealth-rock",
+      "round",
+      "echoed-voice",
+      "quick-guard",
+      "bulldoze",
+      "drill-run",
+      "tail-slap",
+      "snarl",
+      "play-rough",
+      "confide",
+      "psychic-fangs",
+      "stomping-tantrum",
+      "accelerock",
+      "tera-blast",
+      "trailblaze"
+    ],
+    "abilities": [
+      "keen-eye",
+      "sand-rush",
+      "steadfast"
+    ],
+    "weight": 250,
+    "height": 8,
+    "spriteId": 10152
   },
   {
     "name": "Wishiwashi",
@@ -92470,7 +93518,8 @@
       "schooling"
     ],
     "weight": 3,
-    "height": 2
+    "height": 2,
+    "spriteId": 10127
   },
   {
     "name": "Mareanie",
@@ -94432,7 +95481,8 @@
       "water3"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -94523,6 +95573,30 @@
     ],
     "weight": 1080,
     "height": 20
+  },
+  {
+    "name": "Mega-Golisopod",
+    "dexNumber": 768,
+    "spriteId": 10316,
+    "types": [
+      "bug",
+      "steel"
+    ],
+    "generation": 7,
+    "eggGroups": [
+      "bug",
+      "water3"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 1480,
+    "height": 23
   },
   {
     "name": "Sandygast",
@@ -95144,7 +96218,8 @@
       "shields-down"
     ],
     "weight": 400,
-    "height": 3
+    "height": 3,
+    "spriteId": 10136
   },
   {
     "name": "Komala",
@@ -95681,7 +96756,8 @@
       "dragon"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -95780,6 +96856,32 @@
       "cloud-nine"
     ],
     "weight": 1850,
+    "height": 30
+  },
+  {
+    "name": "Mega-Drampa",
+    "dexNumber": 780,
+    "spriteId": 10302,
+    "types": [
+      "normal",
+      "dragon"
+    ],
+    "generation": 7,
+    "eggGroups": [
+      "monster",
+      "dragon"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "berserk"
+    ],
+    "weight": 2405,
     "height": 30
   },
   {
@@ -97625,121 +98727,6 @@
     "height": 24
   },
   {
-    "name": "Necrozma-Dawn-Wings",
-    "dexNumber": 800,
-    "types": [
-      "psychic",
-      "ghost"
-    ],
-    "generation": 7,
-    "eggGroups": [
-      "no-eggs"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "legendary"
-    ],
-    "moves": [
-      "swords-dance",
-      "body-slam",
-      "hyper-beam",
-      "solar-beam",
-      "thunder-wave",
-      "earthquake",
-      "toxic",
-      "confusion",
-      "psychic",
-      "double-team",
-      "light-screen",
-      "reflect",
-      "swift",
-      "rest",
-      "rock-slide",
-      "slash",
-      "substitute",
-      "thief",
-      "snore",
-      "protect",
-      "scary-face",
-      "outrage",
-      "sandstorm",
-      "endure",
-      "swagger",
-      "sleep-talk",
-      "return",
-      "frustration",
-      "metal-claw",
-      "morning-sun",
-      "moonlight",
-      "hidden-power",
-      "sunny-day",
-      "future-sight",
-      "heat-wave",
-      "facade",
-      "recycle",
-      "brick-break",
-      "knock-off",
-      "imprison",
-      "hyper-voice",
-      "rock-tomb",
-      "cosmic-power",
-      "signal-beam",
-      "aerial-ace",
-      "iron-defense",
-      "calm-mind",
-      "dragon-dance",
-      "rock-blast",
-      "shock-wave",
-      "gravity",
-      "gyro-ball",
-      "embargo",
-      "fling",
-      "wring-out",
-      "magnet-rise",
-      "rock-polish",
-      "dark-pulse",
-      "night-slash",
-      "x-scissor",
-      "dragon-pulse",
-      "power-gem",
-      "earth-power",
-      "giga-impact",
-      "shadow-claw",
-      "psycho-cut",
-      "mirror-shot",
-      "flash-cannon",
-      "trick-room",
-      "iron-head",
-      "stone-edge",
-      "stealth-rock",
-      "charge-beam",
-      "psyshock",
-      "autotomize",
-      "telekinesis",
-      "round",
-      "stored-power",
-      "ally-switch",
-      "bulldoze",
-      "confide",
-      "smart-strike",
-      "brutal-swing",
-      "psychic-fangs",
-      "prismatic-laser",
-      "photon-geyser",
-      "breaking-swipe",
-      "expanding-force",
-      "meteor-beam",
-      "tera-blast"
-    ],
-    "abilities": [
-      "prism-armor"
-    ],
-    "weight": 2300,
-    "height": 24
-  },
-  {
     "name": "Necrozma-Dusk-Mane",
     "dexNumber": 800,
     "types": [
@@ -97852,7 +98839,124 @@
       "prism-armor"
     ],
     "weight": 2300,
-    "height": 24
+    "height": 24,
+    "spriteId": 10155
+  },
+  {
+    "name": "Necrozma-Dawn-Wings",
+    "dexNumber": 800,
+    "types": [
+      "psychic",
+      "ghost"
+    ],
+    "generation": 7,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "legendary"
+    ],
+    "moves": [
+      "swords-dance",
+      "body-slam",
+      "hyper-beam",
+      "solar-beam",
+      "thunder-wave",
+      "earthquake",
+      "toxic",
+      "confusion",
+      "psychic",
+      "double-team",
+      "light-screen",
+      "reflect",
+      "swift",
+      "rest",
+      "rock-slide",
+      "slash",
+      "substitute",
+      "thief",
+      "snore",
+      "protect",
+      "scary-face",
+      "outrage",
+      "sandstorm",
+      "endure",
+      "swagger",
+      "sleep-talk",
+      "return",
+      "frustration",
+      "metal-claw",
+      "morning-sun",
+      "moonlight",
+      "hidden-power",
+      "sunny-day",
+      "future-sight",
+      "heat-wave",
+      "facade",
+      "recycle",
+      "brick-break",
+      "knock-off",
+      "imprison",
+      "hyper-voice",
+      "rock-tomb",
+      "cosmic-power",
+      "signal-beam",
+      "aerial-ace",
+      "iron-defense",
+      "calm-mind",
+      "dragon-dance",
+      "rock-blast",
+      "shock-wave",
+      "gravity",
+      "gyro-ball",
+      "embargo",
+      "fling",
+      "wring-out",
+      "magnet-rise",
+      "rock-polish",
+      "dark-pulse",
+      "night-slash",
+      "x-scissor",
+      "dragon-pulse",
+      "power-gem",
+      "earth-power",
+      "giga-impact",
+      "shadow-claw",
+      "psycho-cut",
+      "mirror-shot",
+      "flash-cannon",
+      "trick-room",
+      "iron-head",
+      "stone-edge",
+      "stealth-rock",
+      "charge-beam",
+      "psyshock",
+      "autotomize",
+      "telekinesis",
+      "round",
+      "stored-power",
+      "ally-switch",
+      "bulldoze",
+      "confide",
+      "smart-strike",
+      "brutal-swing",
+      "psychic-fangs",
+      "prismatic-laser",
+      "photon-geyser",
+      "breaking-swipe",
+      "expanding-force",
+      "meteor-beam",
+      "tera-blast"
+    ],
+    "abilities": [
+      "prism-armor"
+    ],
+    "weight": 2300,
+    "height": 24,
+    "spriteId": 10156
   },
   {
     "name": "Necrozma-Ultra",
@@ -97967,7 +99071,8 @@
       "prism-armor"
     ],
     "weight": 2300,
-    "height": 24
+    "height": 24,
+    "spriteId": 10157
   },
   {
     "name": "Magearna",
@@ -97981,7 +99086,8 @@
       "no-eggs"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [
       "mythical"
@@ -98097,6 +99203,54 @@
     ],
     "weight": 805,
     "height": 10
+  },
+  {
+    "name": "Mega-Magearna",
+    "dexNumber": 801,
+    "spriteId": 10317,
+    "types": [
+      "steel",
+      "fairy"
+    ],
+    "generation": 7,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega",
+      "mythical"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 2481,
+    "height": 13
+  },
+  {
+    "name": "Magearna-Original-Mega",
+    "dexNumber": 801,
+    "spriteId": 10318,
+    "types": [
+      "steel",
+      "fairy"
+    ],
+    "generation": 7,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega",
+      "mythical"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 2481,
+    "height": 13
   },
   {
     "name": "Marshadow",
@@ -98563,7 +99717,8 @@
       "no-eggs"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [
       "mythical"
@@ -98656,6 +99811,29 @@
     "abilities": [
       "volt-absorb"
     ],
+    "weight": 445,
+    "height": 15
+  },
+  {
+    "name": "Mega-Zeraora",
+    "dexNumber": 807,
+    "spriteId": 10319,
+    "types": [
+      "electric"
+    ],
+    "generation": 7,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega",
+      "mythical"
+    ],
+    "moves": [],
+    "abilities": [],
     "weight": 445,
     "height": 15
   },
@@ -103382,7 +104560,8 @@
       "mineral"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -103450,6 +104629,29 @@
     ],
     "weight": 620,
     "height": 30
+  },
+  {
+    "name": "Mega-Falinks",
+    "dexNumber": 870,
+    "spriteId": 10303,
+    "types": [
+      "fighting"
+    ],
+    "generation": 8,
+    "eggGroups": [
+      "fairy",
+      "mineral"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 990,
+    "height": 16
   },
   {
     "name": "Pincurchin",
@@ -103977,7 +105179,8 @@
       "psychic-surge"
     ],
     "weight": 280,
-    "height": 9
+    "height": 9,
+    "spriteId": 10186
   },
   {
     "name": "Morpeko",
@@ -105416,7 +106619,8 @@
       "unseen-fist"
     ],
     "weight": 1050,
-    "height": 19
+    "height": 19,
+    "spriteId": 10191
   },
   {
     "name": "Zarude",
@@ -106002,7 +107206,8 @@
       "unnerve"
     ],
     "weight": 77,
-    "height": 11
+    "height": 11,
+    "spriteId": 10193
   },
   {
     "name": "Calyrex-Shadow-Rider",
@@ -106096,7 +107301,8 @@
       "unnerve"
     ],
     "weight": 77,
-    "height": 11
+    "height": 11,
+    "spriteId": 10194
   },
   {
     "name": "Wyrdeer",
@@ -106530,7 +107736,8 @@
       "mold-breaker"
     ],
     "weight": 1100,
-    "height": 30
+    "height": 30,
+    "spriteId": 10248
   },
   {
     "name": "Sneasler",
@@ -106869,7 +108076,8 @@
       "contrary"
     ],
     "weight": 480,
-    "height": 16
+    "height": 16,
+    "spriteId": 10249
   },
   {
     "name": "Sprigatito",
@@ -107757,7 +108965,8 @@
       "thick-fat"
     ],
     "weight": 1200,
-    "height": 10
+    "height": 10,
+    "spriteId": 10254
   },
   {
     "name": "Tarountula",
@@ -108499,7 +109708,8 @@
       "technician"
     ],
     "weight": 23,
-    "height": 3
+    "height": 3,
+    "spriteId": 10257
   },
   {
     "name": "Fidough",
@@ -108977,79 +110187,8 @@
       "guts"
     ],
     "weight": 24,
-    "height": 6
-  },
-  {
-    "name": "Squawkabilly-White-Plumage",
-    "dexNumber": 931,
-    "types": [
-      "normal",
-      "flying"
-    ],
-    "generation": 9,
-    "eggGroups": [
-      "flying"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [],
-    "moves": [
-      "fly",
-      "fury-attack",
-      "take-down",
-      "double-edge",
-      "growl",
-      "hyper-beam",
-      "peck",
-      "quick-attack",
-      "mimic",
-      "rest",
-      "substitute",
-      "thief",
-      "reversal",
-      "protect",
-      "scary-face",
-      "endure",
-      "swagger",
-      "sleep-talk",
-      "sunny-day",
-      "uproar",
-      "heat-wave",
-      "torment",
-      "flatter",
-      "facade",
-      "taunt",
-      "helping-hand",
-      "endeavor",
-      "feather-dance",
-      "hyper-voice",
-      "fake-tears",
-      "air-cutter",
-      "aerial-ace",
-      "roost",
-      "tailwind",
-      "u-turn",
-      "copycat",
-      "air-slash",
-      "brave-bird",
-      "giga-impact",
-      "foul-play",
-      "final-gambit",
-      "hurricane",
-      "parting-shot",
-      "lash-out",
-      "dual-wingbeat",
-      "tera-blast",
-      "pounce"
-    ],
-    "abilities": [
-      "intimidate",
-      "hustle",
-      "guts"
-    ],
-    "weight": 24,
-    "height": 6
+    "height": 6,
+    "spriteId": 10260
   },
   {
     "name": "Squawkabilly-Yellow-Plumage",
@@ -109121,7 +110260,81 @@
       "guts"
     ],
     "weight": 24,
-    "height": 6
+    "height": 6,
+    "spriteId": 10261
+  },
+  {
+    "name": "Squawkabilly-White-Plumage",
+    "dexNumber": 931,
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "generation": 9,
+    "eggGroups": [
+      "flying"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [],
+    "moves": [
+      "fly",
+      "fury-attack",
+      "take-down",
+      "double-edge",
+      "growl",
+      "hyper-beam",
+      "peck",
+      "quick-attack",
+      "mimic",
+      "rest",
+      "substitute",
+      "thief",
+      "reversal",
+      "protect",
+      "scary-face",
+      "endure",
+      "swagger",
+      "sleep-talk",
+      "sunny-day",
+      "uproar",
+      "heat-wave",
+      "torment",
+      "flatter",
+      "facade",
+      "taunt",
+      "helping-hand",
+      "endeavor",
+      "feather-dance",
+      "hyper-voice",
+      "fake-tears",
+      "air-cutter",
+      "aerial-ace",
+      "roost",
+      "tailwind",
+      "u-turn",
+      "copycat",
+      "air-slash",
+      "brave-bird",
+      "giga-impact",
+      "foul-play",
+      "final-gambit",
+      "hurricane",
+      "parting-shot",
+      "lash-out",
+      "dual-wingbeat",
+      "tera-blast",
+      "pounce"
+    ],
+    "abilities": [
+      "intimidate",
+      "hustle",
+      "guts"
+    ],
+    "weight": 24,
+    "height": 6,
+    "spriteId": 10262
   },
   {
     "name": "Nacli",
@@ -110575,7 +111788,8 @@
       "plant"
     ],
     "evolutionMethod": [
-      "stone"
+      "stone",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -110634,6 +111848,31 @@
     ],
     "weight": 150,
     "height": 9
+  },
+  {
+    "name": "Mega-Scovillain",
+    "dexNumber": 952,
+    "spriteId": 10320,
+    "types": [
+      "grass",
+      "fire"
+    ],
+    "generation": 9,
+    "eggGroups": [
+      "plant"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "spicy-spray"
+    ],
+    "weight": 220,
+    "height": 12
   },
   {
     "name": "Rellor",
@@ -111600,7 +112839,8 @@
       "zero-to-hero"
     ],
     "weight": 602,
-    "height": 13
+    "height": 13,
+    "spriteId": 10256
   },
   {
     "name": "Varoom",
@@ -111975,7 +113215,8 @@
       "mineral"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -112033,6 +113274,31 @@
     ],
     "weight": 450,
     "height": 15
+  },
+  {
+    "name": "Mega-Glimmora",
+    "dexNumber": 970,
+    "spriteId": 10321,
+    "types": [
+      "rock",
+      "poison"
+    ],
+    "generation": 9,
+    "eggGroups": [
+      "mineral"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [
+      "adaptability"
+    ],
+    "weight": 770,
+    "height": 28
   },
   {
     "name": "Greavard",
@@ -112557,7 +113823,8 @@
       "water2"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -112617,7 +113884,8 @@
       "water2"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -112663,7 +113931,8 @@
       "storm-drain"
     ],
     "weight": 80,
-    "height": 3
+    "height": 3,
+    "spriteId": 10258
   },
   {
     "name": "Tatsugiri-Stretchy",
@@ -112677,7 +113946,8 @@
       "water2"
     ],
     "evolutionMethod": [
-      "none"
+      "none",
+      "has-mega"
     ],
     "status": [],
     "moves": [
@@ -112723,7 +113993,77 @@
       "storm-drain"
     ],
     "weight": 80,
-    "height": 3
+    "height": 3,
+    "spriteId": 10259
+  },
+  {
+    "name": "Tatsugiri-Curly-Mega",
+    "dexNumber": 978,
+    "spriteId": 10322,
+    "types": [
+      "dragon",
+      "water"
+    ],
+    "generation": 9,
+    "eggGroups": [
+      "water2"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 240,
+    "height": 6
+  },
+  {
+    "name": "Tatsugiri-Droopy-Mega",
+    "dexNumber": 978,
+    "spriteId": 10323,
+    "types": [
+      "dragon",
+      "water"
+    ],
+    "generation": 9,
+    "eggGroups": [
+      "water2"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 240,
+    "height": 6
+  },
+  {
+    "name": "Tatsugiri-Stretchy-Mega",
+    "dexNumber": 978,
+    "spriteId": 10324,
+    "types": [
+      "dragon",
+      "water"
+    ],
+    "generation": 9,
+    "eggGroups": [
+      "water2"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 240,
+    "height": 6
   },
   {
     "name": "Annihilape",
@@ -114321,7 +115661,8 @@
       "mineral"
     ],
     "evolutionMethod": [
-      "level"
+      "level",
+      "has-mega"
     ],
     "status": [
       "pseudo"
@@ -114386,6 +115727,30 @@
       "ice-body"
     ],
     "weight": 2100,
+    "height": 21
+  },
+  {
+    "name": "Mega-Baxcalibur",
+    "dexNumber": 998,
+    "spriteId": 10325,
+    "types": [
+      "dragon",
+      "ice"
+    ],
+    "generation": 9,
+    "eggGroups": [
+      "dragon",
+      "mineral"
+    ],
+    "evolutionMethod": [
+      "has-mega"
+    ],
+    "status": [
+      "is-mega"
+    ],
+    "moves": [],
+    "abilities": [],
+    "weight": 3150,
     "height": 21
   },
   {
@@ -114466,7 +115831,8 @@
       "rattled"
     ],
     "weight": 50,
-    "height": 3
+    "height": 3,
+    "spriteId": 10263
   },
   {
     "name": "Gholdengo",
@@ -116039,11 +117405,11 @@
     "height": 12
   },
   {
-    "name": "Ogerpon-Cornerstone-Mask",
+    "name": "Ogerpon-Wellspring-Mask",
     "dexNumber": 1017,
     "types": [
       "grass",
-      "rock"
+      "water"
     ],
     "generation": 9,
     "eggGroups": [
@@ -116123,7 +117489,8 @@
       "defiant"
     ],
     "weight": 398,
-    "height": 12
+    "height": 12,
+    "spriteId": 10273
   },
   {
     "name": "Ogerpon-Hearthflame-Mask",
@@ -116210,14 +117577,15 @@
       "defiant"
     ],
     "weight": 398,
-    "height": 12
+    "height": 12,
+    "spriteId": 10274
   },
   {
-    "name": "Ogerpon-Wellspring-Mask",
+    "name": "Ogerpon-Cornerstone-Mask",
     "dexNumber": 1017,
     "types": [
       "grass",
-      "water"
+      "rock"
     ],
     "generation": 9,
     "eggGroups": [
@@ -116297,7 +117665,8 @@
       "defiant"
     ],
     "weight": 398,
-    "height": 12
+    "height": 12,
+    "spriteId": 10275
   },
   {
     "name": "Archaludon",
@@ -116867,89 +118236,6 @@
     "height": 2
   },
   {
-    "name": "Terapagos-Stellar",
-    "dexNumber": 1024,
-    "types": [
-      "normal"
-    ],
-    "generation": 9,
-    "eggGroups": [
-      "no-eggs"
-    ],
-    "evolutionMethod": [
-      "none"
-    ],
-    "status": [
-      "legendary"
-    ],
-    "moves": [
-      "headbutt",
-      "body-slam",
-      "take-down",
-      "double-edge",
-      "roar",
-      "flamethrower",
-      "surf",
-      "ice-beam",
-      "hyper-beam",
-      "solar-beam",
-      "thunderbolt",
-      "thunder",
-      "earthquake",
-      "toxic",
-      "withdraw",
-      "rest",
-      "rock-slide",
-      "tri-attack",
-      "substitute",
-      "protect",
-      "endure",
-      "sleep-talk",
-      "rapid-spin",
-      "rain-dance",
-      "sunny-day",
-      "crunch",
-      "ancient-power",
-      "facade",
-      "weather-ball",
-      "calm-mind",
-      "water-pulse",
-      "gravity",
-      "gyro-ball",
-      "flare-blitz",
-      "aura-sphere",
-      "rock-polish",
-      "dark-pulse",
-      "bug-buzz",
-      "dragon-pulse",
-      "power-gem",
-      "energy-ball",
-      "earth-power",
-      "giga-impact",
-      "zen-headbutt",
-      "flash-cannon",
-      "iron-head",
-      "stone-edge",
-      "stealth-rock",
-      "heavy-slam",
-      "stored-power",
-      "wild-charge",
-      "heat-crash",
-      "dazzling-gleam",
-      "body-press",
-      "meteor-beam",
-      "scorching-sands",
-      "ice-spinner",
-      "tera-starstorm",
-      "supercell-slam"
-    ],
-    "abilities": [
-      "tera-shift"
-    ],
-    "weight": 65,
-    "height": 2
-  },
-  {
     "name": "Terapagos-Terastal",
     "dexNumber": 1024,
     "types": [
@@ -117030,7 +118316,92 @@
       "tera-shift"
     ],
     "weight": 65,
-    "height": 2
+    "height": 2,
+    "spriteId": 10276
+  },
+  {
+    "name": "Terapagos-Stellar",
+    "dexNumber": 1024,
+    "types": [
+      "normal"
+    ],
+    "generation": 9,
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "evolutionMethod": [
+      "none"
+    ],
+    "status": [
+      "legendary"
+    ],
+    "moves": [
+      "headbutt",
+      "body-slam",
+      "take-down",
+      "double-edge",
+      "roar",
+      "flamethrower",
+      "surf",
+      "ice-beam",
+      "hyper-beam",
+      "solar-beam",
+      "thunderbolt",
+      "thunder",
+      "earthquake",
+      "toxic",
+      "withdraw",
+      "rest",
+      "rock-slide",
+      "tri-attack",
+      "substitute",
+      "protect",
+      "endure",
+      "sleep-talk",
+      "rapid-spin",
+      "rain-dance",
+      "sunny-day",
+      "crunch",
+      "ancient-power",
+      "facade",
+      "weather-ball",
+      "calm-mind",
+      "water-pulse",
+      "gravity",
+      "gyro-ball",
+      "flare-blitz",
+      "aura-sphere",
+      "rock-polish",
+      "dark-pulse",
+      "bug-buzz",
+      "dragon-pulse",
+      "power-gem",
+      "energy-ball",
+      "earth-power",
+      "giga-impact",
+      "zen-headbutt",
+      "flash-cannon",
+      "iron-head",
+      "stone-edge",
+      "stealth-rock",
+      "heavy-slam",
+      "stored-power",
+      "wild-charge",
+      "heat-crash",
+      "dazzling-gleam",
+      "body-press",
+      "meteor-beam",
+      "scorching-sands",
+      "ice-spinner",
+      "tera-starstorm",
+      "supercell-slam"
+    ],
+    "abilities": [
+      "tera-shift"
+    ],
+    "weight": 65,
+    "height": 2,
+    "spriteId": 10277
   },
   {
     "name": "Pecharunt",

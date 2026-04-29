@@ -174,13 +174,56 @@ function extractEvolutionMethods(
 // --- Mega evolution detection ---
 // Pokémon that have mega evolutions (by national dex number)
 const HAS_MEGA = new Set([
+  // Original Gen 6 (X/Y + ORAS) Megas
   3, 6, 9, 15, 18, 65, 80, 94, 115, 127, 130, 142, 150, 181, 208, 212, 214,
   229, 248, 254, 257, 260, 282, 302, 303, 306, 308, 310, 319, 323, 334, 354,
   359, 362, 373, 376, 380, 381, 384, 428, 445, 448, 460, 475, 531, 719,
+  // Legends: Z-A new Megas
+  26,  // Raichu
+  36,  // Clefable
+  71,  // Victreebel
+  121, // Starmie
+  149, // Dragonite
+  154, // Meganium
+  160, // Feraligatr
+  227, // Skarmory
+  358, // Chimecho
+  398, // Staraptor
+  478, // Froslass
+  485, // Heatran
+  491, // Darkrai
+  500, // Emboar
+  530, // Excadrill
+  545, // Scolipede
+  560, // Scrafty
+  604, // Eelektross
+  609, // Chandelure
+  623, // Golurk
+  652, // Chesnaught
+  655, // Delphox
+  658, // Greninja
+  668, // Pyroar
+  670, // Floette
+  678, // Meowstic
+  687, // Malamar
+  689, // Barbaracle
+  691, // Dragalge
+  701, // Hawlucha
+  718, // Zygarde
+  740, // Crabominable
+  768, // Golisopod
+  780, // Drampa
+  801, // Magearna
+  807, // Zeraora
+  870, // Falinks
+  952, // Scovillain
+  970, // Glimmora
+  978, // Tatsugiri
+  998, // Baxcalibur
 ]);
 
 // Mega and Primal form variety name suffixes (PokéAPI variety names)
-const MEGA_FORM_SUFFIXES = ["-mega", "-mega-x", "-mega-y", "-primal"];
+const MEGA_FORM_SUFFIXES = ["-mega", "-mega-x", "-mega-y", "-mega-z", "-primal"];
 
 // Pokémon that have Gigantamax forms (by national dex number)
 const HAS_GMAX = new Set([
@@ -275,6 +318,7 @@ const EXTRA_FORM_SUFFIXES: Record<string, number> = {
 interface PokemonEntry {
   name: string;
   dexNumber: number;
+  spriteId?: number;
   types: string[];
   generation: number;
   eggGroups: string[];
@@ -429,6 +473,7 @@ async function main() {
       const meta = varietyMeta[k];
       const species = speciesResults[meta.speciesIndex] as SpeciesTyped | null;
       const pokemonData = varietyResults[k] as {
+        id: number;
         types: { type: { name: string } }[];
         moves: { move: { name: string } }[];
         abilities: { ability: { name: string } }[];
@@ -497,9 +542,12 @@ async function main() {
       if (PARADOX_POKEMON.has(dexNumber)) status.push("paradox");
       if (isMegaVariety) status.push("is-mega");
 
+      const spriteId = pokemonData.id !== dexNumber ? pokemonData.id : undefined;
+
       pokemon.push({
         name,
         dexNumber,
+        ...(spriteId !== undefined && { spriteId }),
         types,
         generation: gen,
         eggGroups,

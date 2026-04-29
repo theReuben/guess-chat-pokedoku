@@ -346,5 +346,6 @@ export function getFilteredPokemonNames(rowCategoryId?: string, colCategoryId?: 
 export function getPokemonSpriteUrl(name: string): string | null {
   const pokemon = findPokemon(name);
   if (!pokemon) return null;
-  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.dexNumber}.png`;
+  const id = pokemon.spriteId ?? pokemon.dexNumber;
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
 }

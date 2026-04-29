@@ -20,6 +20,7 @@ export interface Category {
 export interface Pokemon {
   name: string;
   dexNumber: number;
+  spriteId?: number;      // PokeAPI Pokemon ID; differs from dexNumber for alternate forms
   types: string[];
   generation: number;
   eggGroups: string[];
