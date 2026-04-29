@@ -71,6 +71,7 @@ export const CATEGORIES: Category[] = [
   { id: "status-baby", label: "Baby Pokémon", type: "status" },
   { id: "status-ultra-beast", label: "Ultra Beast", type: "status" },
   { id: "status-paradox", label: "Paradox Pokémon", type: "status" },
+  { id: "status-is-mega", label: "Mega/Primal Evolution", type: "status" },
 
   // Weakness (takes super-effective damage from this type)
   { id: "weak-fire", label: "Weak to Fire", type: "weakness" },
