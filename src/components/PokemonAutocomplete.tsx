@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
-import { getAllPokemonNames, getPokemonSpriteUrl } from "@/data/pokemon";
+import { getAllPokemonNames, getPokemonSpriteUrl, SUBSTITUTE_SPRITE_URL } from "@/data/pokemon";
 
 interface Props {
   value: string;
@@ -78,6 +78,7 @@ export default function PokemonAutocomplete({ value, onChange, placeholder, filt
             src={spriteUrl}
             alt={value}
             style={{ width: "40px", height: "40px", imageRendering: "pixelated" }}
+            onError={e => { (e.currentTarget as HTMLImageElement).src = SUBSTITUTE_SPRITE_URL; }}
           />
         </div>
       )}
@@ -104,9 +105,10 @@ export default function PokemonAutocomplete({ value, onChange, placeholder, filt
               style={{ display: "flex", alignItems: "center" }}
             >
               <img
-                src={getPokemonSpriteUrl(name) || ""}
+                src={getPokemonSpriteUrl(name) || SUBSTITUTE_SPRITE_URL}
                 alt=""
                 style={{ width: "24px", height: "24px", marginRight: "8px", imageRendering: "pixelated" }}
+                onError={e => { (e.currentTarget as HTMLImageElement).src = SUBSTITUTE_SPRITE_URL; }}
               />
               {name}
             </div>

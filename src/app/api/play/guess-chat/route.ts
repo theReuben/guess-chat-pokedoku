@@ -67,9 +67,9 @@ export async function GET() {
   // Find next unplayed grid
   const nextGrid = submissionGridsResult.rows.find(g => !completedGridIds.has(g.id as string));
 
-  // Get all users for the guess dropdown
+  // Get only users who have a submission grid (valid guess options)
   const usersResult = await db.execute(
-    "SELECT id, display_name, avatar_url FROM users ORDER BY display_name"
+    "SELECT u.id, u.display_name, u.avatar_url FROM users u WHERE EXISTS (SELECT 1 FROM grids g WHERE g.created_by = u.id AND g.is_submission = 1) ORDER BY u.display_name"
   );
 
   return NextResponse.json({
