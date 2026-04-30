@@ -40,7 +40,6 @@ export default function GuessChatPage() {
   const [totalGrids, setTotalGrids] = useState(0);
   const [completedCount, setCompletedCount] = useState(0);
   const [users, setUsers] = useState<User[]>([]);
-  const [hasOwnSubmission, setHasOwnSubmission] = useState(false);
 
   const [answers, setAnswers] = useState<string[]>(Array(9).fill(""));
   const [guessedAuthorId, setGuessedAuthorId] = useState("");
@@ -71,7 +70,6 @@ export default function GuessChatPage() {
           setTotalGrids(data.totalGrids);
           setCompletedCount(data.completedCount);
           setUsers(data.users || []);
-          setHasOwnSubmission(false);
 
           // If session was already submitted, redirect to results
           if (data.session.status === "submitted") {
@@ -80,7 +78,6 @@ export default function GuessChatPage() {
           }
         } else {
           setSession(null);
-          setHasOwnSubmission(!!data.hasOwnSubmission);
         }
       })
       .catch(() => setError("Failed to load"))
@@ -165,13 +162,9 @@ export default function GuessChatPage() {
   if (!session) {
     return (
       <div style={{ textAlign: "center", paddingTop: "48px" }}>
-        <h2 style={{ fontWeight: 700, marginBottom: "12px" }}>
-          {hasOwnSubmission ? "Your grid is submitted!" : "No Submissions Yet"}
-        </h2>
+        <h2 style={{ fontWeight: 700, marginBottom: "12px" }}>No Submissions Yet</h2>
         <p style={{ color: "var(--text-secondary)", marginBottom: "24px" }}>
-          {hasOwnSubmission
-            ? "You can't play your own submission — waiting for other players to submit their grids."
-            : "Waiting for players to mark their grids as submissions."}
+          Waiting for players to mark their grids as submissions.
         </p>
         <a href="/play" className="btn btn-secondary">Back</a>
       </div>
@@ -190,7 +183,7 @@ export default function GuessChatPage() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px", flexWrap: "wrap", gap: "12px" }}>
           <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>Review Guesses</h1>
           <button className="btn btn-secondary" onClick={() => setReviewMode(false)}>
-            Back
+            {allDone ? "Back" : "Back to Current Grid"}
           </button>
         </div>
 
@@ -294,11 +287,22 @@ export default function GuessChatPage() {
 
   return (
     <div>
-      <div style={{ marginBottom: "24px" }}>
-        <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>Guess Chat</h1>
-        <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
-          Grid {completedCount + 1} of {totalGrids}
-        </p>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px", flexWrap: "wrap", gap: "12px" }}>
+        <div>
+          <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>Guess Chat</h1>
+          <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+            Grid {completedCount + 1} of {totalGrids}
+          </p>
+        </div>
+        {entries.length > 0 && (
+          <button
+            className="btn btn-secondary"
+            style={{ fontSize: "0.85rem" }}
+            onClick={() => { setReviewMode(true); setReviewIndex(entries.length - 1); }}
+          >
+            Review Previous ({entries.length})
+          </button>
+        )}
       </div>
 
       {error && (
