@@ -50,9 +50,13 @@ export async function GET() {
     guessSession = newSession.rows[0];
   }
 
-  // Get existing entries for this session
+  // Get existing entries for this session (with grid data for display)
   const entriesResult = await db.execute({
-    sql: "SELECT * FROM guess_entries WHERE session_id = ? ORDER BY order_index",
+    sql: `SELECT ge.*, g.row_categories, g.col_categories, g.example_answers
+          FROM guess_entries ge
+          JOIN grids g ON g.id = ge.grid_id
+          WHERE ge.session_id = ?
+          ORDER BY ge.order_index`,
     args: [guessSession.id as string],
   });
 
@@ -121,6 +125,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "You cannot use the same Pokémon more than once" }, { status: 400 });
   }
 
+  const isCorrect: boolean[] = Array(9).fill(false);
   let correctCount = 0;
   for (let row = 0; row < 3; row++) {
     for (let col = 0; col < 3; col++) {
@@ -130,9 +135,12 @@ export async function POST(req: NextRequest) {
           pokemonMatchesCategory(pokemon, rowCategories[row]) &&
           pokemonMatchesCategory(pokemon, colCategories[col])) {
         correctCount++;
+        isCorrect[idx] = true;
       }
     }
   }
+
+  const exampleAnswers = JSON.parse(grid.example_answers as string) as string[];
 
   // Get current entry count for order_index
   const entryCountResult = await db.execute({
@@ -159,5 +167,5 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  return NextResponse.json({ correctCount });
+  return NextResponse.json({ correctCount, isCorrect, exampleAnswers });
 }

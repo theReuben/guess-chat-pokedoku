@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { getLabelForCategoryId } from "@/data/pokemon";
+import { getLabelForCategoryId, getFilteredPokemonNames, getPokemonSpriteUrl, findPokemon, pokemonMatchesCategory } from "@/data/pokemon";
 import PokemonAutocomplete from "@/components/PokemonAutocomplete";
 
 interface User {
@@ -18,6 +18,9 @@ interface Entry {
   correct_count: number;
   guessed_author_id: string | null;
   order_index: number;
+  row_categories: string;
+  col_categories: string;
+  example_answers: string;
 }
 
 interface GridData {
@@ -29,6 +32,11 @@ interface GridData {
 interface SessionData {
   id: string;
   status: string;
+}
+
+interface GridResult {
+  isCorrect: boolean[];
+  exampleAnswers: string[];
 }
 
 export default function GuessChatPage() {
@@ -47,9 +55,14 @@ export default function GuessChatPage() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
 
+  // Result shown after submitting a grid (before moving to next)
+  const [gridResult, setGridResult] = useState<GridResult | null>(null);
+  const [intendedSelections, setIntendedSelections] = useState<string[]>(Array(9).fill(""));
+
   // Review mode: browsing through completed entries to adjust guesses
   const [reviewMode, setReviewMode] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
+  const [reviewIntendedSelections, setReviewIntendedSelections] = useState<string[]>([]);
 
   const fetchSession = useCallback(() => {
     setLoading(true);
@@ -86,6 +99,12 @@ export default function GuessChatPage() {
 
   useEffect(() => { fetchSession(); }, [fetchSession]);
 
+  useEffect(() => {
+    if (reviewMode && entries[reviewIndex]) {
+      setReviewIntendedSelections(JSON.parse(entries[reviewIndex].example_answers) as string[]);
+    }
+  }, [reviewMode, reviewIndex, entries]);
+
   function getCategoryLabel(id: string): string {
     return getLabelForCategoryId(id);
   }
@@ -113,14 +132,22 @@ export default function GuessChatPage() {
     });
 
     if (res.ok) {
-      setAnswers(Array(9).fill(""));
-      setGuessedAuthorId("");
-      fetchSession();
+      const data = await res.json();
+      setGridResult({ isCorrect: data.isCorrect, exampleAnswers: data.exampleAnswers });
+      setIntendedSelections([...data.exampleAnswers]);
     } else {
       const data = await res.json();
       setError(data.error || "Failed to submit");
     }
     setSubmitting(false);
+  }
+
+  function proceedToNext() {
+    setGridResult(null);
+    setIntendedSelections(Array(9).fill(""));
+    setAnswers(Array(9).fill(""));
+    setGuessedAuthorId("");
+    fetchSession();
   }
 
   async function updateGuess(gridId: string, newGuessId: string) {
@@ -176,8 +203,11 @@ export default function GuessChatPage() {
   // Review mode UI
   if (reviewMode && entries.length > 0) {
     const entry = entries[reviewIndex];
-    // We need grid data for review — we stored it in the entry from the API
-    // Actually we don't have row/col categories in entries. Let me show a simpler review.
+    const rowCategories = JSON.parse(entry.row_categories) as string[];
+    const colCategories = JSON.parse(entry.col_categories) as string[];
+    const playerAnswers = JSON.parse(entry.answers) as string[];
+    const exampleAnswers = JSON.parse(entry.example_answers) as string[];
+
     return (
       <div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px", flexWrap: "wrap", gap: "12px" }}>
@@ -191,12 +221,12 @@ export default function GuessChatPage() {
           Grid {reviewIndex + 1} of {entries.length}
         </div>
 
-        <div className="card" style={{ marginBottom: "16px" }}>
+        <div className="card" style={{ marginBottom: "20px" }}>
           <div style={{ marginBottom: "12px" }}>
-            <strong>Your score:</strong> {entry.correct_count}/9
+            <strong>Score: {entry.correct_count}/9</strong>
           </div>
           <div>
-            <strong>Your guess:</strong>
+            <strong>Who created this grid?</strong>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "8px" }}>
               {users.map(u => (
                 <span
@@ -207,6 +237,95 @@ export default function GuessChatPage() {
                 >
                   {u.display_name}
                 </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", gap: "32px", flexWrap: "wrap", alignItems: "flex-start", marginBottom: "24px" }}>
+          {/* Player's answers */}
+          <div>
+            <h2 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>Your Answers</h2>
+            <div className="pokedoku-grid">
+              <div className="grid-corner" />
+              {colCategories.map(id => (
+                <div key={id} className="grid-header">{getCategoryLabel(id)}</div>
+              ))}
+              {rowCategories.map((rowId, r) => (
+                <div key={`row-${r}`} style={{ display: "contents" }}>
+                  <div className="grid-header">{getCategoryLabel(rowId)}</div>
+                  {colCategories.map((colId, c) => {
+                    const idx = r * 3 + c;
+                    const answer = playerAnswers[idx];
+                    const pokemon = answer ? findPokemon(answer) : null;
+                    const correct = pokemon && pokemonMatchesCategory(pokemon, rowId) && pokemonMatchesCategory(pokemon, colId);
+                    return (
+                      <div key={`cell-${r}-${c}`} className={`grid-cell ${answer ? (correct ? "correct" : "incorrect") : ""}`}>
+                        <div style={{ textAlign: "center", padding: "4px" }}>
+                          {answer && (
+                            <>
+                              <img
+                                src={getPokemonSpriteUrl(answer) || ""}
+                                alt={answer}
+                                style={{ width: "40px", height: "40px", imageRendering: "pixelated", display: "block", margin: "0 auto 2px" }}
+                              />
+                              <span style={{ fontSize: "0.75rem" }}>{answer}</span>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Intended answers */}
+          <div>
+            <h2 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>Intended Answers</h2>
+            <div className="pokedoku-grid">
+              <div className="grid-corner" />
+              {colCategories.map(id => (
+                <div key={id} className="grid-header">{getCategoryLabel(id)}</div>
+              ))}
+              {rowCategories.map((rowId, r) => (
+                <div key={`row-${r}`} style={{ display: "contents" }}>
+                  <div className="grid-header">{getCategoryLabel(rowId)}</div>
+                  {colCategories.map((colId, c) => {
+                    const idx = r * 3 + c;
+                    const selectedName = reviewIntendedSelections[idx] || exampleAnswers[idx];
+                    const validNames = getFilteredPokemonNames(rowId, colId);
+                    return (
+                      <div key={`intended-${r}-${c}`} className="grid-cell correct" style={{ flexDirection: "column", gap: "4px" }}>
+                        {selectedName && (
+                          <>
+                            <img
+                              src={getPokemonSpriteUrl(selectedName) || ""}
+                              alt={selectedName}
+                              style={{ width: "40px", height: "40px", imageRendering: "pixelated" }}
+                            />
+                            <span style={{ fontSize: "0.75rem", textAlign: "center" }}>{selectedName}</span>
+                          </>
+                        )}
+                        <select
+                          value={selectedName}
+                          onChange={e => {
+                            const next = [...reviewIntendedSelections];
+                            next[idx] = e.target.value;
+                            setReviewIntendedSelections(next);
+                          }}
+                          style={{ fontSize: "0.7rem", padding: "2px 4px", marginTop: "2px", width: "100%" }}
+                          aria-label={`Valid answers for row ${r + 1}, column ${c + 1}`}
+                        >
+                          {validNames.map(name => (
+                            <option key={name} value={name}>{name}</option>
+                          ))}
+                        </select>
+                      </div>
+                    );
+                  })}
+                </div>
               ))}
             </div>
           </div>
@@ -284,6 +403,117 @@ export default function GuessChatPage() {
 
   const rowCategories = JSON.parse(nextGrid.row_categories) as string[];
   const colCategories = JSON.parse(nextGrid.col_categories) as string[];
+
+  // Result view after submitting current grid
+  if (gridResult) {
+    return (
+      <div>
+        <div style={{ marginBottom: "24px" }}>
+          <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>Guess Chat</h1>
+          <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+            Grid {completedCount} of {totalGrids}
+          </p>
+        </div>
+
+        <div className="card" style={{ marginBottom: "24px", textAlign: "center" }}>
+          <div style={{ fontSize: "2.5rem", fontWeight: 800, color: gridResult.isCorrect.filter(Boolean).length >= 7 ? "var(--success)" : gridResult.isCorrect.filter(Boolean).length >= 4 ? "var(--warning)" : "var(--accent)" }}>
+            {gridResult.isCorrect.filter(Boolean).length}/9
+          </div>
+          <p style={{ color: "var(--text-secondary)" }}>cells correct</p>
+        </div>
+
+        <div style={{ display: "flex", gap: "32px", flexWrap: "wrap", alignItems: "flex-start", marginBottom: "24px" }}>
+          {/* Player's grid */}
+          <div>
+            <h2 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>Your Answers</h2>
+            <div className="pokedoku-grid">
+              <div className="grid-corner" />
+              {colCategories.map(id => (
+                <div key={id} className="grid-header">{getCategoryLabel(id)}</div>
+              ))}
+              {rowCategories.map((rowId, r) => (
+                <div key={`row-${r}`} style={{ display: "contents" }}>
+                  <div className="grid-header">{getCategoryLabel(rowId)}</div>
+                  {colCategories.map((_colId, c) => {
+                    const idx = r * 3 + c;
+                    return (
+                      <div key={`cell-${r}-${c}`} className={`grid-cell ${gridResult.isCorrect[idx] ? "correct" : "incorrect"}`}>
+                        <div style={{ textAlign: "center", padding: "4px" }}>
+                          {answers[idx] && (
+                            <>
+                              <img
+                                src={getPokemonSpriteUrl(answers[idx]) || ""}
+                                alt={answers[idx]}
+                                style={{ width: "40px", height: "40px", imageRendering: "pixelated", display: "block", margin: "0 auto 2px" }}
+                              />
+                              <span style={{ fontSize: "0.75rem" }}>{answers[idx]}</span>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Intended answers */}
+          <div>
+            <h2 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>Intended Answers</h2>
+            <div className="pokedoku-grid">
+              <div className="grid-corner" />
+              {colCategories.map(id => (
+                <div key={id} className="grid-header">{getCategoryLabel(id)}</div>
+              ))}
+              {rowCategories.map((rowId, r) => (
+                <div key={`row-${r}`} style={{ display: "contents" }}>
+                  <div className="grid-header">{getCategoryLabel(rowId)}</div>
+                  {colCategories.map((colId, c) => {
+                    const idx = r * 3 + c;
+                    const selectedName = intendedSelections[idx] || gridResult.exampleAnswers[idx];
+                    const validNames = getFilteredPokemonNames(rowId, colId);
+                    return (
+                      <div key={`intended-${r}-${c}`} className="grid-cell correct" style={{ flexDirection: "column", gap: "4px" }}>
+                        {selectedName && (
+                          <>
+                            <img
+                              src={getPokemonSpriteUrl(selectedName) || ""}
+                              alt={selectedName}
+                              style={{ width: "40px", height: "40px", imageRendering: "pixelated" }}
+                            />
+                            <span style={{ fontSize: "0.75rem", textAlign: "center" }}>{selectedName}</span>
+                          </>
+                        )}
+                        <select
+                          value={selectedName}
+                          onChange={e => {
+                            const next = [...intendedSelections];
+                            next[idx] = e.target.value;
+                            setIntendedSelections(next);
+                          }}
+                          style={{ fontSize: "0.7rem", padding: "2px 4px", marginTop: "2px", width: "100%" }}
+                          aria-label={`Valid answers for row ${r + 1}, column ${c + 1}`}
+                        >
+                          {validNames.map(name => (
+                            <option key={name} value={name}>{name}</option>
+                          ))}
+                        </select>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <button className="btn btn-primary" onClick={proceedToNext}>
+          Next Grid
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
