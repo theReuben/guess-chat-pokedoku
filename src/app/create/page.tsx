@@ -169,6 +169,7 @@ export default function CreatePage() {
   }, {} as Record<string, typeof CATEGORIES>);
 
   const groupLabels: Record<string, string> = {
+    custom: "Special",
     type: "Types",
     generation: "Generations",
     egg_group: "Egg Groups",

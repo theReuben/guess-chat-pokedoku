@@ -22,6 +22,9 @@ export const POKEMON: Pokemon[] = pokemonData;
 
 // Categories that can be used as row/column headers
 export const CATEGORIES: Category[] = [
+  // Custom (accepts any Pokémon)
+  { id: "custom", label: "Any Pokémon", type: "custom" },
+
   // Types
   { id: "type-normal", label: "Normal Type", type: "type" },
   { id: "type-fire", label: "Fire Type", type: "type" },
@@ -175,6 +178,7 @@ const EGG_GROUP_MAP: Record<string, string[]> = {
 
 // Check if a Pokémon matches a given category
 export function pokemonMatchesCategory(pokemon: Pokemon, categoryId: string): boolean {
+  if (categoryId === "custom") return true;
   const dashIdx = categoryId.indexOf("-");
   if (dashIdx === -1) return false;
   const group = categoryId.substring(0, dashIdx);
