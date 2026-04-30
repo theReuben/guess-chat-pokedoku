@@ -19,25 +19,19 @@ export async function GET() {
     args: [session.user.id],
   });
 
-  // Get all submission grids (not the player's own)
+  // Get all submission grids (including the player's own)
   const submissionGridsResult = await db.execute({
     sql: `SELECT g.id, g.row_categories, g.col_categories, g.created_by
     FROM grids g
-    WHERE g.is_submission = 1 AND g.created_by != ?
+    WHERE g.is_submission = 1
     ORDER BY RANDOM()`,
-    args: [session.user.id],
+    args: [],
   });
 
   if (submissionGridsResult.rows.length === 0) {
-    // Check if the player themselves has a submission — helps surface a clearer message
-    const ownSubmissionResult = await db.execute({
-      sql: "SELECT id FROM grids WHERE created_by = ? AND is_submission = 1 LIMIT 1",
-      args: [session.user.id],
-    });
     return NextResponse.json({
       session: null,
       message: "No submissions available to play",
-      hasOwnSubmission: ownSubmissionResult.rows.length > 0,
     });
   }
 
