@@ -175,6 +175,7 @@ const EGG_GROUP_MAP: Record<string, string[]> = {
 
 // Check if a Pokémon matches a given category
 export function pokemonMatchesCategory(pokemon: Pokemon, categoryId: string): boolean {
+  if (categoryId.startsWith("custom-")) return true;
   const dashIdx = categoryId.indexOf("-");
   if (dashIdx === -1) return false;
   const group = categoryId.substring(0, dashIdx);
@@ -261,6 +262,7 @@ export function getLabelForCategoryId(id: string): string {
       }
     }
   }
+  if (group === "custom") return value;
   const formatted = value.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
   if (group === "move") return `Can learn ${formatted}`;
   if (group === "ability") return `Has ability ${formatted}`;
@@ -274,6 +276,7 @@ export function isValidCategoryId(id: string): boolean {
   if (dashIdx === -1) return false;
   const group = id.substring(0, dashIdx);
   const value = id.substring(dashIdx + 1);
+  if (group === "custom") return value.trim().length > 0;
   if (group === "move") return getAllMoveNames().includes(value);
   if (group === "ability") return getAllAbilityNames().includes(value);
   if (group === "weight" || group === "height") {

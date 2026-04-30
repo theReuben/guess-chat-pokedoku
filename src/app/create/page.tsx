@@ -31,6 +31,7 @@ export default function CreatePage() {
   const [abilitySearch, setAbilitySearch] = useState("");
   const [weightPokemonSearch, setWeightPokemonSearch] = useState("");
   const [heightPokemonSearch, setHeightPokemonSearch] = useState("");
+  const [customLabelInput, setCustomLabelInput] = useState("");
 
   // Reset search inputs when opening a new picker slot
   useEffect(() => {
@@ -39,6 +40,10 @@ export default function CreatePage() {
       setAbilitySearch("");
       setWeightPokemonSearch("");
       setHeightPokemonSearch("");
+      const currentId = pickingSlot.axis === "row"
+        ? rowCategories[pickingSlot.index]
+        : colCategories[pickingSlot.index];
+      setCustomLabelInput(currentId?.startsWith("custom-") ? currentId.substring(7) : "");
     }
   }, [pickingSlot?.axis, pickingSlot?.index]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -316,6 +321,42 @@ export default function CreatePage() {
                 </div>
               </div>
             ))}
+
+            {/* Custom — any Pokémon, user-defined label */}
+            <div style={{ marginBottom: "16px" }}>
+              <h4 style={{ fontSize: "0.9rem", fontWeight: 600, marginBottom: "8px", color: "var(--text-secondary)" }}>
+                Custom (Any Pokémon)
+              </h4>
+              <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", marginBottom: "8px" }}>
+                Any Pokémon is valid for this column/row. Add a label to describe the category.
+              </p>
+              <div style={{ display: "flex", gap: "8px" }}>
+                <input
+                  type="text"
+                  placeholder="Label (e.g. Cute Pokémon)"
+                  value={customLabelInput}
+                  onChange={e => setCustomLabelInput(e.target.value)}
+                  onKeyDown={e => {
+                    if (e.key === "Enter" && customLabelInput.trim()) {
+                      selectCategory("custom-" + customLabelInput.trim());
+                    }
+                  }}
+                  style={{
+                    flex: 1, padding: "8px 10px", borderRadius: "6px",
+                    border: "1px solid var(--border)", background: "var(--bg-secondary)",
+                    color: "var(--text-primary)", fontSize: "0.9rem",
+                    boxSizing: "border-box",
+                  }}
+                />
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => customLabelInput.trim() && selectCategory("custom-" + customLabelInput.trim())}
+                  disabled={!customLabelInput.trim()}
+                >
+                  Use
+                </button>
+              </div>
+            </div>
 
             {/* Can Learn Move — searchable */}
             <div style={{ marginBottom: "16px" }}>

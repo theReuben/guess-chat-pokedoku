@@ -9,7 +9,8 @@ export type CategoryType =
   | "weight"
   | "height"
   | "move"
-  | "ability";
+  | "ability"
+  | "custom";
 
 export interface Category {
   id: string;
