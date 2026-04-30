@@ -62,6 +62,7 @@ export default function GuessChatPage() {
   // Review mode: browsing through completed entries to adjust guesses
   const [reviewMode, setReviewMode] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
+  const [reviewIntendedSelections, setReviewIntendedSelections] = useState<string[]>([]);
 
   const fetchSession = useCallback(() => {
     setLoading(true);
@@ -97,6 +98,12 @@ export default function GuessChatPage() {
   }, [router]);
 
   useEffect(() => { fetchSession(); }, [fetchSession]);
+
+  useEffect(() => {
+    if (reviewMode && entries[reviewIndex]) {
+      setReviewIntendedSelections(JSON.parse(entries[reviewIndex].example_answers) as string[]);
+    }
+  }, [reviewMode, reviewIndex, entries]);
 
   function getCategoryLabel(id: string): string {
     return getLabelForCategoryId(id);
@@ -287,7 +294,7 @@ export default function GuessChatPage() {
                   <div className="grid-header">{getCategoryLabel(rowId)}</div>
                   {colCategories.map((colId, c) => {
                     const idx = r * 3 + c;
-                    const selectedName = exampleAnswers[idx];
+                    const selectedName = reviewIntendedSelections[idx] || exampleAnswers[idx];
                     const validNames = getFilteredPokemonNames(rowId, colId);
                     return (
                       <div key={`intended-${r}-${c}`} className="grid-cell correct" style={{ flexDirection: "column", gap: "4px" }}>
@@ -303,9 +310,13 @@ export default function GuessChatPage() {
                         )}
                         <select
                           value={selectedName}
+                          onChange={e => {
+                            const next = [...reviewIntendedSelections];
+                            next[idx] = e.target.value;
+                            setReviewIntendedSelections(next);
+                          }}
                           style={{ fontSize: "0.7rem", padding: "2px 4px", marginTop: "2px", width: "100%" }}
                           aria-label={`Valid answers for row ${r + 1}, column ${c + 1}`}
-                          readOnly
                         >
                           {validNames.map(name => (
                             <option key={name} value={name}>{name}</option>
